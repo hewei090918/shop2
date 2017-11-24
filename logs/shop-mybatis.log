@@ -1,0 +1,2 @@
+[2017-11-24 10:15:14] [WARN] org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.web.shop.dao]' package. Please check your configuration.
+[2017-11-24 10:15:45] [WARN] org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.web.shop.dao]' package. Please check your configuration.
