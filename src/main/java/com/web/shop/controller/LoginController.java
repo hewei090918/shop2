@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.web.shop.domain.User;
 import com.web.shop.service.UserService;
 
 /**
@@ -42,9 +41,7 @@ public class LoginController {
     
     @RequestMapping("login")
     public String login(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-    	int userId = Integer.parseInt(request.getParameter("id"));  
-        User user = this.userService.findById(userId);
-    	model.addAttribute("user", user);
+    	model.addAttribute("message", "welcome here");
         return LOGIN_URL;
     }
     

@@ -9,16 +9,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>主页</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+    <title>超市货物管理平台</title>
+    <jsp:include page="../common/common.jsp" />
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/css/main.css">
+	<!-- JS -->
+	<script type="text/javascript" src="<%=basePath%>resources/js/main.js"></script>
 
   </head>
   
