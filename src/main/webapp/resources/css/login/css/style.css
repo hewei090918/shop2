@@ -29,9 +29,6 @@
     font-style: normal;
 
 }
-a.hiddenanchor{
-	display: none;
-}
 /** The wrapper that will contain our two forms **/
 #wrapper{
 	width: 60%;
@@ -50,7 +47,7 @@ a.hiddenanchor{
 }
 
 #wrapper h1{
-	font-size: 48px;
+	font-size: 32px;
 	color: rgb(6, 106, 117);
 	padding: 2px 0 10px 0;
 	font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
@@ -112,7 +109,7 @@ input {
 /* all the input except submit and checkbox */
 #wrapper input:not([type="checkbox"]){
 	width: 92%;
-	margin-top: 4px;
+	margin-top: -2px;
 	padding: 10px 5px 10px 32px;	
 	border: 1px solid rgb(178, 178, 178);
 	-webkit-appearance: textfield;
@@ -207,7 +204,7 @@ p.signin.button{
 .keeplogin label{
 	display: inline-block;
 	font-size: 12px;	
-	font-style: italic;
+	/* font-style: italic; */
 }
 .keeplogin input#loginkeeping{
 	margin-right: 5px;
@@ -224,7 +221,7 @@ p.change_link{
 	color: rgb(127, 124, 124);
 	left: 0px;
 	height: 20px;
-	width: 440px;
+	width: 438px;
 	padding: 17px 30px 20px 30px;
 	font-size: 16px	;
 	text-align: right;

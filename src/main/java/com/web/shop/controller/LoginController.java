@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.shop.service.UserService;
+import com.web.shop.util.StringUtil;
 
 /**
  * 
@@ -40,8 +40,12 @@ public class LoginController {
     private UserService userService;
     
     @RequestMapping("login")
-    public String login(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-    	model.addAttribute("message", "welcome here");
+    public String login(HttpServletRequest request, HttpServletResponse response) {
+    	String username = request.getParameter("username");
+    	String password = request.getParameter("password");
+    	if(StringUtil.equals(username, "admin") && StringUtil.equals(password, "admin")) {
+    		return "redirect:/access/index.html";
+    	}
         return LOGIN_URL;
     }
     
