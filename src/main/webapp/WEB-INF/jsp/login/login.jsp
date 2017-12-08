@@ -36,11 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            <form action="<%=path%>/access/login.html" autocomplete="on"> 
                                <h1>用户登录</h1> 
                                <p> 
-                                   <label for="username" class="uname" data-icon="u" > 用户名： </label>
+                                   <label for="username" class="uname" data-icon="u" > 用户名或邮箱 </label>
                                    <input id="username" name="username" required="required" type="text" placeholder="username or email"/>
                                </p>
                                <p> 
-                                   <label for="password" class="pwd" data-icon="p"> 密码：</label>
+                                   <label for="password" class="pwd" data-icon="p"> 密码 </label>
                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                </p>
                                <p class="keeplogin"> 

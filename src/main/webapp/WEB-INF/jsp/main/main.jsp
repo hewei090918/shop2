@@ -15,10 +15,88 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/css/main.css">
 	<!-- JS -->
 	<script type="text/javascript" src="<%=basePath%>resources/js/main.js"></script>
-
+	<style>
+        .panel-group{overflow: auto;}
+        .leftMenu{margin:10px;margin-top:5px;}
+        .leftMenu .panel-heading{font-size:14px;padding-left:20px;height:36px;line-height:36px;color:white;position:relative;cursor:pointer;}/*转成手形图标*/
+        .leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
+        .leftMenu .menu-item-left{padding: 2px; background: transparent; border:1px solid transparent;border-radius: 6px;}
+        .leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;}
+    </style>
   </head>
   
   <body>
-    
+   	<nav class="navbar navbar-default">
+   		<div class="container-fluid">
+	    	<div class="navbar-header">
+	      		<a class="navbar-brand" href="#">
+	        		<img alt="Brand" src="<%=basePath%>resources/images/logo.png" width="25" height="25">
+	      		</a>
+	    	</div>
+	    	<div class="collapse navbar-collapse">
+	    		<h3 class="navbar-text"> 超市货物管理平台 </h3>
+	    		<p class="navbar-text navbar-right">欢迎您： <span>admin</span> &nbsp;&nbsp;<a href="#" class="glyphicon glyphicon-off" title="退出"></a></p>
+	    	</div>
+	  	</div>
+   	</nav>
+    <div class="row">
+    	<div class="col-md-2">
+    		<div class="panel-group table-responsive" role="tablist">
+    			<div class="panel panel-primary leftMenu">
+    				<!-- 利用data-target指定要折叠的分组列表 -->
+                    <div class="panel-heading" id="productManage" data-toggle="collapse" data-target="#listGroup1" role="tab" >
+                        <h4 class="panel-title"> 商品交易 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                    <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManage">
+                    	<ul class="list-group">
+                    		<li class="list-group-item">
+                              <!-- 利用data-target指定URL -->
+                              <button class="menu-item-left" data-target="">
+                                  <span class="glyphicon glyphicon-inbox"></span>  仓库管理
+                              </button>
+                            </li>
+                            <li class="list-group-item">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-gift"></span>  商品管理
+                              </button>
+                            </li>
+                    	</ul>
+                    </div>
+    			</div>
+    			<div class="panel panel-primary leftMenu">
+    				<div class="panel-heading" id="sysManage" data-toggle="collapse" data-target="#listGroup2" role="tab" >
+                        <h4 class="panel-title"> 系统管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
+                    </div>
+                    <div id="listGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sysManage">
+                    	<ul class="list-group">
+                          	<li class="list-group-item">
+                            	<button class="menu-item-left">
+                                	<span class="glyphicon glyphicon-user"></span>  用户管理
+                            	</button>
+                          	</li>
+                          	<li class="list-group-item">
+                            	<button class="menu-item-left">
+                                	<span class="glyphicon glyphicon-lock"></span>  角色管理
+                            	</button>
+                          	</li>
+                        </ul>
+                    </div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-10">
+    		
+    	</div>
+    </div>
+    <script>
+        $(function(){
+            $(".panel-heading").click(function(e){
+                /*切换折叠指示图标*/
+                $(this).find("span").toggleClass("glyphicon-chevron-down");
+                $(this).find("span").toggleClass("glyphicon-chevron-up");
+            });
+        });
+    </script>
   </body>
 </html>
