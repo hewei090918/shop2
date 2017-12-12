@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<div class="panel panel-primary leftMenu">
     				<!-- 利用data-target指定要折叠的分组列表 -->
                     <div class="panel-heading" id="productManager" data-toggle="collapse" data-target="#listGroup1" role="tab" >
-                        <h4 class="panel-title"> 商品交易 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
+                        <h4 class="panel-title"> 商品管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
                     </div>
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
                     <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManager">
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     		<!-- 利用data-target指定URL -->
                     		<li class="list-group-item" data-target="">
                               <button class="menu-item-left">
-                                  <span class="glyphicon glyphicon-inbox"></span>  仓库管理
+                                  <span class="glyphicon glyphicon-inbox"></span>  库存管理
                               </button>
                             </li>
                             <li class="list-group-item"  data-target="">
@@ -70,19 +70,60 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
     			</div>
     			<div class="panel panel-primary leftMenu">
-    				<div class="panel-heading" id="sysManager" data-toggle="collapse" data-target="#listGroup2" role="tab" >
+    				<!-- 利用data-target指定要折叠的分组列表 -->
+                    <div class="panel-heading" id="saleManager" data-toggle="collapse" data-target="#listGroup2" role="tab" >
+                        <h4 class="panel-title"> 销售管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
+                    </div>
+                    <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+                    <div id="listGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="saleManager">
+                    	<ul class="list-group">
+                    		<li class="list-group-item" data-target="">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-phone-alt"></span>  供应商管理
+                              </button>
+                            </li>
+                    		<li class="list-group-item" data-target="">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-shopping-cart"></span>  采购管理
+                              </button>
+                            </li>
+                            <li class="list-group-item"  data-target="">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-credit-card"></span>  会员管理
+                              </button>
+                            </li>
+                            <li class="list-group-item"  data-target="">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-usd"></span>  订单管理
+                              </button>
+                            </li>
+                    	</ul>
+                    </div>
+    			</div>
+    			<div class="panel panel-primary leftMenu">
+    				<div class="panel-heading" id="sysManager" data-toggle="collapse" data-target="#listGroup3" role="tab" >
                         <h4 class="panel-title"> 系统管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
                     </div>
-                    <div id="listGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sysManager">
+                    <div id="listGroup3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sysManager">
                     	<ul class="list-group">
                           	<li class="list-group-item" data-target="">
                             	<button class="menu-item-left">
-                                	<span class="glyphicon glyphicon-user"></span>  用户管理
+                                	<span class="glyphicon glyphicon-user"></span>  员工管理
+                            	</button>
+                          	</li>
+                          	<li class="list-group-item" data-target="">
+                            	<button class="menu-item-left">
+                                	<span class="glyphicon glyphicon-earphone"></span>  部门管理
                             	</button>
                           	</li>
                           	<li class="list-group-item" data-target="">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-lock"></span>  角色管理
+                            	</button>
+                          	</li>
+                          	<li class="list-group-item" data-target="">
+                            	<button class="menu-item-left">
+                                	<span class="glyphicon glyphicon-list-alt"></span>  日志管理
                             	</button>
                           	</li>
                         </ul>
@@ -92,9 +133,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	<div class="col-md-10">
     		<div class="jumbotron" id="main">
-			  <h1>Hello, world!</h1>
-			  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			  <h1>Welcome!</h1>
+			  <p>超市货物管理平台致力于提供大中型超市货物管理解决方案，主要功能有：货品状态实时更新、热卖商品展示、商品出入库等。</p>
+			  <p>※ 超市货管系统，您的贴心管家。</p>
+			  <p><a class="btn btn-primary btn-lg" href="#" role="button">开启您的体验之旅</a></p>
 			</div>
     	</div>
     </div>

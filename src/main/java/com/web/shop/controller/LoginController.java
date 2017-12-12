@@ -43,7 +43,7 @@ public class LoginController {
     public String login(HttpServletRequest request, HttpServletResponse response) {
     	String username = request.getParameter("username");
     	String password = request.getParameter("password");
-    	if(StringUtil.equals(username, "admin") && StringUtil.equals(password, "admin")) {
+    	if(StringUtil.equals(username, "hew") && StringUtil.equals(password, "123456")) {
     		return "redirect:/access/index.html";
     	}
         return LOGIN_URL;
