@@ -56,12 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManager">
                     	<ul class="list-group">
                     		<!-- 利用data-target指定URL -->
-                    		<li id="1" class="list-group-item" data-target="<%=basePath%>view/productManager/store.jsp" onclick="add(this);">
+                    		<li id="store" class="list-group-item" data-target="<%=basePath%>view/productManager/store.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-inbox"></span>  库存管理
                               </button>
                             </li>
-                            <li id="2" class="list-group-item"  data-target="<%=basePath%>view/productManager/product.jsp" onclick="add(this);">
+                            <li id="product" class="list-group-item"  data-target="<%=basePath%>view/productManager/product.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-gift"></span>  商品管理
                               </button>
@@ -77,22 +77,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
                     <div id="listGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="saleManager">
                     	<ul class="list-group">
-                    		<li id="3" class="list-group-item" data-target="<%=basePath%>view/saleManager/supplier.jsp" onclick="add(this);">
+                    		<li id="supplier" class="list-group-item" data-target="<%=basePath%>view/saleManager/supplier.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-phone-alt"></span>  供应商管理
                               </button>
                             </li>
-                    		<li id="4" class="list-group-item" data-target="<%=basePath%>view/saleManager/purchase.jsp" onclick="add(this);">
+                    		<li id="purchase" class="list-group-item" data-target="<%=basePath%>view/saleManager/purchase.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-shopping-cart"></span>  采购管理
                               </button>
                             </li>
-                            <li id="5" class="list-group-item"  data-target="<%=basePath%>view/saleManager/member.jsp" onclick="add(this);">
+                            <li id="member" class="list-group-item"  data-target="<%=basePath%>view/saleManager/member.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-credit-card"></span>  会员管理
                               </button>
                             </li>
-                            <li id="6" class="list-group-item"  data-target="<%=basePath%>view/saleManager/order.jsp" onclick="add(this);">
+                            <li id="order" class="list-group-item"  data-target="<%=basePath%>view/saleManager/order.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-tasks"></span>  订单管理
                               </button>
@@ -106,17 +106,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div id="listGroup3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sysManager">
                     	<ul class="list-group">
-                          	<li id="7" class="list-group-item" data-target="<%=basePath%>view/sysManager/user.jsp" onclick="add(this);">
+                          	<li id="user" class="list-group-item" data-target="<%=basePath%>view/sysManager/user.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-user"></span>  员工管理
                             	</button>
                           	</li>
-                          	<li id="8" class="list-group-item" data-target="<%=basePath%>view/sysManager/dept.jsp" onclick="add(this);">
+                          	<li id="dept" class="list-group-item" data-target="<%=basePath%>view/sysManager/dept.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-earphone"></span>  部门管理
                             	</button>
                           	</li>
-                          	<li id="9" class="list-group-item" data-target="<%=basePath%>view/sysManager/role.jsp" onclick="add(this);">
+                          	<li id="role" class="list-group-item" data-target="<%=basePath%>view/sysManager/role.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-lock"></span>  角色管理
                             	</button>
@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(this).find("span").toggleClass("glyphicon-chevron-up");
             });
             
-            var item = {'id':'0','name':'首页','url':'<%=basePath%>view/sysManager/role.jsp','closable':false};
+            var item = {'id':'main','name':'首页','url':'<%=basePath%>view/sysManager/role.jsp','closable':false};
     		closableTab.addTab(item);
         });
         
