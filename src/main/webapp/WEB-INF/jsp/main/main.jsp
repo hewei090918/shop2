@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         .leftMenu .panel-heading span{position:absolute;right:10px;top:12px;}
         .leftMenu .list-group-item:hover{background:#C4E3F3;border:1px solid #1E90FF;}
         .leftMenu .menu-item-left{padding: 2px; background: transparent; border:1px solid transparent;border-radius: 6px;}
-        /* .leftMenu .menu-item-left:hover{background:#C4E3F3;border:1px solid #1E90FF;} */
+        .container .jumbotron, .container-fluid .jumbotron {padding-right: 2px;padding-left: 2px;padding-top: 2px;}
     </style>
   </head>
   
@@ -56,12 +56,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManager">
                     	<ul class="list-group">
                     		<!-- 利用data-target指定URL -->
-                    		<li class="list-group-item" data-target="">
+                    		<li id="1" class="list-group-item" data-target="<%=basePath%>view/productManager/store.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-inbox"></span>  库存管理
                               </button>
                             </li>
-                            <li class="list-group-item"  data-target="">
+                            <li id="2" class="list-group-item"  data-target="<%=basePath%>view/productManager/product.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-gift"></span>  商品管理
                               </button>
@@ -77,24 +77,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
                     <div id="listGroup2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="saleManager">
                     	<ul class="list-group">
-                    		<li class="list-group-item" data-target="">
+                    		<li id="3" class="list-group-item" data-target="<%=basePath%>view/saleManager/supplier.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-phone-alt"></span>  供应商管理
                               </button>
                             </li>
-                    		<li class="list-group-item" data-target="">
+                    		<li id="4" class="list-group-item" data-target="<%=basePath%>view/saleManager/purchase.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-shopping-cart"></span>  采购管理
                               </button>
                             </li>
-                            <li class="list-group-item"  data-target="">
+                            <li id="5" class="list-group-item"  data-target="<%=basePath%>view/saleManager/member.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-credit-card"></span>  会员管理
                               </button>
                             </li>
-                            <li class="list-group-item"  data-target="">
+                            <li id="6" class="list-group-item"  data-target="<%=basePath%>view/saleManager/order.jsp" onclick="add(this);">
                               <button class="menu-item-left">
-                                  <span class="glyphicon glyphicon-usd"></span>  订单管理
+                                  <span class="glyphicon glyphicon-tasks"></span>  订单管理
                               </button>
                             </li>
                     	</ul>
@@ -106,24 +106,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </div>
                     <div id="listGroup3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="sysManager">
                     	<ul class="list-group">
-                          	<li class="list-group-item" data-target="">
+                          	<li id="7" class="list-group-item" data-target="<%=basePath%>view/sysManager/user.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-user"></span>  员工管理
                             	</button>
                           	</li>
-                          	<li class="list-group-item" data-target="">
+                          	<li id="8" class="list-group-item" data-target="<%=basePath%>view/sysManager/dept.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-earphone"></span>  部门管理
                             	</button>
                           	</li>
-                          	<li class="list-group-item" data-target="">
+                          	<li id="9" class="list-group-item" data-target="<%=basePath%>view/sysManager/role.jsp" onclick="add(this);">
                             	<button class="menu-item-left">
                                 	<span class="glyphicon glyphicon-lock"></span>  角色管理
-                            	</button>
-                          	</li>
-                          	<li class="list-group-item" data-target="">
-                            	<button class="menu-item-left">
-                                	<span class="glyphicon glyphicon-list-alt"></span>  日志管理
                             	</button>
                           	</li>
                         </ul>
@@ -132,11 +127,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</div>
     	</div>
     	<div class="col-md-10">
-    		<div class="jumbotron" id="main">
-			  <h1>Welcome!</h1>
-			  <p>超市货物管理平台致力于提供大中型超市货物管理解决方案，主要功能有：货品状态实时更新、热卖商品展示、商品出入库等。</p>
-			  <p>※ 超市货管系统，您的贴心管家。</p>
-			  <p><a class="btn btn-primary btn-lg" href="#" role="button">开启您的体验之旅</a></p>
+    		<div class="jumbotron">
+    			<!-- 导航区 -->
+    			<ul class="nav nav-tabs" role="tablist">
+    				
+    			</ul>
+			  	<!-- 面板区 -->  
+			  	<div class="tab-content" style="width:100%;">
+			  		 
+			  	</div>
 			</div>
     	</div>
     </div>
@@ -148,7 +147,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(this).find("span").toggleClass("glyphicon-chevron-down");
                 $(this).find("span").toggleClass("glyphicon-chevron-up");
             });
+            
+            var item = {'id':'0','name':'首页','url':'<%=basePath%>view/sysManager/role.jsp','closable':false};
+    		closableTab.addTab(item);
         });
+        
+    	function add(li){
+    		var id = $(li).attr('id');
+    		var name = $(li).children('button')[0].innerText.trim();
+    		var uri = $(li).attr('data-target');
+    		var item = {'id':id,'name':name,'url':uri,'closable':true};
+    		closableTab.addTab(item);
+    	}
     </script>
   </body>
 </html>

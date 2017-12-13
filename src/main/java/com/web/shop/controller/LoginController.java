@@ -30,7 +30,6 @@ public class LoginController {
      * 主界面
      */
     private final String MAIN_URL = "/main/main";
-
     /**
      * 404界面
      */
