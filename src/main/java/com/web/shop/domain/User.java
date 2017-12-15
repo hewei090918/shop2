@@ -11,13 +11,25 @@ public class User {
 
     private String realname;
 
-    private Byte gender;
+    private Boolean gender;
+
+    private String idcard;
 
     private Date birthday;
 
+    private String phone;
+
+    private Integer professionId;
+
+    private Integer deptId;
+
+    private Integer roleId;
+
     private String avatar;
 
-    private String profession;
+    private String address;
+
+    private Boolean locked;
 
     public Integer getUserId() {
         return userId;
@@ -51,12 +63,20 @@ public class User {
         this.realname = realname == null ? null : realname.trim();
     }
 
-    public Byte getGender() {
+    public Boolean getGender() {
         return gender;
     }
 
-    public void setGender(Byte gender) {
+    public void setGender(Boolean gender) {
         this.gender = gender;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard == null ? null : idcard.trim();
     }
 
     public Date getBirthday() {
@@ -67,6 +87,38 @@ public class User {
         this.birthday = birthday;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Integer getProfessionId() {
+        return professionId;
+    }
+
+    public void setProfessionId(Integer professionId) {
+        this.professionId = professionId;
+    }
+
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
+    }
+
     public String getAvatar() {
         return avatar;
     }
@@ -75,11 +127,19 @@ public class User {
         this.avatar = avatar == null ? null : avatar.trim();
     }
 
-    public String getProfession() {
-        return profession;
+    public String getAddress() {
+        return address;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession == null ? null : profession.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public Boolean getLocked() {
+        return locked;
+    }
+
+    public void setLocked(Boolean locked) {
+        this.locked = locked;
     }
 }

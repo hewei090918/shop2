@@ -48,7 +48,18 @@
 		<!-- 表生成定义用完删除，而不要只注释掉定义 -->
 		<!-- <table tableName="user" domainObjectName="User">
 			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="role" domainObjectName="Role">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="dept" domainObjectName="Dept">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="profession" domainObjectName="Profession">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="product" domainObjectName="Product">
+			<property name="useActualColumnNames" value="false" />
 		</table> -->
-		
 	</context>
 </generatorConfiguration>

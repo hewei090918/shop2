@@ -6,13 +6,13 @@
     <result column="product_code" property="productCode" jdbcType="VARCHAR" />
     <result column="product_name" property="productName" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
-    <result column="is_new" property="isNew" jdbcType="CHAR" />
-    <result column="is_hot" property="isHot" jdbcType="CHAR" />
-    <result column="is_recommend" property="isRecommend" jdbcType="CHAR" />
-    <result column="on_sale" property="onSale" jdbcType="CHAR" />
+    <result column="is_new" property="isNew" jdbcType="BIT" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="is_recommend" property="isRecommend" jdbcType="BIT" />
+    <result column="on_sale" property="onSale" jdbcType="BIT" />
     <result column="stock" property="stock" jdbcType="BIGINT" />
     <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
-    <result column="scbz" property="scbz" jdbcType="VARCHAR" />
+    <result column="scbz" property="scbz" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -112,9 +112,9 @@
       on_sale, stock, creator_id, 
       scbz)
     values (#{productId,jdbcType=INTEGER}, #{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{avatar,jdbcType=VARCHAR}, #{isNew,jdbcType=CHAR}, #{isHot,jdbcType=CHAR}, #{isRecommend,jdbcType=CHAR}, 
-      #{onSale,jdbcType=CHAR}, #{stock,jdbcType=BIGINT}, #{creatorId,jdbcType=INTEGER}, 
-      #{scbz,jdbcType=VARCHAR})
+      #{avatar,jdbcType=VARCHAR}, #{isNew,jdbcType=BIT}, #{isHot,jdbcType=BIT}, #{isRecommend,jdbcType=BIT}, 
+      #{onSale,jdbcType=BIT}, #{stock,jdbcType=BIGINT}, #{creatorId,jdbcType=INTEGER}, 
+      #{scbz,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Product" >
     insert into product
@@ -167,16 +167,16 @@
         #{avatar,jdbcType=VARCHAR},
       </if>
       <if test="isNew != null" >
-        #{isNew,jdbcType=CHAR},
+        #{isNew,jdbcType=BIT},
       </if>
       <if test="isHot != null" >
-        #{isHot,jdbcType=CHAR},
+        #{isHot,jdbcType=BIT},
       </if>
       <if test="isRecommend != null" >
-        #{isRecommend,jdbcType=CHAR},
+        #{isRecommend,jdbcType=BIT},
       </if>
       <if test="onSale != null" >
-        #{onSale,jdbcType=CHAR},
+        #{onSale,jdbcType=BIT},
       </if>
       <if test="stock != null" >
         #{stock,jdbcType=BIGINT},
@@ -185,7 +185,7 @@
         #{creatorId,jdbcType=INTEGER},
       </if>
       <if test="scbz != null" >
-        #{scbz,jdbcType=VARCHAR},
+        #{scbz,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -211,16 +211,16 @@
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
       <if test="record.isNew != null" >
-        is_new = #{record.isNew,jdbcType=CHAR},
+        is_new = #{record.isNew,jdbcType=BIT},
       </if>
       <if test="record.isHot != null" >
-        is_hot = #{record.isHot,jdbcType=CHAR},
+        is_hot = #{record.isHot,jdbcType=BIT},
       </if>
       <if test="record.isRecommend != null" >
-        is_recommend = #{record.isRecommend,jdbcType=CHAR},
+        is_recommend = #{record.isRecommend,jdbcType=BIT},
       </if>
       <if test="record.onSale != null" >
-        on_sale = #{record.onSale,jdbcType=CHAR},
+        on_sale = #{record.onSale,jdbcType=BIT},
       </if>
       <if test="record.stock != null" >
         stock = #{record.stock,jdbcType=BIGINT},
@@ -229,7 +229,7 @@
         creator_id = #{record.creatorId,jdbcType=INTEGER},
       </if>
       <if test="record.scbz != null" >
-        scbz = #{record.scbz,jdbcType=VARCHAR},
+        scbz = #{record.scbz,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -242,13 +242,13 @@
       product_code = #{record.productCode,jdbcType=VARCHAR},
       product_name = #{record.productName,jdbcType=VARCHAR},
       avatar = #{record.avatar,jdbcType=VARCHAR},
-      is_new = #{record.isNew,jdbcType=CHAR},
-      is_hot = #{record.isHot,jdbcType=CHAR},
-      is_recommend = #{record.isRecommend,jdbcType=CHAR},
-      on_sale = #{record.onSale,jdbcType=CHAR},
+      is_new = #{record.isNew,jdbcType=BIT},
+      is_hot = #{record.isHot,jdbcType=BIT},
+      is_recommend = #{record.isRecommend,jdbcType=BIT},
+      on_sale = #{record.onSale,jdbcType=BIT},
       stock = #{record.stock,jdbcType=BIGINT},
       creator_id = #{record.creatorId,jdbcType=INTEGER},
-      scbz = #{record.scbz,jdbcType=VARCHAR}
+      scbz = #{record.scbz,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -266,16 +266,16 @@
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
       <if test="isNew != null" >
-        is_new = #{isNew,jdbcType=CHAR},
+        is_new = #{isNew,jdbcType=BIT},
       </if>
       <if test="isHot != null" >
-        is_hot = #{isHot,jdbcType=CHAR},
+        is_hot = #{isHot,jdbcType=BIT},
       </if>
       <if test="isRecommend != null" >
-        is_recommend = #{isRecommend,jdbcType=CHAR},
+        is_recommend = #{isRecommend,jdbcType=BIT},
       </if>
       <if test="onSale != null" >
-        on_sale = #{onSale,jdbcType=CHAR},
+        on_sale = #{onSale,jdbcType=BIT},
       </if>
       <if test="stock != null" >
         stock = #{stock,jdbcType=BIGINT},
@@ -284,7 +284,7 @@
         creator_id = #{creatorId,jdbcType=INTEGER},
       </if>
       <if test="scbz != null" >
-        scbz = #{scbz,jdbcType=VARCHAR},
+        scbz = #{scbz,jdbcType=CHAR},
       </if>
     </set>
     where product_id = #{productId,jdbcType=INTEGER}
@@ -294,13 +294,13 @@
     set product_code = #{productCode,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
-      is_new = #{isNew,jdbcType=CHAR},
-      is_hot = #{isHot,jdbcType=CHAR},
-      is_recommend = #{isRecommend,jdbcType=CHAR},
-      on_sale = #{onSale,jdbcType=CHAR},
+      is_new = #{isNew,jdbcType=BIT},
+      is_hot = #{isHot,jdbcType=BIT},
+      is_recommend = #{isRecommend,jdbcType=BIT},
+      on_sale = #{onSale,jdbcType=BIT},
       stock = #{stock,jdbcType=BIGINT},
       creator_id = #{creatorId,jdbcType=INTEGER},
-      scbz = #{scbz,jdbcType=VARCHAR}
+      scbz = #{scbz,jdbcType=CHAR}
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
 </mapper>

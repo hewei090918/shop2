@@ -13,6 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/plugins/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- Bootstrap table -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/plugins/bootstrap-table/dist/css/bootstrap-table.min.css">
 	<!-- Bootstrap Validator CSS -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/plugins/bootstrapValidator/dist/css/bootstrapValidator.min.css">
 	
@@ -20,9 +22,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>resources/plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap JS -->
 	<script type="text/javascript" src="<%=basePath%>resources/plugins/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- Bootstrap table -->
+	<script type="text/javascript" src="<%=basePath%>resources/plugins/bootstrap-table/dist/js/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resources/plugins/bootstrap-table/dist/js/bootstrap-table-zh-CN.min.js"></script>
 	<!-- Bootstrap Validator JS -->
 	<script type="text/javascript" src="<%=basePath%>resources/plugins/bootstrapValidator/dist/js/bootstrapValidator.js"></script>
 	
+	<script type="text/javascript">
+		//获取项目路径
+	    var base = "<%=path%>" ; 
+	</script>
   </head>
   
   <body>

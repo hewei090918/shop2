@@ -384,62 +384,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsNewEqualTo(String value) {
+        public Criteria andIsNewEqualTo(Boolean value) {
             addCriterion("is_new =", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewNotEqualTo(String value) {
+        public Criteria andIsNewNotEqualTo(Boolean value) {
             addCriterion("is_new <>", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewGreaterThan(String value) {
+        public Criteria andIsNewGreaterThan(Boolean value) {
             addCriterion("is_new >", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewGreaterThanOrEqualTo(String value) {
+        public Criteria andIsNewGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_new >=", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewLessThan(String value) {
+        public Criteria andIsNewLessThan(Boolean value) {
             addCriterion("is_new <", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewLessThanOrEqualTo(String value) {
+        public Criteria andIsNewLessThanOrEqualTo(Boolean value) {
             addCriterion("is_new <=", value, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewLike(String value) {
-            addCriterion("is_new like", value, "isNew");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsNewNotLike(String value) {
-            addCriterion("is_new not like", value, "isNew");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsNewIn(List<String> values) {
+        public Criteria andIsNewIn(List<Boolean> values) {
             addCriterion("is_new in", values, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewNotIn(List<String> values) {
+        public Criteria andIsNewNotIn(List<Boolean> values) {
             addCriterion("is_new not in", values, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewBetween(String value1, String value2) {
+        public Criteria andIsNewBetween(Boolean value1, Boolean value2) {
             addCriterion("is_new between", value1, value2, "isNew");
             return (Criteria) this;
         }
 
-        public Criteria andIsNewNotBetween(String value1, String value2) {
+        public Criteria andIsNewNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_new not between", value1, value2, "isNew");
             return (Criteria) this;
         }
@@ -454,62 +444,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsHotEqualTo(String value) {
+        public Criteria andIsHotEqualTo(Boolean value) {
             addCriterion("is_hot =", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotNotEqualTo(String value) {
+        public Criteria andIsHotNotEqualTo(Boolean value) {
             addCriterion("is_hot <>", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotGreaterThan(String value) {
+        public Criteria andIsHotGreaterThan(Boolean value) {
             addCriterion("is_hot >", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotGreaterThanOrEqualTo(String value) {
+        public Criteria andIsHotGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_hot >=", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotLessThan(String value) {
+        public Criteria andIsHotLessThan(Boolean value) {
             addCriterion("is_hot <", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotLessThanOrEqualTo(String value) {
+        public Criteria andIsHotLessThanOrEqualTo(Boolean value) {
             addCriterion("is_hot <=", value, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotLike(String value) {
-            addCriterion("is_hot like", value, "isHot");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsHotNotLike(String value) {
-            addCriterion("is_hot not like", value, "isHot");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsHotIn(List<String> values) {
+        public Criteria andIsHotIn(List<Boolean> values) {
             addCriterion("is_hot in", values, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotNotIn(List<String> values) {
+        public Criteria andIsHotNotIn(List<Boolean> values) {
             addCriterion("is_hot not in", values, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotBetween(String value1, String value2) {
+        public Criteria andIsHotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_hot between", value1, value2, "isHot");
             return (Criteria) this;
         }
 
-        public Criteria andIsHotNotBetween(String value1, String value2) {
+        public Criteria andIsHotNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_hot not between", value1, value2, "isHot");
             return (Criteria) this;
         }
@@ -524,62 +504,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendEqualTo(String value) {
+        public Criteria andIsRecommendEqualTo(Boolean value) {
             addCriterion("is_recommend =", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendNotEqualTo(String value) {
+        public Criteria andIsRecommendNotEqualTo(Boolean value) {
             addCriterion("is_recommend <>", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendGreaterThan(String value) {
+        public Criteria andIsRecommendGreaterThan(Boolean value) {
             addCriterion("is_recommend >", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendGreaterThanOrEqualTo(String value) {
+        public Criteria andIsRecommendGreaterThanOrEqualTo(Boolean value) {
             addCriterion("is_recommend >=", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendLessThan(String value) {
+        public Criteria andIsRecommendLessThan(Boolean value) {
             addCriterion("is_recommend <", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendLessThanOrEqualTo(String value) {
+        public Criteria andIsRecommendLessThanOrEqualTo(Boolean value) {
             addCriterion("is_recommend <=", value, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendLike(String value) {
-            addCriterion("is_recommend like", value, "isRecommend");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsRecommendNotLike(String value) {
-            addCriterion("is_recommend not like", value, "isRecommend");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsRecommendIn(List<String> values) {
+        public Criteria andIsRecommendIn(List<Boolean> values) {
             addCriterion("is_recommend in", values, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendNotIn(List<String> values) {
+        public Criteria andIsRecommendNotIn(List<Boolean> values) {
             addCriterion("is_recommend not in", values, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendBetween(String value1, String value2) {
+        public Criteria andIsRecommendBetween(Boolean value1, Boolean value2) {
             addCriterion("is_recommend between", value1, value2, "isRecommend");
             return (Criteria) this;
         }
 
-        public Criteria andIsRecommendNotBetween(String value1, String value2) {
+        public Criteria andIsRecommendNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_recommend not between", value1, value2, "isRecommend");
             return (Criteria) this;
         }
@@ -594,62 +564,52 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleEqualTo(String value) {
+        public Criteria andOnSaleEqualTo(Boolean value) {
             addCriterion("on_sale =", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleNotEqualTo(String value) {
+        public Criteria andOnSaleNotEqualTo(Boolean value) {
             addCriterion("on_sale <>", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleGreaterThan(String value) {
+        public Criteria andOnSaleGreaterThan(Boolean value) {
             addCriterion("on_sale >", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleGreaterThanOrEqualTo(String value) {
+        public Criteria andOnSaleGreaterThanOrEqualTo(Boolean value) {
             addCriterion("on_sale >=", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleLessThan(String value) {
+        public Criteria andOnSaleLessThan(Boolean value) {
             addCriterion("on_sale <", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleLessThanOrEqualTo(String value) {
+        public Criteria andOnSaleLessThanOrEqualTo(Boolean value) {
             addCriterion("on_sale <=", value, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleLike(String value) {
-            addCriterion("on_sale like", value, "onSale");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnSaleNotLike(String value) {
-            addCriterion("on_sale not like", value, "onSale");
-            return (Criteria) this;
-        }
-
-        public Criteria andOnSaleIn(List<String> values) {
+        public Criteria andOnSaleIn(List<Boolean> values) {
             addCriterion("on_sale in", values, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleNotIn(List<String> values) {
+        public Criteria andOnSaleNotIn(List<Boolean> values) {
             addCriterion("on_sale not in", values, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleBetween(String value1, String value2) {
+        public Criteria andOnSaleBetween(Boolean value1, Boolean value2) {
             addCriterion("on_sale between", value1, value2, "onSale");
             return (Criteria) this;
         }
 
-        public Criteria andOnSaleNotBetween(String value1, String value2) {
+        public Criteria andOnSaleNotBetween(Boolean value1, Boolean value2) {
             addCriterion("on_sale not between", value1, value2, "onSale");
             return (Criteria) this;
         }

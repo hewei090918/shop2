@@ -9,13 +9,13 @@ public class Product {
 
     private String avatar;
 
-    private String isNew;
+    private Boolean isNew;
 
-    private String isHot;
+    private Boolean isHot;
 
-    private String isRecommend;
+    private Boolean isRecommend;
 
-    private String onSale;
+    private Boolean onSale;
 
     private Long stock;
 
@@ -55,36 +55,36 @@ public class Product {
         this.avatar = avatar == null ? null : avatar.trim();
     }
 
-    public String getIsNew() {
+    public Boolean getIsNew() {
         return isNew;
     }
 
-    public void setIsNew(String isNew) {
-        this.isNew = isNew == null ? null : isNew.trim();
+    public void setIsNew(Boolean isNew) {
+        this.isNew = isNew;
     }
 
-    public String getIsHot() {
+    public Boolean getIsHot() {
         return isHot;
     }
 
-    public void setIsHot(String isHot) {
-        this.isHot = isHot == null ? null : isHot.trim();
+    public void setIsHot(Boolean isHot) {
+        this.isHot = isHot;
     }
 
-    public String getIsRecommend() {
+    public Boolean getIsRecommend() {
         return isRecommend;
     }
 
-    public void setIsRecommend(String isRecommend) {
-        this.isRecommend = isRecommend == null ? null : isRecommend.trim();
+    public void setIsRecommend(Boolean isRecommend) {
+        this.isRecommend = isRecommend;
     }
 
-    public String getOnSale() {
+    public Boolean getOnSale() {
         return onSale;
     }
 
-    public void setOnSale(String onSale) {
-        this.onSale = onSale == null ? null : onSale.trim();
+    public void setOnSale(Boolean onSale) {
+        this.onSale = onSale;
     }
 
     public Long getStock() {

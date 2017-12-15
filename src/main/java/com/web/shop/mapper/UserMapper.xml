@@ -6,10 +6,16 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="realname" property="realname" jdbcType="VARCHAR" />
-    <result column="gender" property="gender" jdbcType="TINYINT" />
+    <result column="gender" property="gender" jdbcType="BIT" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="profession_id" property="professionId" jdbcType="INTEGER" />
+    <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
-    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="locked" property="locked" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    user_id, username, password, realname, gender, birthday, avatar, profession
+    user_id, username, password, realname, gender, idCard, birthday, phone, profession_id, 
+    dept_id, role_id, avatar, address, locked
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.UserExample" >
     select
@@ -104,11 +111,15 @@
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.User" >
     insert into user (user_id, username, password, 
-      realname, gender, birthday, 
-      avatar, profession)
+      realname, gender, idCard, 
+      birthday, phone, profession_id, 
+      dept_id, role_id, avatar, 
+      address, locked)
     values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{realname,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, #{birthday,jdbcType=DATE}, 
-      #{avatar,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR})
+      #{realname,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, #{idcard,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=DATE}, #{phone,jdbcType=VARCHAR}, #{professionId,jdbcType=INTEGER}, 
+      #{deptId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{locked,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.User" >
     insert into user
@@ -128,14 +139,32 @@
       <if test="gender != null" >
         gender,
       </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
       <if test="birthday != null" >
         birthday,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="professionId != null" >
+        profession_id,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
       </if>
       <if test="avatar != null" >
         avatar,
       </if>
-      <if test="profession != null" >
-        profession,
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="locked != null" >
+        locked,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -152,16 +181,34 @@
         #{realname,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        #{gender,jdbcType=TINYINT},
+        #{gender,jdbcType=BIT},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null" >
         #{birthday,jdbcType=DATE},
       </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="professionId != null" >
+        #{professionId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
       </if>
-      <if test="profession != null" >
-        #{profession,jdbcType=VARCHAR},
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        #{locked,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -187,16 +234,34 @@
         realname = #{record.realname,jdbcType=VARCHAR},
       </if>
       <if test="record.gender != null" >
-        gender = #{record.gender,jdbcType=TINYINT},
+        gender = #{record.gender,jdbcType=BIT},
+      </if>
+      <if test="record.idcard != null" >
+        idCard = #{record.idcard,jdbcType=VARCHAR},
       </if>
       <if test="record.birthday != null" >
         birthday = #{record.birthday,jdbcType=DATE},
       </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.professionId != null" >
+        profession_id = #{record.professionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptId != null" >
+        dept_id = #{record.deptId,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=INTEGER},
+      </if>
       <if test="record.avatar != null" >
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
-      <if test="record.profession != null" >
-        profession = #{record.profession,jdbcType=VARCHAR},
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.locked != null" >
+        locked = #{record.locked,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -209,10 +274,16 @@
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       realname = #{record.realname,jdbcType=VARCHAR},
-      gender = #{record.gender,jdbcType=TINYINT},
+      gender = #{record.gender,jdbcType=BIT},
+      idCard = #{record.idcard,jdbcType=VARCHAR},
       birthday = #{record.birthday,jdbcType=DATE},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      profession_id = #{record.professionId,jdbcType=INTEGER},
+      dept_id = #{record.deptId,jdbcType=INTEGER},
+      role_id = #{record.roleId,jdbcType=INTEGER},
       avatar = #{record.avatar,jdbcType=VARCHAR},
-      profession = #{record.profession,jdbcType=VARCHAR}
+      address = #{record.address,jdbcType=VARCHAR},
+      locked = #{record.locked,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -230,16 +301,34 @@
         realname = #{realname,jdbcType=VARCHAR},
       </if>
       <if test="gender != null" >
-        gender = #{gender,jdbcType=TINYINT},
+        gender = #{gender,jdbcType=BIT},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null" >
         birthday = #{birthday,jdbcType=DATE},
       </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="professionId != null" >
+        profession_id = #{professionId,jdbcType=INTEGER},
+      </if>
+      <if test="deptId != null" >
+        dept_id = #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
-      <if test="profession != null" >
-        profession = #{profession,jdbcType=VARCHAR},
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null" >
+        locked = #{locked,jdbcType=BIT},
       </if>
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
@@ -249,10 +338,16 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       realname = #{realname,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=TINYINT},
+      gender = #{gender,jdbcType=BIT},
+      idCard = #{idcard,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=DATE},
+      phone = #{phone,jdbcType=VARCHAR},
+      profession_id = #{professionId,jdbcType=INTEGER},
+      dept_id = #{deptId,jdbcType=INTEGER},
+      role_id = #{roleId,jdbcType=INTEGER},
       avatar = #{avatar,jdbcType=VARCHAR},
-      profession = #{profession,jdbcType=VARCHAR}
+      address = #{address,jdbcType=VARCHAR},
+      locked = #{locked,jdbcType=BIT}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>
