@@ -30,6 +30,13 @@ public class User {
     private String address;
 
     private Boolean locked;
+    
+    //用于页面展示
+    private String professionName;
+    
+    private String deptName;
+    
+    private String roleName;
 
     public Integer getUserId() {
         return userId;
@@ -142,4 +149,29 @@ public class User {
     public void setLocked(Boolean locked) {
         this.locked = locked;
     }
+
+	public String getProfessionName() {
+		return professionName;
+	}
+
+	public void setProfessionName(String professionName) {
+		this.professionName = professionName;
+	}
+
+	public String getDeptName() {
+		return deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+    
 }

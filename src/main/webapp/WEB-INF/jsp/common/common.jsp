@@ -10,7 +10,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<!-- 以图标的方式区别网站，图标会在浏览器标题前面展示 -->
     <link type="image/x-icon" rel="Shortcut Icon" href="<%=basePath%>resources/images/shop.ico"/>
 	<%-- <link rel="icon" href="<%=basePath%>resources/images/shop.ico"> --%>
-	
+	<!-- 图标引入 -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/css/fontawesome/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/css/fontawesome/font-awesome-ie7.min.css">
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/plugins/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- Bootstrap table -->
