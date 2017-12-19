@@ -14,11 +14,6 @@ public class PageViewBean<T> implements Serializable{
 	private long total;
 	
 	/**
-	 * 分页信息
-	 */
-	private PageBean pageBean;
-	
-	/**
 	 * 数据
 	 */
 	private List<T> data = new ArrayList<T>();
@@ -31,14 +26,6 @@ public class PageViewBean<T> implements Serializable{
 		this.total = total;
 	}
 
-	public PageBean getPageBean() {
-		return pageBean;
-	}
-
-	public void setPageBean(PageBean pageBean) {
-		this.pageBean = pageBean;
-	}
-
 	public List<T> getData() {
 		return data;
 	}
@@ -46,5 +33,6 @@ public class PageViewBean<T> implements Serializable{
 	public void setData(List<T> data) {
 		this.data = data;
 	}
+
 	
 }

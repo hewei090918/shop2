@@ -3,16 +3,69 @@
  */
 
 $(function(){
+	
+	//初始化树形下拉框（用于部门选择）
+	$.ajax({
+	    type: "post",
+	    url: base + "/dept/findDeptTree.html",
+	    dataType: "json",
+	    success: function (data) {
+	    	$('#deptTree').treeview({
+	            data: data,
+	            highlightSelected: true,//是否高亮选中
+	            emptyIcon: '',//没有子节点的节点图标
+	            multiSelect: false,//多选
+	            onNodeSelected: function (event, data) {
+	                $("#deptId").val(data.id);  
+	                $("#deptName").val(data.text); 
+	            }
+	        });
+	    },
+	    error: function () {
+	        alert("树形结构加载失败！")
+	    }
+	});
+	
+	$('#btn_ok').on('click', function(){
+		$('#deptSelect_modal').modal('hide');
+	});
+	
+	//初始化下拉框（用于角色选择）
+	$.ajax({
+		url: base + "/role/getList.html",
+		success: function(data){
+			var data = eval('(' + data + ')');
+			$.each(data, function (i, d) {
+				d.id = d.roleId;
+				d.text = d.roleName;
+			});
+			
+			$('#roleSelect').empty();
+            $('#roleSelect').select2({
+            	data: data,
+            	language: "zh-CN", //设置提示语言
+                width: "100%", //设置下拉框的宽度
+                placeholder: '请选择角色',
+                allowClear: true
+            });
+            $("#roleSelect").on("select2:select",function(){  
+                $("#roleId").val($(this).val());  
+            });  
+
+		}
+	});
+	
 	//加载表格数据
 	$('#list_table').bootstrapTable({
-        method: 'post',
-        url: base + "/user/query.html",
+//        method: 'post',
+        contentType: "application/x-www-form-urlencoded",
+        url: base + "/user/queryPage.html",
         toolbar: '#toolbar',//工具按钮用哪个容器
         striped: true, 
         dataField: "data",//修改后端分页集合键值rows为data
         queryParamsType:'limit',//查询参数组织方式
         queryParams: queryParams,//传递参数（*）
-        sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+        sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
         pageNumber: 1,//初始化加载第一页，默认第一页
         pagination:true,//是否分页
         pageSize:10,//单页记录数
@@ -21,7 +74,7 @@ $(function(){
         clickToSelect: true,
 //        toolbarAlign:'right',
 //        buttonsAlign:'right',
-        height: $(window).height() -300,
+        height: $(window).height()-300,
         columns:[
             {
                 title:'全选',
@@ -31,13 +84,17 @@ $(function(){
                 align:'center',
                 valign:'middle'
             }, {
+            	title:'序号',
+            	field:'_rowNum',
+            	width:20,
+            	align:'center',
+            	formatter: function (value, row, index) {  
+                    return index+1;  
+                }  
+            }, {
                 title:'userId',
                 field:'userId',
                 visible:false
-            }, {
-                title:'用户名',
-                field:'username',
-                visible:true
             }, {
                 title:'姓名',
                 field:'realname',
@@ -72,6 +129,10 @@ $(function(){
                 title:'角色',
                 field:'roleName'
             }, {
+                title:'用户名',
+                field:'username',
+                visible:true
+            }, {
                 title:'锁定',
                 field:'locked',
                 align:'center',
@@ -89,8 +150,8 @@ $(function(){
     //请求服务数据时所传参数
     function queryParams(params){
         return{
-        	limit: params.limit,//每页多少条数据（页面大小）
-            offset: params.offset,//请求第几页（页码）
+        	limit: params.limit,//页面大小（每页最多显示多少条数据）
+            offset: params.offset,//请求当前页起始数
             username: $('#username').val(),
             realname: $('#realname').val(),
             deptId: $('#deptId').val(),
@@ -100,8 +161,18 @@ $(function(){
 	
 	//查询按钮事件
     $('#btn_query').click(function(){
-        $('#list_table').bootstrapTable('refresh', {url: base + '/user/query.html'});
-    })
+        $('#list_table').bootstrapTable('refresh');
+    });
+    
+    //新增按钮事件
+    $('#btn_add').click(function(){
+        
+    });
+    
+    //删除按钮事件
+    $('#btn_delete').click(function(){
+        
+    });
     
 });
 

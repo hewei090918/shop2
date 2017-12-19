@@ -62,16 +62,16 @@ public class UserServiceImpl implements UserService {
 		/*
 		 * 按部门查询
 		 */
-		int deptId = filter.getDeptId();
-		if(deptId > 0) {
-			criteria.andDeptIdEqualTo(deptId);
+		String deptId = filter.getDeptId();
+		if(StringUtils.isNotBlank(deptId)) {
+			criteria.andDeptIdEqualTo(Integer.parseInt(deptId));
 		}
 		/*
 		 * 按角色查询
 		 */
-		int roleId = filter.getRoleId();
-		if(roleId > 0) {
-			criteria.andRoleIdEqualTo(roleId);
+		String roleId = filter.getRoleId();
+		if(StringUtils.isNotBlank(roleId)) {
+			criteria.andRoleIdEqualTo(Integer.parseInt(roleId));
 		}
 		
 		return userMapper.countByExample(example);
@@ -98,16 +98,16 @@ public class UserServiceImpl implements UserService {
 		/*
 		 * 按部门查询
 		 */
-		int deptId = filter.getDeptId();
-		if(deptId > 0) {
-			criteria.andDeptIdEqualTo(deptId);
+		String deptId = filter.getDeptId();
+		if(StringUtils.isNotBlank(deptId)) {
+			criteria.andDeptIdEqualTo(Integer.parseInt(deptId));
 		}
 		/*
 		 * 按角色查询
 		 */
-		int roleId = filter.getRoleId();
-		if(roleId > 0) {
-			criteria.andRoleIdEqualTo(roleId);
+		String roleId = filter.getRoleId();
+		if(StringUtils.isNotBlank(roleId)) {
+			criteria.andRoleIdEqualTo(Integer.parseInt(roleId));
 		}
 		List<User> list = userMapper.selectByExample(example);
 		if(list != null && list.size() > 0) {

@@ -28,15 +28,13 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value = "/query")
-	public @ResponseBody PageViewBean<User> query(@ModelAttribute UserFilter filter) {
-		System.out.println("pageSize : " + filter.getLimit());
+	@RequestMapping(value = "/queryPage")
+	public @ResponseBody PageViewBean<User> queryPage(@ModelAttribute UserFilter filter) {
 		PageViewBean<User> pageView = new PageViewBean<User>();
 		int total = userService.count(filter);
-		pageView.setTotal(total);
 		List<User> data = userService.find(filter);
+		pageView.setTotal(total);
 		pageView.setData(data);
-		pageView.setPageBean(filter);
 		return pageView;
 	}
 	

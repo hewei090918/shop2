@@ -1,16 +1,27 @@
 package com.web.shop.bean.query;
 
-import com.web.shop.common.bean.PageBean;
 
-public class UserFilter extends PageBean{
+public class UserFilter{
 
+	/**
+	 * 用户名
+	 */
 	private String username;
 	
+	/**
+	 * 姓名
+	 */
 	private String realname;
 	
-	private int deptId;
+	/**
+	 * 部门ID
+	 */
+	private String deptId;
 	
-	private int roleId;
+	/**
+	 * 角色ID
+	 */
+	private String roleId;
 
 	public String getUsername() {
 		return username;
@@ -28,19 +39,19 @@ public class UserFilter extends PageBean{
 		this.realname = realname;
 	}
 
-	public int getDeptId() {
+	public String getDeptId() {
 		return deptId;
 	}
 
-	public void setDeptId(int deptId) {
+	public void setDeptId(String deptId) {
 		this.deptId = deptId;
 	}
 
-	public int getRoleId() {
+	public String getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(int roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 	
