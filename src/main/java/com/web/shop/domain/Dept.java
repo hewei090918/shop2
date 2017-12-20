@@ -7,6 +7,8 @@ public class Dept {
 
     private String deptCode;
 
+    private String deptDesc;
+
     private Integer parentId;
 
     public Integer getDeptId() {
@@ -31,6 +33,14 @@ public class Dept {
 
     public void setDeptCode(String deptCode) {
         this.deptCode = deptCode == null ? null : deptCode.trim();
+    }
+
+    public String getDeptDesc() {
+        return deptDesc;
+    }
+
+    public void setDeptDesc(String deptDesc) {
+        this.deptDesc = deptDesc == null ? null : deptDesc.trim();
     }
 
     public Integer getParentId() {

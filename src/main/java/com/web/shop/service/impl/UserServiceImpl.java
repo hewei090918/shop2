@@ -3,6 +3,7 @@ package com.web.shop.service.impl;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,8 @@ import com.web.shop.service.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+	
+	private Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private UserMapper userMapper;
@@ -121,6 +124,61 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public boolean save(User user) {
+		try{
+			userMapper.insert(user);
+			logger.info("新增用户成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("新增用户失败", e);
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean update(User user) {
+		try{
+			userMapper.updateByPrimaryKey(user);
+			logger.info("更新用户成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("更新用户失败", e);
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean deleteById(int userId) {
+		try{
+			userMapper.deleteByPrimaryKey(userId);
+			logger.info("删除用户成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("删除用户失败", e);
+			return false;
+		}
+		
+	}
+
+	@Override
+	public boolean delete(String ids) {
+		String[] idstr = ids.split(",");
+		try{
+			for(String id: idstr) {
+				userMapper.deleteByPrimaryKey(Integer.parseInt(id));
+			}
+			logger.info("删除用户成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("删除用户失败", e);
+			return false;
+		}
+		
 	}
 	
 }

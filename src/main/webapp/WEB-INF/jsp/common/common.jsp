@@ -23,9 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/bootstrap-table/dist/css/bootstrap-table.min.css">
 	<!-- Bootstrap Validator CSS -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/bootstrapValidator/dist/css/bootstrapValidator.min.css">
+	<!-- treegrid -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/jquery-treegrid-master/css/jquery.treegrid.css">
 	<!-- Select2 -->
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/select2/dist/css/select2.min.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/select2-bootstrap-theme/dist/select2-bootstrap.css">
+	<!-- toastr -->
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>resources/vendor/toastr/dist/css/toastr.css">
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/jquery/jquery.min.js"></script>
@@ -41,9 +45,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/bootstrap-table/dist/js/bootstrap-table-zh-CN.min.js"></script>
 	<!-- Bootstrap Validator JS -->
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/bootstrapValidator/dist/js/bootstrapValidator.js"></script>
+	<!-- treegrid -->
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/jquery-treegrid-master/js/jquery.treegrid.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/jquery-treegrid-master/js/jquery.treegrid.bootstrap3.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/jquery-treegrid-master/extension/jquery.treegrid.extension.js"></script>
 	<!-- Select2 -->
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/select2/dist/js/select2.js"></script>
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/select2/dist/js/i18n/zh-CN.js"></script>
+	<!-- toastr -->
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/toastr/dist/js/toastr.min.js"></script>
 	
 	<script type="text/javascript">
 		//获取项目路径

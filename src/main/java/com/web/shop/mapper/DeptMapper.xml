@@ -5,6 +5,7 @@
     <id column="dept_id" property="deptId" jdbcType="INTEGER" />
     <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
     <result column="dept_code" property="deptCode" jdbcType="VARCHAR" />
+    <result column="dept_desc" property="deptDesc" jdbcType="VARCHAR" />
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    dept_id, dept_name, dept_code, parent_id
+    dept_id, dept_name, dept_code, dept_desc, parent_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.DeptExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.Dept" >
     insert into dept (dept_id, dept_name, dept_code, 
-      parent_id)
+      dept_desc, parent_id)
     values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR}, #{deptCode,jdbcType=VARCHAR}, 
-      #{parentId,jdbcType=INTEGER})
+      #{deptDesc,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Dept" >
     insert into dept
@@ -115,6 +116,9 @@
       </if>
       <if test="deptCode != null" >
         dept_code,
+      </if>
+      <if test="deptDesc != null" >
+        dept_desc,
       </if>
       <if test="parentId != null" >
         parent_id,
@@ -129,6 +133,9 @@
       </if>
       <if test="deptCode != null" >
         #{deptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDesc != null" >
+        #{deptDesc,jdbcType=VARCHAR},
       </if>
       <if test="parentId != null" >
         #{parentId,jdbcType=INTEGER},
@@ -153,6 +160,9 @@
       <if test="record.deptCode != null" >
         dept_code = #{record.deptCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.deptDesc != null" >
+        dept_desc = #{record.deptDesc,jdbcType=VARCHAR},
+      </if>
       <if test="record.parentId != null" >
         parent_id = #{record.parentId,jdbcType=INTEGER},
       </if>
@@ -166,6 +176,7 @@
     set dept_id = #{record.deptId,jdbcType=INTEGER},
       dept_name = #{record.deptName,jdbcType=VARCHAR},
       dept_code = #{record.deptCode,jdbcType=VARCHAR},
+      dept_desc = #{record.deptDesc,jdbcType=VARCHAR},
       parent_id = #{record.parentId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -180,6 +191,9 @@
       <if test="deptCode != null" >
         dept_code = #{deptCode,jdbcType=VARCHAR},
       </if>
+      <if test="deptDesc != null" >
+        dept_desc = #{deptDesc,jdbcType=VARCHAR},
+      </if>
       <if test="parentId != null" >
         parent_id = #{parentId,jdbcType=INTEGER},
       </if>
@@ -190,6 +204,7 @@
     update dept
     set dept_name = #{deptName,jdbcType=VARCHAR},
       dept_code = #{deptCode,jdbcType=VARCHAR},
+      dept_desc = #{deptDesc,jdbcType=VARCHAR},
       parent_id = #{parentId,jdbcType=INTEGER}
     where dept_id = #{deptId,jdbcType=INTEGER}
   </update>

@@ -16,18 +16,15 @@ $(function(){
 	            emptyIcon: '',//没有子节点的节点图标
 	            multiSelect: false,//多选
 	            onNodeSelected: function (event, data) {
-	                $("#deptId").val(data.id);  
-	                $("#deptName").val(data.text); 
+	                $('input[name="deptId"]').val(data.id);  
+	                $('input[name="deptName"]').val(data.text); 
+	                $('#deptSelect_modal').modal('hide');
 	            }
 	        });
 	    },
 	    error: function () {
 	        alert("树形结构加载失败！")
 	    }
-	});
-	
-	$('#btn_ok').on('click', function(){
-		$('#deptSelect_modal').modal('hide');
 	});
 	
 	//初始化下拉框（用于角色选择）
@@ -48,19 +45,26 @@ $(function(){
                 placeholder: '请选择角色',
                 allowClear: true
             });
+            
+            $('#roleSelect').val(null).trigger("change");
+            
             $("#roleSelect").on("select2:select",function(){  
                 $("#roleId").val($(this).val());  
             });  
+            
+            $("#roleSelect").on("select2:unselect",function(){
+                $("#roleId").val('');  
+            }); 
 
 		}
 	});
 	
 	//加载表格数据
-	$('#list_table').bootstrapTable({
+	$('#userList_table').bootstrapTable({
 //        method: 'post',
         contentType: "application/x-www-form-urlencoded",
         url: base + "/user/queryPage.html",
-        toolbar: '#toolbar',//工具按钮用哪个容器
+        toolbar: '#user_toolbar',//工具按钮用哪个容器
         striped: true, 
         dataField: "data",//修改后端分页集合键值rows为data
         queryParamsType:'limit',//查询参数组织方式
@@ -80,7 +84,7 @@ $(function(){
                 title:'全选',
                 field:'select',
                 checkbox:true,//复选框
-                width:25,
+                width:30,
                 align:'center',
                 valign:'middle'
             }, {
@@ -159,39 +163,61 @@ $(function(){
         }
     }
 	
+	function refreshTable(){
+		$('#userList_table').bootstrapTable('refresh');
+	}
+	
 	//查询按钮事件
-    $('#btn_query').click(function(){
-        $('#list_table').bootstrapTable('refresh');
+    $('#btn_user_query').click(function(){
+    	refreshTable();
+    });
+    
+    $('#btn_user_reset').click(function(){
+    	//Hidden值重置
+    	$("#deptId").val('');
+    	$("#roleId").val('');
+    	//表单值重置
+    	$('#user_search_form')[0].reset();
+    	//下拉框重置
+    	$('#roleSelect').val(null).trigger("change");
     });
     
     //新增按钮事件
-    $('#btn_add').click(function(){
+    $('#btn_user_add').click(function(){
         
     });
     
     //删除按钮事件
-    $('#btn_delete').click(function(){
-        
+    $('#btn_user_delete').click(function(){
+        var rows = $('#userList_table').bootstrapTable('getSelections');
+        console.log(rows);
+        if(rows.length == 0) {
+        	toastr.warning('您尚未选择任何记录!');
+        	return;
+        }else {
+        	var array = [];
+        	$.each(rows, function(index, row) {
+        		array.push(row.userId);
+        	});
+        	var ids = array.join(",");
+        	$.ajax({
+        		type: 'POST',
+        		url: base + '/user/deleteUser.html',
+        		data: {ids: ids},
+        		success: function(data) {
+        			if(data.success) {
+        				toastr.success(data.message);
+        				refreshTable();
+        			}else {
+        				toastr.warning(data.message);
+        			}
+        		},
+        		dataType: 'json'
+    		});
+        }
     });
     
 });
-
-//转换时间格式
-Date.prototype.Format = function (fmt) {
-    var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "H+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
 
 function dateFormatter(value) {
 	return new Date(value).Format('yyyy-MM-dd');
@@ -218,7 +244,7 @@ function lockedFormatter(value,row,index) {
 }
 
 function operateFormatter(value,row,index) {
-	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;"></i>';
+	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;"></i>';
 }
 
 function showDetail(index) {

@@ -15,4 +15,12 @@ public interface UserService {
 	
 	List<User> find(UserFilter filter);
 	
+	boolean save(User user);
+	
+	boolean update(User user);
+	
+	boolean deleteById(int userId);
+	
+	boolean delete(String ids);
+	
 }

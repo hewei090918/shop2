@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.shop.common.bean.JsonResult;
 import com.web.shop.common.bean.TreeNodeBean;
 import com.web.shop.domain.Dept;
 import com.web.shop.service.DeptService;
@@ -26,8 +27,19 @@ public class DeptController {
 	@Autowired
 	private DeptService deptService;
 	
+	@RequestMapping(value="query")
+	public
+	@ResponseBody JsonResult query() {
+		JsonResult result = new JsonResult();
+		List<Dept> data = deptService.findAll();
+		result.setSuccess(true);
+		result.setData(data);
+		return result;
+	}
+	
 	@RequestMapping(value="/findDeptTree")
-	public @ResponseBody List<TreeNodeBean> findDeptTree() {
+	public 
+	@ResponseBody List<TreeNodeBean> findDeptTree() {
 		List<TreeNodeBean> treeNodeBeans = new ArrayList<TreeNodeBean>();
 		List<Dept> list = deptService.findAll();
 		TreeNodeBean bean = null;
