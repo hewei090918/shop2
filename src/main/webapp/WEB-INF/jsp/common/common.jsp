@@ -54,6 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/select2/dist/js/i18n/zh-CN.js"></script>
 	<!-- toastr -->
 	<script type="text/javascript" src="<%=basePath%>resources/vendor/toastr/dist/js/toastr.min.js"></script>
+	<!-- Highcharts -->
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/Highcharts-6.0.4/code/highcharts.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/Highcharts-6.0.4/code/modules/exporting.js"></script>
+	<script type="text/javascript" src="<%=basePath%>resources/vendor/Highcharts-6.0.4/code/highcharts-3d.js"></script>	
 	
 	<script type="text/javascript">
 		//获取项目路径

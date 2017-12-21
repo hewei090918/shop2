@@ -148,7 +148,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $(this).find("span").toggleClass("glyphicon-chevron-up");
             });
             
-            var item = {'id':'main','name':'首页','closable':false};
+            var item = {'id':'main','name':'首页','url':'<%=basePath%>view/mainView/dashboard.jsp','closable':false};
     		closableTab.addTab(item);
         });
         
