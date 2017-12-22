@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            }
 	        },
 	        title: {
-	            text: 'Browser market shares at a specific website, 2014'
+	            text: '商品库存数量对比'
 	        },
 	        tooltip: {
 	            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -53,17 +53,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            type: 'pie',
 	            name: 'Browser share',
 	            data: [
-	                ['Firefox', 45.0],
-	                ['IE', 26.8],
+	                ['食品饮料类', 45.0],
+	                ['家电类', 26.8],
 	                {
-	                    name: 'Chrome',
+	                    name: '日用品类',
 	                    y: 12.8,
 	                    sliced: true,
 	                    selected: true
 	                },
-	                ['Safari', 8.5],
-	                ['Opera', 6.2],
-	                ['Others', 0.7]
+	                ['运动器材类', 8.5],
+	                ['文具类', 6.2],
+	                ['其它', 0.7]
 	            ]
 	        }]
 	    });
@@ -79,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            }
 	        },
 	        title: {
-	            text: '3D chart with null values'
+	            text: '商品销售营业额统计'
 	        },
 	        subtitle: {
-	            text: 'Notice the difference between a 0 value and a null point'
+	            text: '2017年月度销售情况展示'
 	        },
 	        plotOptions: {
 	            column: {
@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            }
 	        },
 	        series: [{
-	            name: 'Sales',
+	            name: '营业额（万元）',
 	            data: [2, 3, null, 4, 0, 5, 1, 4, 6, 3]
 	        }]
 	    });

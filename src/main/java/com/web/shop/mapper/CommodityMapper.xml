@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.shop.mapper.CommodityMapper" >
+  <resultMap id="BaseResultMap" type="com.web.shop.domain.Commodity" >
+    <id column="commodity_id" property="commodityId" jdbcType="INTEGER" />
+    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="commodity_code" property="commodityCode" jdbcType="VARCHAR" />
+    <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="amount" property="amount" jdbcType="BIGINT" />
+    <result column="manager" property="manager" jdbcType="INTEGER" />
+    <result column="xjbz" property="xjbz" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    commodity_id, commodity_name, commodity_code, commodity_type, up_time, status, down_time, 
+    is_hot, amount, manager, xjbz
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.CommodityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commodity
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.web.shop.domain.CommodityExample" >
+    delete from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.web.shop.domain.Commodity" >
+    insert into commodity (commodity_id, commodity_name, commodity_code, 
+      commodity_type, up_time, status, 
+      down_time, is_hot, amount, 
+      manager, xjbz)
+    values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
+      #{commodityType,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}, 
+      #{downTime,jdbcType=TIMESTAMP}, #{isHot,jdbcType=BIT}, #{amount,jdbcType=BIGINT}, 
+      #{manager,jdbcType=INTEGER}, #{xjbz,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.web.shop.domain.Commodity" >
+    insert into commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commodityId != null" >
+        commodity_id,
+      </if>
+      <if test="commodityName != null" >
+        commodity_name,
+      </if>
+      <if test="commodityCode != null" >
+        commodity_code,
+      </if>
+      <if test="commodityType != null" >
+        commodity_type,
+      </if>
+      <if test="upTime != null" >
+        up_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="downTime != null" >
+        down_time,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="manager != null" >
+        manager,
+      </if>
+      <if test="xjbz != null" >
+        xjbz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commodityId != null" >
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityName != null" >
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityCode != null" >
+        #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null" >
+        #{commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="upTime != null" >
+        #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="downTime != null" >
+        #{downTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=INTEGER},
+      </if>
+      <if test="xjbz != null" >
+        #{xjbz,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.web.shop.domain.CommodityExample" resultType="java.lang.Integer" >
+    select count(*) from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update commodity
+    <set >
+      <if test="record.commodityId != null" >
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityName != null" >
+        commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityCode != null" >
+        commodity_code = #{record.commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityType != null" >
+        commodity_type = #{record.commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="record.upTime != null" >
+        up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.downTime != null" >
+        down_time = #{record.downTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isHot != null" >
+        is_hot = #{record.isHot,jdbcType=BIT},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=BIGINT},
+      </if>
+      <if test="record.manager != null" >
+        manager = #{record.manager,jdbcType=INTEGER},
+      </if>
+      <if test="record.xjbz != null" >
+        xjbz = #{record.xjbz,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update commodity
+    set commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      commodity_code = #{record.commodityCode,jdbcType=VARCHAR},
+      commodity_type = #{record.commodityType,jdbcType=INTEGER},
+      up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=BIT},
+      down_time = #{record.downTime,jdbcType=TIMESTAMP},
+      is_hot = #{record.isHot,jdbcType=BIT},
+      amount = #{record.amount,jdbcType=BIGINT},
+      manager = #{record.manager,jdbcType=INTEGER},
+      xjbz = #{record.xjbz,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.web.shop.domain.Commodity" >
+    update commodity
+    <set >
+      <if test="commodityName != null" >
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityCode != null" >
+        commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null" >
+        commodity_type = #{commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="upTime != null" >
+        up_time = #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="downTime != null" >
+        down_time = #{downTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="manager != null" >
+        manager = #{manager,jdbcType=INTEGER},
+      </if>
+      <if test="xjbz != null" >
+        xjbz = #{xjbz,jdbcType=CHAR},
+      </if>
+    </set>
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.web.shop.domain.Commodity" >
+    update commodity
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_code = #{commodityCode,jdbcType=VARCHAR},
+      commodity_type = #{commodityType,jdbcType=INTEGER},
+      up_time = #{upTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=BIT},
+      down_time = #{downTime,jdbcType=TIMESTAMP},
+      is_hot = #{isHot,jdbcType=BIT},
+      amount = #{amount,jdbcType=BIGINT},
+      manager = #{manager,jdbcType=INTEGER},
+      xjbz = #{xjbz,jdbcType=CHAR}
+    where commodity_id = #{commodityId,jdbcType=INTEGER}
+  </update>
+</mapper>

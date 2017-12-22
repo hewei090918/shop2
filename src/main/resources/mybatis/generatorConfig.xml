@@ -46,7 +46,10 @@
 		</javaClientGenerator>
 		
 		<!-- 表生成定义用完删除，而不要只注释掉定义 -->
-		<!-- <table tableName="dept" domainObjectName="Dept">
+		<!-- <table tableName="commodity" domainObjectName="Commodity">
+			<property name="useActualColumnNames" value="false" />
+		</table>
+		<table tableName="commodity_type" domainObjectName="CommodityType">
 			<property name="useActualColumnNames" value="false" />
 		</table> -->
 		

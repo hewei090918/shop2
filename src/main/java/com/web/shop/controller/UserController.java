@@ -41,6 +41,12 @@ public class UserController {
 		return pageView;
 	}
 	
+	@RequestMapping(value = "/getList")
+	public 
+	@ResponseBody List<User> getList() {
+		return userService.findAll();
+	}
+	
 	@RequestMapping(value = "/deleteUser")
 	public 
 	@ResponseBody JsonResult deleteUser(@RequestParam String ids) {

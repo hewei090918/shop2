@@ -102,10 +102,12 @@ $(function(){
             }, {
                 title:'姓名',
                 field:'realname',
+                width:80,
                 sortable:true
             }, {
                 title:'性别',
                 field:'gender',
+                width:50,
                 align:'center',
                 formatter:genderFormatter
             }, {
@@ -114,36 +116,43 @@ $(function(){
                 formatter:dateFormatter
             }, {
                 title:'联系方式',
-                field:'phone'
+                field:'phone',
+                width:120
             }, {
                 title:'职务',
-                field:'professionName'
+                field:'professionName',
+                width:100
             }, {
             	title:'deptId',
                 field:'deptId',
                 visible:false
             }, {
                 title:'部门',
-                field:'deptName'
+                field:'deptName',
+                width:100
             }, {
             	title:'roleId',
                 field:'roleId',
                 visible:false
             }, {
                 title:'角色',
-                field:'roleName'
+                field:'roleName',
+                width:100
             }, {
                 title:'用户名',
                 field:'username',
+                width:80,
                 visible:true
             }, {
                 title:'锁定',
                 field:'locked',
+                width:50,
                 align:'center',
                 formatter:lockedFormatter
             }, {
                 title:'操作',
                 field:'_oper',
+                width:50,
                 align:'center',
                 formatter:operateFormatter
             }
@@ -190,7 +199,7 @@ $(function(){
     //删除按钮事件
     $('#btn_user_delete').click(function(){
         var rows = $('#userList_table').bootstrapTable('getSelections');
-        console.log(rows);
+//        console.log(rows);
         if(rows.length == 0) {
         	toastr.warning('您尚未选择任何记录!');
         	return;

@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<div class="panel panel-primary leftMenu">
     				<!-- 利用data-target指定要折叠的分组列表 -->
                     <div class="panel-heading" id="productManager" data-toggle="collapse" data-target="#listGroup1" role="tab" >
-                        <h4 class="panel-title"> 商品管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
+                        <h4 class="panel-title"> 生产管理 <span class="glyphicon glyphicon-chevron-up right"></span></h4>
                     </div>
                     <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
                     <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManager">
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                   <span class="glyphicon glyphicon-inbox"></span>  库存管理
                               </button>
                             </li>
-                            <li id="product" class="list-group-item"  data-target="<%=basePath%>view/productManager/product.jsp" onclick="add(this);">
+                            <li id="product" class="list-group-item"  data-target="<%=basePath%>view/productManager/commodity.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-gift"></span>  商品管理
                               </button>
@@ -87,14 +87,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                   <span class="glyphicon glyphicon-shopping-cart"></span>  采购管理
                               </button>
                             </li>
-                            <li id="member" class="list-group-item"  data-target="<%=basePath%>view/saleManager/member.jsp" onclick="add(this);">
-                              <button class="menu-item-left">
-                                  <span class="glyphicon glyphicon-credit-card"></span>  会员管理
-                              </button>
-                            </li>
                             <li id="order" class="list-group-item"  data-target="<%=basePath%>view/saleManager/order.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-tasks"></span>  订单管理
+                              </button>
+                            </li>
+                            <li id="member" class="list-group-item"  data-target="<%=basePath%>view/saleManager/member.jsp" onclick="add(this);">
+                              <button class="menu-item-left">
+                                  <span class="glyphicon glyphicon-credit-card"></span>  会员管理
                               </button>
                             </li>
                     	</ul>
