@@ -10,10 +10,57 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2017-12-20 16:55:56
+Date: 2017-12-22 15:19:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for commodity
+-- ----------------------------
+DROP TABLE IF EXISTS `commodity`;
+CREATE TABLE `commodity` (
+  `commodity_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `commodity_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品名称',
+  `commodity_code` varchar(20) DEFAULT NULL COMMENT '商品编码',
+  `commodity_type` int(11) NOT NULL COMMENT '商品类别',
+  `up_time` datetime DEFAULT NULL COMMENT '上架时间',
+  `status` tinyint(1) DEFAULT '0' COMMENT '在售状态（1：在售，0：停售）',
+  `down_time` datetime DEFAULT NULL COMMENT '下架时间',
+  `is_hot` tinyint(1) DEFAULT '0' COMMENT '是否热卖（1：是，0：否）',
+  `amount` bigint(20) unsigned DEFAULT '0' COMMENT '库存数量',
+  `manager` int(11) DEFAULT NULL COMMENT '货物管理员',
+  `xjbz` char(1) DEFAULT '0' COMMENT '下架标识（1：下架，0：未下架）',
+  PRIMARY KEY (`commodity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of commodity
+-- ----------------------------
+INSERT INTO `commodity` VALUES ('2', '台式烤香肠', 'S0876H233344', '1', '2017-12-20 13:48:56', '1', null, '0', '200', '6', '0');
+INSERT INTO `commodity` VALUES ('3', '大宝SOD蜜', '4552F4845566', '3', '2017-12-08 14:09:24', '0', '2017-12-21 08:00:00', '0', '100', '8', '0');
+
+-- ----------------------------
+-- Table structure for commodity_type
+-- ----------------------------
+DROP TABLE IF EXISTS `commodity_type`;
+CREATE TABLE `commodity_type` (
+  `type_id` int(11) NOT NULL COMMENT '主键',
+  `type_name` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品类别名称',
+  PRIMARY KEY (`type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of commodity_type
+-- ----------------------------
+INSERT INTO `commodity_type` VALUES ('1', '食品饮料类');
+INSERT INTO `commodity_type` VALUES ('2', '家电类');
+INSERT INTO `commodity_type` VALUES ('3', '日用品类');
+INSERT INTO `commodity_type` VALUES ('4', '运动器材类');
+INSERT INTO `commodity_type` VALUES ('5', '文具类');
+INSERT INTO `commodity_type` VALUES ('7', '3C数码类');
+INSERT INTO `commodity_type` VALUES ('8', '服装类');
+INSERT INTO `commodity_type` VALUES ('9', '其它');
 
 -- ----------------------------
 -- Table structure for dept
@@ -31,36 +78,13 @@ CREATE TABLE `dept` (
 -- ----------------------------
 -- Records of dept
 -- ----------------------------
-INSERT INTO `dept` VALUES ('1', 'XX超市', '001', null, '0');
-INSERT INTO `dept` VALUES ('2', '人事部', '001001', null, '1');
-INSERT INTO `dept` VALUES ('3', '综合部', '001002', null, '1');
-INSERT INTO `dept` VALUES ('4', '采购部', '001003', null, '1');
-INSERT INTO `dept` VALUES ('5', '销售部', '001004', null, '1');
-INSERT INTO `dept` VALUES ('6', '财务部', '001005', null, '1');
-INSERT INTO `dept` VALUES ('7', '技术部', '001006', null, '1');
-
--- ----------------------------
--- Table structure for product
--- ----------------------------
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `product_code` varchar(50) DEFAULT NULL COMMENT '商品编号',
-  `product_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品名称',
-  `avatar` varchar(100) DEFAULT NULL COMMENT '图片路径',
-  `is_new` tinyint(1) DEFAULT NULL COMMENT '是否新品',
-  `is_hot` tinyint(1) DEFAULT NULL COMMENT '是否热卖',
-  `is_recommend` tinyint(1) DEFAULT NULL COMMENT '是否推荐',
-  `on_sale` tinyint(1) DEFAULT NULL COMMENT '上架下架',
-  `stock` bigint(20) DEFAULT NULL COMMENT '库存数量',
-  `creator_id` int(11) DEFAULT NULL COMMENT '创建者ID',
-  `scbz` char(1) DEFAULT NULL COMMENT '删除标识',
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of product
--- ----------------------------
+INSERT INTO `dept` VALUES ('1', 'XX超市', '001', '乡巴佬', '0');
+INSERT INTO `dept` VALUES ('2', '人事部', '001001', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('3', '综合部', '001002', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('4', '采购部', '001003', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('5', '销售部', '001004', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('6', '财务部', '001005', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('7', '技术部', '001006', '乡巴佬', '1');
 
 -- ----------------------------
 -- Table structure for profession

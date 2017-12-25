@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.shop.mapper.StorageMapper" >
+  <resultMap id="BaseResultMap" type="com.web.shop.domain.Storage" >
+    <id column="storage_id" property="storageId" jdbcType="INTEGER" />
+    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="BIGINT" />
+    <result column="first_in_time" property="firstInTime" jdbcType="TIMESTAMP" />
+    <result column="latest_in_time" property="latestInTime" jdbcType="TIMESTAMP" />
+    <result column="sold_out" property="soldOut" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    storage_id, commodity_name, commodity_type, amount, first_in_time, latest_in_time, 
+    sold_out
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.StorageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from storage
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from storage
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.web.shop.domain.StorageExample" >
+    delete from storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.web.shop.domain.Storage" >
+    insert into storage (storage_id, commodity_name, commodity_type, 
+      amount, first_in_time, latest_in_time, 
+      sold_out)
+    values (#{storageId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityType,jdbcType=INTEGER}, 
+      #{amount,jdbcType=BIGINT}, #{firstInTime,jdbcType=TIMESTAMP}, #{latestInTime,jdbcType=TIMESTAMP}, 
+      #{soldOut,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.web.shop.domain.Storage" >
+    insert into storage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storageId != null" >
+        storage_id,
+      </if>
+      <if test="commodityName != null" >
+        commodity_name,
+      </if>
+      <if test="commodityType != null" >
+        commodity_type,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="firstInTime != null" >
+        first_in_time,
+      </if>
+      <if test="latestInTime != null" >
+        latest_in_time,
+      </if>
+      <if test="soldOut != null" >
+        sold_out,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storageId != null" >
+        #{storageId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityName != null" >
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null" >
+        #{commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="firstInTime != null" >
+        #{firstInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latestInTime != null" >
+        #{latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soldOut != null" >
+        #{soldOut,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.web.shop.domain.StorageExample" resultType="java.lang.Integer" >
+    select count(*) from storage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update storage
+    <set >
+      <if test="record.storageId != null" >
+        storage_id = #{record.storageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityName != null" >
+        commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commodityType != null" >
+        commodity_type = #{record.commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=BIGINT},
+      </if>
+      <if test="record.firstInTime != null" >
+        first_in_time = #{record.firstInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.latestInTime != null" >
+        latest_in_time = #{record.latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.soldOut != null" >
+        sold_out = #{record.soldOut,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update storage
+    set storage_id = #{record.storageId,jdbcType=INTEGER},
+      commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      commodity_type = #{record.commodityType,jdbcType=INTEGER},
+      amount = #{record.amount,jdbcType=BIGINT},
+      first_in_time = #{record.firstInTime,jdbcType=TIMESTAMP},
+      latest_in_time = #{record.latestInTime,jdbcType=TIMESTAMP},
+      sold_out = #{record.soldOut,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.web.shop.domain.Storage" >
+    update storage
+    <set >
+      <if test="commodityName != null" >
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null" >
+        commodity_type = #{commodityType,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="firstInTime != null" >
+        first_in_time = #{firstInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="latestInTime != null" >
+        latest_in_time = #{latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soldOut != null" >
+        sold_out = #{soldOut,jdbcType=BIT},
+      </if>
+    </set>
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.web.shop.domain.Storage" >
+    update storage
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_type = #{commodityType,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=BIGINT},
+      first_in_time = #{firstInTime,jdbcType=TIMESTAMP},
+      latest_in_time = #{latestInTime,jdbcType=TIMESTAMP},
+      sold_out = #{soldOut,jdbcType=BIT}
+    where storage_id = #{storageId,jdbcType=INTEGER}
+  </update>
+</mapper>

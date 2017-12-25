@@ -10,7 +10,6 @@
     <result column="status" property="status" jdbcType="BIT" />
     <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
     <result column="is_hot" property="isHot" jdbcType="BIT" />
-    <result column="amount" property="amount" jdbcType="BIGINT" />
     <result column="manager" property="manager" jdbcType="INTEGER" />
     <result column="xjbz" property="xjbz" jdbcType="CHAR" />
   </resultMap>
@@ -74,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List" >
     commodity_id, commodity_name, commodity_code, commodity_type, up_time, status, down_time, 
-    is_hot, amount, manager, xjbz
+    is_hot, manager, xjbz
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.CommodityExample" >
     select
@@ -109,12 +108,12 @@
   <insert id="insert" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity (commodity_id, commodity_name, commodity_code, 
       commodity_type, up_time, status, 
-      down_time, is_hot, amount, 
-      manager, xjbz)
+      down_time, is_hot, manager, 
+      xjbz)
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
       #{commodityType,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}, 
-      #{downTime,jdbcType=TIMESTAMP}, #{isHot,jdbcType=BIT}, #{amount,jdbcType=BIGINT}, 
-      #{manager,jdbcType=INTEGER}, #{xjbz,jdbcType=CHAR})
+      #{downTime,jdbcType=TIMESTAMP}, #{isHot,jdbcType=BIT}, #{manager,jdbcType=INTEGER}, 
+      #{xjbz,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity
@@ -142,9 +141,6 @@
       </if>
       <if test="isHot != null" >
         is_hot,
-      </if>
-      <if test="amount != null" >
-        amount,
       </if>
       <if test="manager != null" >
         manager,
@@ -177,9 +173,6 @@
       </if>
       <if test="isHot != null" >
         #{isHot,jdbcType=BIT},
-      </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=BIGINT},
       </if>
       <if test="manager != null" >
         #{manager,jdbcType=INTEGER},
@@ -222,9 +215,6 @@
       <if test="record.isHot != null" >
         is_hot = #{record.isHot,jdbcType=BIT},
       </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=BIGINT},
-      </if>
       <if test="record.manager != null" >
         manager = #{record.manager,jdbcType=INTEGER},
       </if>
@@ -246,7 +236,6 @@
       status = #{record.status,jdbcType=BIT},
       down_time = #{record.downTime,jdbcType=TIMESTAMP},
       is_hot = #{record.isHot,jdbcType=BIT},
-      amount = #{record.amount,jdbcType=BIGINT},
       manager = #{record.manager,jdbcType=INTEGER},
       xjbz = #{record.xjbz,jdbcType=CHAR}
     <if test="_parameter != null" >
@@ -277,9 +266,6 @@
       <if test="isHot != null" >
         is_hot = #{isHot,jdbcType=BIT},
       </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=BIGINT},
-      </if>
       <if test="manager != null" >
         manager = #{manager,jdbcType=INTEGER},
       </if>
@@ -298,7 +284,6 @@
       status = #{status,jdbcType=BIT},
       down_time = #{downTime,jdbcType=TIMESTAMP},
       is_hot = #{isHot,jdbcType=BIT},
-      amount = #{amount,jdbcType=BIGINT},
       manager = #{manager,jdbcType=INTEGER},
       xjbz = #{xjbz,jdbcType=CHAR}
     where commodity_id = #{commodityId,jdbcType=INTEGER}

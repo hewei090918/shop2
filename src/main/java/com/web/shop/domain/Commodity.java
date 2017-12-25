@@ -19,8 +19,6 @@ public class Commodity {
 
     private Boolean isHot;
 
-    private Long amount;
-
     private Integer manager;
 
     private String xjbz;
@@ -92,14 +90,6 @@ public class Commodity {
 
     public void setIsHot(Boolean isHot) {
         this.isHot = isHot;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
     }
 
     public Integer getManager() {

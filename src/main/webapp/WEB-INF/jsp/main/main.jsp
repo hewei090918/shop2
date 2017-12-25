@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div id="listGroup1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="productManager">
                     	<ul class="list-group">
                     		<!-- 利用data-target指定URL -->
-                    		<li id="store" class="list-group-item" data-target="<%=basePath%>view/productManager/store.jsp" onclick="add(this);">
+                    		<li id="store" class="list-group-item" data-target="<%=basePath%>view/productManager/storage.jsp" onclick="add(this);">
                               <button class="menu-item-left">
                                   <span class="glyphicon glyphicon-inbox"></span>  库存管理
                               </button>

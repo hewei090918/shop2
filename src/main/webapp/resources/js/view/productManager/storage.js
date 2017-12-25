@@ -1,5 +1,5 @@
 /**
- * product.js
+ * store.js
  */
 
 $(function(){
@@ -14,8 +14,8 @@ $(function(){
 				d.text = d.typeName;
 			});
 			
-			$('#commodityTypeSelect').empty();
-            $('#commodityTypeSelect').select2({
+			$('#commodityTypeSelect0').empty();
+            $('#commodityTypeSelect0').select2({
             	data: data,
             	language: "zh-CN", //设置提示语言
                 width: "100%", //设置下拉框的宽度
@@ -23,56 +23,24 @@ $(function(){
                 allowClear: true
             });
             
-            $('#commodityTypeSelect').val(null).trigger("change");
+            $('#commodityTypeSelect0').val(null).trigger("change");
             
-            $("#commodityTypeSelect").on("select2:select",function(){  
-                $("#commodityType").val($(this).val());  
+            $("#commodityTypeSelect0").on("select2:select",function(){  
+                $("#commodityType0").val($(this).val());  
             });  
             
-            $("#commodityTypeSelect").on("select2:unselect",function(){
-                $("#commodityType").val('');  
-            }); 
-
-		}
-	});
-	
-	//初始化下拉框（用于货物管理员选择）
-	$.ajax({
-		url: base + "/user/getList.html",
-		success: function(data){
-			var data = eval('(' + data + ')');
-			$.each(data, function (i, d) {
-				d.id = d.userId;
-				d.text = d.realname;
-			});
-			
-			$('#managerSelect').empty();
-            $('#managerSelect').select2({
-            	data: data,
-            	language: "zh-CN", //设置提示语言
-                width: "100%", //设置下拉框的宽度
-                placeholder: '请选择货管员',
-                allowClear: true
-            });
-            
-            $('#managerSelect').val(null).trigger("change");
-            
-            $("#managerSelect").on("select2:select",function(){  
-                $("#manager").val($(this).val());  
-            });  
-            
-            $("#managerSelect").on("select2:unselect",function(){
-                $("#manager").val('');  
+            $("#commodityTypeSelect0").on("select2:unselect",function(){
+                $("#commodityType0").val('');  
             }); 
 
 		}
 	});
 	
 	//加载表格数据
-	$('#commodityList_table').bootstrapTable({
+	$('#storageList_table').bootstrapTable({
 //        method: 'post',
         contentType: "application/x-www-form-urlencoded",
-        url: base + "/commodity/queryPage.html",
+        url: base + "/storage/queryPage.html",
         toolbar: '#commodity_toolbar',//工具按钮用哪个容器
         striped: true, 
         dataField: "data",//修改后端分页集合键值rows为data
@@ -87,7 +55,7 @@ $(function(){
         clickToSelect: true,
 //        toolbarAlign:'right',
 //        buttonsAlign:'right',
-        height: $(window).height()-340,
+        height: $(window).height()-330,
         columns:[
             {
                 title:'全选',
@@ -105,18 +73,14 @@ $(function(){
                     return index+1;  
                 }  
             }, {
-                title:'commodityId',
-                field:'commodityId',
+                title:'storageId',
+                field:'storageId',
                 visible:false
             }, {
                 title:'商品名称',
                 field:'commodityName',
                 width:130,
                 sortable:true
-            }, {
-                title:'商品编码',
-                field:'commodityCode',
-                width:130
             }, {
             	title:'commodityType',
                 field:'commodityType',
@@ -126,28 +90,21 @@ $(function(){
                 field:'commodityTypeName',
                 width:100
             }, {
-                title:'状态',
-                field:'status',
+                title:'售罄',
+                field:'soldOut',
                 width:50,
                 align:'center',
-                formatter: statusFormatter
+                formatter: soldOutFormatter
             }, {
-                title:'热卖',
-                field:'isHot',
-                width:50,
-                align:'center',
-                formatter: isHotFormatter
+            	title:'库存数量',
+            	field:'amount'
             }, {
-                title:'manager',
-                field:'manager',
-                visible:false
+                title:'首次入库时间',
+                field:'firstInTime',
+                formatter: dateFormatter
             }, {
-                title:'货管员',
-                field:'managerName',
-                width:80
-            }, {
-                title:'上架时间',
-                field:'upTime',
+                title:'最近入库时间',
+                field:'latestInTime',
                 formatter: dateFormatter
             }, {
                 title:'操作',
@@ -165,43 +122,38 @@ $(function(){
         return{
         	limit: params.limit,//页面大小（每页最多显示多少条数据）
             offset: params.offset,//请求当前页起始数
-            commodityName: $('#commodityName').val(),
-            commodityCode: $('#commodityCode').val(),
-            commodityType: $('#commodityType').val(),
-            status: $('input[name="status"]:checked').val(),
-            isHot: $('input[name="isHot"]:checked').val(),
-            manager: $('#manager').val()
+            commodityName: $('#commodityName0').val(),
+            commodityType: $('#commodityType0').val(),
+            soldOut: $('input[name="soldOut"]:checked').val()
         }
     }
 	
 	function refreshTable(){
-		$('#commodityList_table').bootstrapTable('refresh');
+		$('#storageList_table').bootstrapTable('refresh');
 	}
 	
 	//查询按钮事件
-    $('#btn_commodity_query').click(function(){
+    $('#btn_storage_query').click(function(){
     	refreshTable();
     });
     
-    $('#btn_commodity_reset').click(function(){
+    $('#btn_storage_reset').click(function(){
     	//Hidden值重置
-    	$("#commodityType").val('');
-    	$("#manager").val('');
+    	$("#commodityType0").val('');
     	//表单值重置
-    	$('#commodity_search_form')[0].reset();
+    	$('#storage_search_form')[0].reset();
     	//下拉框重置
-    	$('#commodityTypeSelect').val(null).trigger("change");
-    	$('#managerSelect').val(null).trigger("change");
+    	$('#commodityTypeSelect0').val(null).trigger("change");
     });
     
     //新增按钮事件
-    $('#btn_commodity_add').click(function(){
+    $('#btn_storage_add').click(function(){
         
     });
     
     //删除按钮事件
-    $('#btn_commodity_delete').click(function(){
-        var rows = $('#commodityList_table').bootstrapTable('getSelections');
+    $('#btn_storage_delete').click(function(){
+        var rows = $('#storageList_table').bootstrapTable('getSelections');
 //        console.log(rows);
         if(rows.length == 0) {
         	toastr.warning('您尚未选择任何记录!');
@@ -209,12 +161,12 @@ $(function(){
         }else {
         	var array = [];
         	$.each(rows, function(index, row) {
-        		array.push(row.commodityId);
+        		array.push(row.storageId);
         	});
         	var ids = array.join(",");
         	$.ajax({
         		type: 'POST',
-        		url: base + '/commodity/deleteCommodity.html',
+        		url: base + '/storage/deleteStorage.html',
         		data: {ids: ids},
         		success: function(data) {
         			if(data.success) {
@@ -235,17 +187,7 @@ function dateFormatter(value) {
 	return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
 }
 
-function statusFormatter(value,row,index) {
-	if(value==true){
-        return '<i class="fa fa-arrow-up" style="color:green"></i>';
-    }else if(value==false){
-        return '<i class="fa fa-arrow-down" style="color:red"></i>';
-    }else{
-        return ''
-    }
-}
-
-function isHotFormatter(value,row,index) {
+function soldOutFormatter(value,row,index) {
 	if(value==true){
         return '是';
     }else if(value==false){

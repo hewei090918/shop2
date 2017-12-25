@@ -605,66 +605,6 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
-        public Criteria andAmountIsNull() {
-            addCriterion("amount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountIsNotNull() {
-            addCriterion("amount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountEqualTo(Long value) {
-            addCriterion("amount =", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotEqualTo(Long value) {
-            addCriterion("amount <>", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountGreaterThan(Long value) {
-            addCriterion("amount >", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountGreaterThanOrEqualTo(Long value) {
-            addCriterion("amount >=", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountLessThan(Long value) {
-            addCriterion("amount <", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountLessThanOrEqualTo(Long value) {
-            addCriterion("amount <=", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountIn(List<Long> values) {
-            addCriterion("amount in", values, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotIn(List<Long> values) {
-            addCriterion("amount not in", values, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountBetween(Long value1, Long value2) {
-            addCriterion("amount between", value1, value2, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotBetween(Long value1, Long value2) {
-            addCriterion("amount not between", value1, value2, "amount");
-            return (Criteria) this;
-        }
-
         public Criteria andManagerIsNull() {
             addCriterion("manager is null");
             return (Criteria) this;
