@@ -5,7 +5,7 @@ import java.util.Date;
 public class Storage {
     private Integer storageId;
 
-    private String commodityName;
+    private String storageName;
 
     private Integer commodityType;
 
@@ -28,12 +28,12 @@ public class Storage {
         this.storageId = storageId;
     }
 
-    public String getCommodityName() {
-        return commodityName;
+    public String getStorageName() {
+        return storageName;
     }
 
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName == null ? null : commodityName.trim();
+    public void setStorageName(String storageName) {
+        this.storageName = storageName == null ? null : storageName.trim();
     }
 
     public Integer getCommodityType() {

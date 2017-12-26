@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2017-12-22 15:19:52
+Date: 2017-12-26 16:42:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,21 +24,25 @@ CREATE TABLE `commodity` (
   `commodity_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品名称',
   `commodity_code` varchar(20) DEFAULT NULL COMMENT '商品编码',
   `commodity_type` int(11) NOT NULL COMMENT '商品类别',
-  `up_time` datetime DEFAULT NULL COMMENT '上架时间',
-  `status` tinyint(1) DEFAULT '0' COMMENT '在售状态（1：在售，0：停售）',
-  `down_time` datetime DEFAULT NULL COMMENT '下架时间',
-  `is_hot` tinyint(1) DEFAULT '0' COMMENT '是否热卖（1：是，0：否）',
-  `amount` bigint(20) unsigned DEFAULT '0' COMMENT '库存数量',
+  `storage_id` int(11) DEFAULT NULL COMMENT '仓库ID',
+  `status` tinyint(1) unsigned DEFAULT '0' COMMENT '在售状态（1：在售，0：卖出）',
+  `is_hot` tinyint(1) unsigned DEFAULT '0' COMMENT '是否热卖（1：是，0：否）',
+  `price` double(8,2) DEFAULT '0.00' COMMENT '单价（原价）',
+  `discount` double(5,2) DEFAULT '1.00' COMMENT '折扣百分比',
+  `discount_price` double(8,2) DEFAULT '0.00' COMMENT '折扣会员价',
   `manager` int(11) DEFAULT NULL COMMENT '货物管理员',
-  `xjbz` char(1) DEFAULT '0' COMMENT '下架标识（1：下架，0：未下架）',
+  `up_time` datetime DEFAULT NULL COMMENT '上架时间',
   PRIMARY KEY (`commodity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of commodity
 -- ----------------------------
-INSERT INTO `commodity` VALUES ('2', '台式烤香肠', 'S0876H233344', '1', '2017-12-20 13:48:56', '1', null, '0', '200', '6', '0');
-INSERT INTO `commodity` VALUES ('3', '大宝SOD蜜', '4552F4845566', '3', '2017-12-08 14:09:24', '0', '2017-12-21 08:00:00', '0', '100', '8', '0');
+INSERT INTO `commodity` VALUES ('2', '台式烤香肠', 'S0876H233344', '1', '1', '1', '1', '2.20', '1.00', '2.20', '6', '2017-12-20 13:48:56');
+INSERT INTO `commodity` VALUES ('3', '大宝SOD蜜', '4552F4845566', '3', '2', '0', '0', '32.50', '1.00', '32.50', '8', '2017-12-08 14:09:24');
+INSERT INTO `commodity` VALUES ('4', '台式烤香肠', '58KY9023UQ67', '1', '1', '1', '1', '2.20', '1.00', '2.20', '6', '2017-12-15 17:31:59');
+INSERT INTO `commodity` VALUES ('5', '海尔电冰箱', '7768ER8H90NB', '2', '3', '0', '0', '2800.00', '1.00', '2242.00', '6', '2017-12-26 10:11:19');
+INSERT INTO `commodity` VALUES ('6', '海尔电冰箱', '4455HF1234UN89', '2', '3', '0', '0', '3450.50', '1.00', '2932.50', '6', '2017-12-25 10:14:43');
 
 -- ----------------------------
 -- Table structure for commodity_type
@@ -124,6 +128,28 @@ CREATE TABLE `role` (
 INSERT INTO `role` VALUES ('1', '管理员', '管理员', '1');
 INSERT INTO `role` VALUES ('2', '普通用户', '普通用户', '0');
 INSERT INTO `role` VALUES ('3', '顾客', '顾客', '0');
+
+-- ----------------------------
+-- Table structure for storage
+-- ----------------------------
+DROP TABLE IF EXISTS `storage`;
+CREATE TABLE `storage` (
+  `storage_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `storage_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品名称',
+  `commodity_type` int(11) DEFAULT NULL COMMENT '商品类别',
+  `amount` bigint(20) DEFAULT NULL COMMENT '库存数量',
+  `first_in_time` datetime DEFAULT NULL COMMENT '首次入库时间',
+  `latest_in_time` datetime DEFAULT NULL COMMENT '最新入库时间',
+  `sold_out` tinyint(1) unsigned DEFAULT '0' COMMENT '是否售罄（1：售罄，0：未售罄）',
+  PRIMARY KEY (`storage_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of storage
+-- ----------------------------
+INSERT INTO `storage` VALUES ('1', '[仓]台式烤香肠', '1', '500', '2017-12-01 10:07:17', '2017-12-20 10:07:22', '0');
+INSERT INTO `storage` VALUES ('2', '[仓]大宝SOD蜜', '3', '20', '2017-12-06 17:30:58', '2017-12-23 17:31:01', '1');
+INSERT INTO `storage` VALUES ('3', '[仓]海尔电冰箱', '2', '10', '2017-12-25 10:13:08', '2017-12-26 10:13:13', '1');
 
 -- ----------------------------
 -- Table structure for user

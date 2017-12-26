@@ -64,26 +64,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button id="btn_storage_reset" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 重置
             </button>
-            <button id="btn_storage_add" type="button" class="btn btn-default">
-               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
-            </button>
-            <button id="btn_storage_delete" type="button" class="btn btn-default">
+            <!-- <button id="btn_storage_delete" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
-            </button>
+            </button> -->
         </div>
         
         <div class="panel-body" style="padding:0px;">
 	        <table id="storageList_table" class="table table-hover table-striped table-bordered" data-toggle="table">
 			</table>
-        </div>
-        
-        <!-- modal -->
-        <div class="modal fade" id="storage_modal" tabindex="-1" role="dialog"
-              aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                </div><!-- /.modal-content -->
-            </div>
         </div>
         
     </div>

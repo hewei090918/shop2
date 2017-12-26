@@ -46,7 +46,7 @@ public class StorageServiceImpl implements StorageService {
 		 */
 		String commodityName = filter.getCommodityName();
 		if(StringUtils.isNotBlank(commodityName)) {
-			criteria.andCommodityNameLike("%" + commodityName + "%");
+			criteria.andStorageNameLike("%" + commodityName + "%");
 		}
 		
 		/*
@@ -76,7 +76,7 @@ public class StorageServiceImpl implements StorageService {
 		 */
 		String commodityName = filter.getCommodityName();
 		if(StringUtils.isNotBlank(commodityName)) {
-			criteria.andCommodityNameLike("%" + commodityName + "%");
+			criteria.andStorageNameLike("%" + commodityName + "%");
 		}
 		
 		/*

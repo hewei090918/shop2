@@ -234,9 +234,9 @@ function dateFormatter(value) {
 
 function genderFormatter(value,row,index) {
 	if(value==true){
-        return '<i class="fa fa-male" style="color:green"></i>';
+        return '<i class="fa fa-male" style="color:green" title="男"></i>';
     }else if(value==false){
-        return '<i class="fa fa-female" style="color:purple"></i>';
+        return '<i class="fa fa-female" style="color:purple" title="女"></i>';
     }else{
         return ''
     }
@@ -244,16 +244,16 @@ function genderFormatter(value,row,index) {
 
 function lockedFormatter(value,row,index) {
     if(value==true){
-        return '<i class="fa fa-lock" style="color:red"></i>';
+        return '<i class="fa fa-lock" style="color:red" title="账号禁用"></i>';
     }else if(value==false){
-        return '<i class="fa fa-unlock" style="color:green"></i>';
+        return '<i class="fa fa-unlock" style="color:green" title="账号启用"></i>';
     }else{
         return ''
     }
 }
 
 function operateFormatter(value,row,index) {
-	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;"></i>';
+	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 
 function showDetail(index) {

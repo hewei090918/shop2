@@ -3,7 +3,7 @@
 <mapper namespace="com.web.shop.mapper.StorageMapper" >
   <resultMap id="BaseResultMap" type="com.web.shop.domain.Storage" >
     <id column="storage_id" property="storageId" jdbcType="INTEGER" />
-    <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
+    <result column="storage_name" property="storageName" jdbcType="VARCHAR" />
     <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
     <result column="amount" property="amount" jdbcType="BIGINT" />
     <result column="first_in_time" property="firstInTime" jdbcType="TIMESTAMP" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    storage_id, commodity_name, commodity_type, amount, first_in_time, latest_in_time, 
+    storage_id, storage_name, commodity_type, amount, first_in_time, latest_in_time, 
     sold_out
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.StorageExample" >
@@ -103,10 +103,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.Storage" >
-    insert into storage (storage_id, commodity_name, commodity_type, 
+    insert into storage (storage_id, storage_name, commodity_type, 
       amount, first_in_time, latest_in_time, 
       sold_out)
-    values (#{storageId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityType,jdbcType=INTEGER}, 
+    values (#{storageId,jdbcType=INTEGER}, #{storageName,jdbcType=VARCHAR}, #{commodityType,jdbcType=INTEGER}, 
       #{amount,jdbcType=BIGINT}, #{firstInTime,jdbcType=TIMESTAMP}, #{latestInTime,jdbcType=TIMESTAMP}, 
       #{soldOut,jdbcType=BIT})
   </insert>
@@ -116,8 +116,8 @@
       <if test="storageId != null" >
         storage_id,
       </if>
-      <if test="commodityName != null" >
-        commodity_name,
+      <if test="storageName != null" >
+        storage_name,
       </if>
       <if test="commodityType != null" >
         commodity_type,
@@ -139,8 +139,8 @@
       <if test="storageId != null" >
         #{storageId,jdbcType=INTEGER},
       </if>
-      <if test="commodityName != null" >
-        #{commodityName,jdbcType=VARCHAR},
+      <if test="storageName != null" >
+        #{storageName,jdbcType=VARCHAR},
       </if>
       <if test="commodityType != null" >
         #{commodityType,jdbcType=INTEGER},
@@ -171,8 +171,8 @@
       <if test="record.storageId != null" >
         storage_id = #{record.storageId,jdbcType=INTEGER},
       </if>
-      <if test="record.commodityName != null" >
-        commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      <if test="record.storageName != null" >
+        storage_name = #{record.storageName,jdbcType=VARCHAR},
       </if>
       <if test="record.commodityType != null" >
         commodity_type = #{record.commodityType,jdbcType=INTEGER},
@@ -197,7 +197,7 @@
   <update id="updateByExample" parameterType="map" >
     update storage
     set storage_id = #{record.storageId,jdbcType=INTEGER},
-      commodity_name = #{record.commodityName,jdbcType=VARCHAR},
+      storage_name = #{record.storageName,jdbcType=VARCHAR},
       commodity_type = #{record.commodityType,jdbcType=INTEGER},
       amount = #{record.amount,jdbcType=BIGINT},
       first_in_time = #{record.firstInTime,jdbcType=TIMESTAMP},
@@ -210,8 +210,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.web.shop.domain.Storage" >
     update storage
     <set >
-      <if test="commodityName != null" >
-        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      <if test="storageName != null" >
+        storage_name = #{storageName,jdbcType=VARCHAR},
       </if>
       <if test="commodityType != null" >
         commodity_type = #{commodityType,jdbcType=INTEGER},
@@ -233,7 +233,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.web.shop.domain.Storage" >
     update storage
-    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+    set storage_name = #{storageName,jdbcType=VARCHAR},
       commodity_type = #{commodityType,jdbcType=INTEGER},
       amount = #{amount,jdbcType=BIGINT},
       first_in_time = #{firstInTime,jdbcType=TIMESTAMP},

@@ -6,12 +6,14 @@
     <result column="commodity_name" property="commodityName" jdbcType="VARCHAR" />
     <result column="commodity_code" property="commodityCode" jdbcType="VARCHAR" />
     <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
-    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="storage_id" property="storageId" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="BIT" />
-    <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
     <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="discount" property="discount" jdbcType="DOUBLE" />
+    <result column="discount_price" property="discountPrice" jdbcType="DOUBLE" />
     <result column="manager" property="manager" jdbcType="INTEGER" />
-    <result column="xjbz" property="xjbz" jdbcType="CHAR" />
+    <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    commodity_id, commodity_name, commodity_code, commodity_type, up_time, status, down_time, 
-    is_hot, manager, xjbz
+    commodity_id, commodity_name, commodity_code, commodity_type, storage_id, status, 
+    is_hot, price, discount, discount_price, manager, up_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.CommodityExample" >
     select
@@ -107,13 +109,13 @@
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity (commodity_id, commodity_name, commodity_code, 
-      commodity_type, up_time, status, 
-      down_time, is_hot, manager, 
-      xjbz)
+      commodity_type, storage_id, status, 
+      is_hot, price, discount, discount_price, 
+      manager, up_time)
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
-      #{commodityType,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}, 
-      #{downTime,jdbcType=TIMESTAMP}, #{isHot,jdbcType=BIT}, #{manager,jdbcType=INTEGER}, 
-      #{xjbz,jdbcType=CHAR})
+      #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{status,jdbcType=BIT}, 
+      #{isHot,jdbcType=BIT}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, 
+      #{manager,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity
@@ -130,23 +132,29 @@
       <if test="commodityType != null" >
         commodity_type,
       </if>
-      <if test="upTime != null" >
-        up_time,
+      <if test="storageId != null" >
+        storage_id,
       </if>
       <if test="status != null" >
         status,
       </if>
-      <if test="downTime != null" >
-        down_time,
-      </if>
       <if test="isHot != null" >
         is_hot,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="discountPrice != null" >
+        discount_price,
       </if>
       <if test="manager != null" >
         manager,
       </if>
-      <if test="xjbz != null" >
-        xjbz,
+      <if test="upTime != null" >
+        up_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -162,23 +170,29 @@
       <if test="commodityType != null" >
         #{commodityType,jdbcType=INTEGER},
       </if>
-      <if test="upTime != null" >
-        #{upTime,jdbcType=TIMESTAMP},
+      <if test="storageId != null" >
+        #{storageId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=BIT},
       </if>
-      <if test="downTime != null" >
-        #{downTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="isHot != null" >
         #{isHot,jdbcType=BIT},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountPrice != null" >
+        #{discountPrice,jdbcType=DOUBLE},
       </if>
       <if test="manager != null" >
         #{manager,jdbcType=INTEGER},
       </if>
-      <if test="xjbz != null" >
-        #{xjbz,jdbcType=CHAR},
+      <if test="upTime != null" >
+        #{upTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -203,23 +217,29 @@
       <if test="record.commodityType != null" >
         commodity_type = #{record.commodityType,jdbcType=INTEGER},
       </if>
-      <if test="record.upTime != null" >
-        up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      <if test="record.storageId != null" >
+        storage_id = #{record.storageId,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=BIT},
       </if>
-      <if test="record.downTime != null" >
-        down_time = #{record.downTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="record.isHot != null" >
         is_hot = #{record.isHot,jdbcType=BIT},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.discountPrice != null" >
+        discount_price = #{record.discountPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.manager != null" >
         manager = #{record.manager,jdbcType=INTEGER},
       </if>
-      <if test="record.xjbz != null" >
-        xjbz = #{record.xjbz,jdbcType=CHAR},
+      <if test="record.upTime != null" >
+        up_time = #{record.upTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -232,12 +252,14 @@
       commodity_name = #{record.commodityName,jdbcType=VARCHAR},
       commodity_code = #{record.commodityCode,jdbcType=VARCHAR},
       commodity_type = #{record.commodityType,jdbcType=INTEGER},
-      up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      storage_id = #{record.storageId,jdbcType=INTEGER},
       status = #{record.status,jdbcType=BIT},
-      down_time = #{record.downTime,jdbcType=TIMESTAMP},
       is_hot = #{record.isHot,jdbcType=BIT},
+      price = #{record.price,jdbcType=DOUBLE},
+      discount = #{record.discount,jdbcType=DOUBLE},
+      discount_price = #{record.discountPrice,jdbcType=DOUBLE},
       manager = #{record.manager,jdbcType=INTEGER},
-      xjbz = #{record.xjbz,jdbcType=CHAR}
+      up_time = #{record.upTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -254,23 +276,29 @@
       <if test="commodityType != null" >
         commodity_type = #{commodityType,jdbcType=INTEGER},
       </if>
-      <if test="upTime != null" >
-        up_time = #{upTime,jdbcType=TIMESTAMP},
+      <if test="storageId != null" >
+        storage_id = #{storageId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=BIT},
       </if>
-      <if test="downTime != null" >
-        down_time = #{downTime,jdbcType=TIMESTAMP},
-      </if>
       <if test="isHot != null" >
         is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="discountPrice != null" >
+        discount_price = #{discountPrice,jdbcType=DOUBLE},
       </if>
       <if test="manager != null" >
         manager = #{manager,jdbcType=INTEGER},
       </if>
-      <if test="xjbz != null" >
-        xjbz = #{xjbz,jdbcType=CHAR},
+      <if test="upTime != null" >
+        up_time = #{upTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where commodity_id = #{commodityId,jdbcType=INTEGER}
@@ -280,12 +308,14 @@
     set commodity_name = #{commodityName,jdbcType=VARCHAR},
       commodity_code = #{commodityCode,jdbcType=VARCHAR},
       commodity_type = #{commodityType,jdbcType=INTEGER},
-      up_time = #{upTime,jdbcType=TIMESTAMP},
+      storage_id = #{storageId,jdbcType=INTEGER},
       status = #{status,jdbcType=BIT},
-      down_time = #{downTime,jdbcType=TIMESTAMP},
       is_hot = #{isHot,jdbcType=BIT},
+      price = #{price,jdbcType=DOUBLE},
+      discount = #{discount,jdbcType=DOUBLE},
+      discount_price = #{discountPrice,jdbcType=DOUBLE},
       manager = #{manager,jdbcType=INTEGER},
-      xjbz = #{xjbz,jdbcType=CHAR}
+      up_time = #{upTime,jdbcType=TIMESTAMP}
     where commodity_id = #{commodityId,jdbcType=INTEGER}
   </update>
 </mapper>

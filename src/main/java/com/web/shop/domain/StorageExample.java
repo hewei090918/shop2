@@ -165,73 +165,73 @@ public class StorageExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameIsNull() {
-            addCriterion("commodity_name is null");
+        public Criteria andStorageNameIsNull() {
+            addCriterion("storage_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameIsNotNull() {
-            addCriterion("commodity_name is not null");
+        public Criteria andStorageNameIsNotNull() {
+            addCriterion("storage_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameEqualTo(String value) {
-            addCriterion("commodity_name =", value, "commodityName");
+        public Criteria andStorageNameEqualTo(String value) {
+            addCriterion("storage_name =", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameNotEqualTo(String value) {
-            addCriterion("commodity_name <>", value, "commodityName");
+        public Criteria andStorageNameNotEqualTo(String value) {
+            addCriterion("storage_name <>", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameGreaterThan(String value) {
-            addCriterion("commodity_name >", value, "commodityName");
+        public Criteria andStorageNameGreaterThan(String value) {
+            addCriterion("storage_name >", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameGreaterThanOrEqualTo(String value) {
-            addCriterion("commodity_name >=", value, "commodityName");
+        public Criteria andStorageNameGreaterThanOrEqualTo(String value) {
+            addCriterion("storage_name >=", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameLessThan(String value) {
-            addCriterion("commodity_name <", value, "commodityName");
+        public Criteria andStorageNameLessThan(String value) {
+            addCriterion("storage_name <", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameLessThanOrEqualTo(String value) {
-            addCriterion("commodity_name <=", value, "commodityName");
+        public Criteria andStorageNameLessThanOrEqualTo(String value) {
+            addCriterion("storage_name <=", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameLike(String value) {
-            addCriterion("commodity_name like", value, "commodityName");
+        public Criteria andStorageNameLike(String value) {
+            addCriterion("storage_name like", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameNotLike(String value) {
-            addCriterion("commodity_name not like", value, "commodityName");
+        public Criteria andStorageNameNotLike(String value) {
+            addCriterion("storage_name not like", value, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameIn(List<String> values) {
-            addCriterion("commodity_name in", values, "commodityName");
+        public Criteria andStorageNameIn(List<String> values) {
+            addCriterion("storage_name in", values, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameNotIn(List<String> values) {
-            addCriterion("commodity_name not in", values, "commodityName");
+        public Criteria andStorageNameNotIn(List<String> values) {
+            addCriterion("storage_name not in", values, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameBetween(String value1, String value2) {
-            addCriterion("commodity_name between", value1, value2, "commodityName");
+        public Criteria andStorageNameBetween(String value1, String value2) {
+            addCriterion("storage_name between", value1, value2, "storageName");
             return (Criteria) this;
         }
 
-        public Criteria andCommodityNameNotBetween(String value1, String value2) {
-            addCriterion("commodity_name not between", value1, value2, "commodityName");
+        public Criteria andStorageNameNotBetween(String value1, String value2) {
+            addCriterion("storage_name not between", value1, value2, "storageName");
             return (Criteria) this;
         }
 

@@ -41,7 +41,7 @@ $(function(){
 //        method: 'post',
         contentType: "application/x-www-form-urlencoded",
         url: base + "/storage/queryPage.html",
-        toolbar: '#commodity_toolbar',//工具按钮用哪个容器
+        toolbar: '#storage_toolbar',//工具按钮用哪个容器
         striped: true, 
         dataField: "data",//修改后端分页集合键值rows为data
         queryParamsType:'limit',//查询参数组织方式
@@ -55,7 +55,7 @@ $(function(){
         clickToSelect: true,
 //        toolbarAlign:'right',
 //        buttonsAlign:'right',
-        height: $(window).height()-330,
+        height: $(window).height()-300,
         columns:[
             {
                 title:'全选',
@@ -77,8 +77,8 @@ $(function(){
                 field:'storageId',
                 visible:false
             }, {
-                title:'商品名称',
-                field:'commodityName',
+                title:'仓库名称',
+                field:'storageName',
                 width:130,
                 sortable:true
             }, {
@@ -107,8 +107,8 @@ $(function(){
                 field:'latestInTime',
                 formatter: dateFormatter
             }, {
-                title:'操作',
-                field:'_oper',
+                title:'详情',
+                field:'_detail',
                 width:50,
                 align:'center',
                 formatter:operateFormatter
@@ -146,41 +146,6 @@ $(function(){
     	$('#commodityTypeSelect0').val(null).trigger("change");
     });
     
-    //新增按钮事件
-    $('#btn_storage_add').click(function(){
-        
-    });
-    
-    //删除按钮事件
-    $('#btn_storage_delete').click(function(){
-        var rows = $('#storageList_table').bootstrapTable('getSelections');
-//        console.log(rows);
-        if(rows.length == 0) {
-        	toastr.warning('您尚未选择任何记录!');
-        	return;
-        }else {
-        	var array = [];
-        	$.each(rows, function(index, row) {
-        		array.push(row.storageId);
-        	});
-        	var ids = array.join(",");
-        	$.ajax({
-        		type: 'POST',
-        		url: base + '/storage/deleteStorage.html',
-        		data: {ids: ids},
-        		success: function(data) {
-        			if(data.success) {
-        				toastr.success(data.message);
-        				refreshTable();
-        			}else {
-        				toastr.warning(data.message);
-        			}
-        		},
-        		dataType: 'json'
-    		});
-        }
-    });
-    
 });
 
 function dateFormatter(value) {
@@ -189,16 +154,16 @@ function dateFormatter(value) {
 
 function soldOutFormatter(value,row,index) {
 	if(value==true){
-        return '是';
+        return '<i class="fa fa-check" style="cursor:pointer;color:green" title="售罄"></i>';
     }else if(value==false){
-        return '否';
+        return '<i class="fa fa-times" style="cursor:pointer;color:red" title="未售罄"></i>';
     }else{
         return ''
     }
 }
 
 function operateFormatter(value,row,index) {
-	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;"></i>';
+	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-list" style="cursor:pointer;color:purple;" title="查看详情"></i>';
 }
 
 function showDetail(index) {

@@ -11,17 +11,21 @@ public class Commodity {
 
     private Integer commodityType;
 
-    private Date upTime;
+    private Integer storageId;
 
     private Boolean status;
 
-    private Date downTime;
-
     private Boolean isHot;
+
+    private Double price;
+
+    private Double discount;
+
+    private Double discountPrice;
 
     private Integer manager;
 
-    private String xjbz;
+    private Date upTime;
     
     //用于页面展示
     private String commodityTypeName;
@@ -60,12 +64,12 @@ public class Commodity {
         this.commodityType = commodityType;
     }
 
-    public Date getUpTime() {
-        return upTime;
+    public Integer getStorageId() {
+        return storageId;
     }
 
-    public void setUpTime(Date upTime) {
-        this.upTime = upTime;
+    public void setStorageId(Integer storageId) {
+        this.storageId = storageId;
     }
 
     public Boolean getStatus() {
@@ -76,20 +80,36 @@ public class Commodity {
         this.status = status;
     }
 
-    public Date getDownTime() {
-        return downTime;
-    }
-
-    public void setDownTime(Date downTime) {
-        this.downTime = downTime;
-    }
-
     public Boolean getIsHot() {
         return isHot;
     }
 
     public void setIsHot(Boolean isHot) {
         this.isHot = isHot;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    public Double getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(Double discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
     public Integer getManager() {
@@ -100,12 +120,12 @@ public class Commodity {
         this.manager = manager;
     }
 
-    public String getXjbz() {
-        return xjbz;
+    public Date getUpTime() {
+        return upTime;
     }
 
-    public void setXjbz(String xjbz) {
-        this.xjbz = xjbz == null ? null : xjbz.trim();
+    public void setUpTime(Date upTime) {
+        this.upTime = upTime;
     }
 
 	public String getCommodityTypeName() {
@@ -123,6 +143,5 @@ public class Commodity {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-    
     
 }

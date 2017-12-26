@@ -145,6 +145,10 @@ public class CommodityServiceImpl implements CommodityService {
 			criteria.andManagerEqualTo(Integer.parseInt(manager));
 		}
 		
+		example.setDistinct(true);
+		//按商品名称排序
+		example.setOrderByClause("commodity_name desc");
+		
 		List<Commodity> list = commodityMapper.selectByExample(example);
 		if(list != null && list.size() > 0) {
 			for(Commodity commodity: list) {

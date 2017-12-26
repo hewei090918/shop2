@@ -365,63 +365,63 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeIsNull() {
-            addCriterion("up_time is null");
+        public Criteria andStorageIdIsNull() {
+            addCriterion("storage_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeIsNotNull() {
-            addCriterion("up_time is not null");
+        public Criteria andStorageIdIsNotNull() {
+            addCriterion("storage_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeEqualTo(Date value) {
-            addCriterion("up_time =", value, "upTime");
+        public Criteria andStorageIdEqualTo(Integer value) {
+            addCriterion("storage_id =", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeNotEqualTo(Date value) {
-            addCriterion("up_time <>", value, "upTime");
+        public Criteria andStorageIdNotEqualTo(Integer value) {
+            addCriterion("storage_id <>", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeGreaterThan(Date value) {
-            addCriterion("up_time >", value, "upTime");
+        public Criteria andStorageIdGreaterThan(Integer value) {
+            addCriterion("storage_id >", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("up_time >=", value, "upTime");
+        public Criteria andStorageIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("storage_id >=", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeLessThan(Date value) {
-            addCriterion("up_time <", value, "upTime");
+        public Criteria andStorageIdLessThan(Integer value) {
+            addCriterion("storage_id <", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeLessThanOrEqualTo(Date value) {
-            addCriterion("up_time <=", value, "upTime");
+        public Criteria andStorageIdLessThanOrEqualTo(Integer value) {
+            addCriterion("storage_id <=", value, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeIn(List<Date> values) {
-            addCriterion("up_time in", values, "upTime");
+        public Criteria andStorageIdIn(List<Integer> values) {
+            addCriterion("storage_id in", values, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeNotIn(List<Date> values) {
-            addCriterion("up_time not in", values, "upTime");
+        public Criteria andStorageIdNotIn(List<Integer> values) {
+            addCriterion("storage_id not in", values, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeBetween(Date value1, Date value2) {
-            addCriterion("up_time between", value1, value2, "upTime");
+        public Criteria andStorageIdBetween(Integer value1, Integer value2) {
+            addCriterion("storage_id between", value1, value2, "storageId");
             return (Criteria) this;
         }
 
-        public Criteria andUpTimeNotBetween(Date value1, Date value2) {
-            addCriterion("up_time not between", value1, value2, "upTime");
+        public Criteria andStorageIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("storage_id not between", value1, value2, "storageId");
             return (Criteria) this;
         }
 
@@ -485,66 +485,6 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
-        public Criteria andDownTimeIsNull() {
-            addCriterion("down_time is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeIsNotNull() {
-            addCriterion("down_time is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeEqualTo(Date value) {
-            addCriterion("down_time =", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeNotEqualTo(Date value) {
-            addCriterion("down_time <>", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeGreaterThan(Date value) {
-            addCriterion("down_time >", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("down_time >=", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeLessThan(Date value) {
-            addCriterion("down_time <", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeLessThanOrEqualTo(Date value) {
-            addCriterion("down_time <=", value, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeIn(List<Date> values) {
-            addCriterion("down_time in", values, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeNotIn(List<Date> values) {
-            addCriterion("down_time not in", values, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeBetween(Date value1, Date value2) {
-            addCriterion("down_time between", value1, value2, "downTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andDownTimeNotBetween(Date value1, Date value2) {
-            addCriterion("down_time not between", value1, value2, "downTime");
-            return (Criteria) this;
-        }
-
         public Criteria andIsHotIsNull() {
             addCriterion("is_hot is null");
             return (Criteria) this;
@@ -602,6 +542,186 @@ public class CommodityExample {
 
         public Criteria andIsHotNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_hot not between", value1, value2, "isHot");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNull() {
+            addCriterion("price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIsNotNull() {
+            addCriterion("price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceEqualTo(Double value) {
+            addCriterion("price =", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotEqualTo(Double value) {
+            addCriterion("price <>", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThan(Double value) {
+            addCriterion("price >", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("price >=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThan(Double value) {
+            addCriterion("price <", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceLessThanOrEqualTo(Double value) {
+            addCriterion("price <=", value, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceIn(List<Double> values) {
+            addCriterion("price in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotIn(List<Double> values) {
+            addCriterion("price not in", values, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceBetween(Double value1, Double value2) {
+            addCriterion("price between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceNotBetween(Double value1, Double value2) {
+            addCriterion("price not between", value1, value2, "price");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountIsNull() {
+            addCriterion("discount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountIsNotNull() {
+            addCriterion("discount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountEqualTo(Double value) {
+            addCriterion("discount =", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotEqualTo(Double value) {
+            addCriterion("discount <>", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountGreaterThan(Double value) {
+            addCriterion("discount >", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountGreaterThanOrEqualTo(Double value) {
+            addCriterion("discount >=", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountLessThan(Double value) {
+            addCriterion("discount <", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountLessThanOrEqualTo(Double value) {
+            addCriterion("discount <=", value, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountIn(List<Double> values) {
+            addCriterion("discount in", values, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotIn(List<Double> values) {
+            addCriterion("discount not in", values, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountBetween(Double value1, Double value2) {
+            addCriterion("discount between", value1, value2, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountNotBetween(Double value1, Double value2) {
+            addCriterion("discount not between", value1, value2, "discount");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceIsNull() {
+            addCriterion("discount_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceIsNotNull() {
+            addCriterion("discount_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceEqualTo(Double value) {
+            addCriterion("discount_price =", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceNotEqualTo(Double value) {
+            addCriterion("discount_price <>", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceGreaterThan(Double value) {
+            addCriterion("discount_price >", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("discount_price >=", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceLessThan(Double value) {
+            addCriterion("discount_price <", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceLessThanOrEqualTo(Double value) {
+            addCriterion("discount_price <=", value, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceIn(List<Double> values) {
+            addCriterion("discount_price in", values, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceNotIn(List<Double> values) {
+            addCriterion("discount_price not in", values, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceBetween(Double value1, Double value2) {
+            addCriterion("discount_price between", value1, value2, "discountPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andDiscountPriceNotBetween(Double value1, Double value2) {
+            addCriterion("discount_price not between", value1, value2, "discountPrice");
             return (Criteria) this;
         }
 
@@ -665,73 +785,63 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
-        public Criteria andXjbzIsNull() {
-            addCriterion("xjbz is null");
+        public Criteria andUpTimeIsNull() {
+            addCriterion("up_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzIsNotNull() {
-            addCriterion("xjbz is not null");
+        public Criteria andUpTimeIsNotNull() {
+            addCriterion("up_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzEqualTo(String value) {
-            addCriterion("xjbz =", value, "xjbz");
+        public Criteria andUpTimeEqualTo(Date value) {
+            addCriterion("up_time =", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzNotEqualTo(String value) {
-            addCriterion("xjbz <>", value, "xjbz");
+        public Criteria andUpTimeNotEqualTo(Date value) {
+            addCriterion("up_time <>", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzGreaterThan(String value) {
-            addCriterion("xjbz >", value, "xjbz");
+        public Criteria andUpTimeGreaterThan(Date value) {
+            addCriterion("up_time >", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzGreaterThanOrEqualTo(String value) {
-            addCriterion("xjbz >=", value, "xjbz");
+        public Criteria andUpTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("up_time >=", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzLessThan(String value) {
-            addCriterion("xjbz <", value, "xjbz");
+        public Criteria andUpTimeLessThan(Date value) {
+            addCriterion("up_time <", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzLessThanOrEqualTo(String value) {
-            addCriterion("xjbz <=", value, "xjbz");
+        public Criteria andUpTimeLessThanOrEqualTo(Date value) {
+            addCriterion("up_time <=", value, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzLike(String value) {
-            addCriterion("xjbz like", value, "xjbz");
+        public Criteria andUpTimeIn(List<Date> values) {
+            addCriterion("up_time in", values, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzNotLike(String value) {
-            addCriterion("xjbz not like", value, "xjbz");
+        public Criteria andUpTimeNotIn(List<Date> values) {
+            addCriterion("up_time not in", values, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzIn(List<String> values) {
-            addCriterion("xjbz in", values, "xjbz");
+        public Criteria andUpTimeBetween(Date value1, Date value2) {
+            addCriterion("up_time between", value1, value2, "upTime");
             return (Criteria) this;
         }
 
-        public Criteria andXjbzNotIn(List<String> values) {
-            addCriterion("xjbz not in", values, "xjbz");
-            return (Criteria) this;
-        }
-
-        public Criteria andXjbzBetween(String value1, String value2) {
-            addCriterion("xjbz between", value1, value2, "xjbz");
-            return (Criteria) this;
-        }
-
-        public Criteria andXjbzNotBetween(String value1, String value2) {
-            addCriterion("xjbz not between", value1, value2, "xjbz");
+        public Criteria andUpTimeNotBetween(Date value1, Date value2) {
+            addCriterion("up_time not between", value1, value2, "upTime");
             return (Criteria) this;
         }
     }
