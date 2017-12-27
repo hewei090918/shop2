@@ -13,7 +13,7 @@ public class Commodity {
 
     private Integer storageId;
 
-    private Boolean status;
+    private String status;
 
     private Boolean isHot;
 
@@ -72,12 +72,12 @@ public class Commodity {
         this.storageId = storageId;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 
     public Boolean getIsHot() {

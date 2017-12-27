@@ -7,7 +7,7 @@
     <result column="commodity_code" property="commodityCode" jdbcType="VARCHAR" />
     <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
     <result column="storage_id" property="storageId" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="CHAR" />
     <result column="is_hot" property="isHot" jdbcType="BIT" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="discount" property="discount" jdbcType="DOUBLE" />
@@ -113,7 +113,7 @@
       is_hot, price, discount, discount_price, 
       manager, up_time)
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
-      #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{status,jdbcType=BIT}, 
+      #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, 
       #{isHot,jdbcType=BIT}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, 
       #{manager,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP})
   </insert>
@@ -174,7 +174,7 @@
         #{storageId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=BIT},
+        #{status,jdbcType=CHAR},
       </if>
       <if test="isHot != null" >
         #{isHot,jdbcType=BIT},
@@ -221,7 +221,7 @@
         storage_id = #{record.storageId,jdbcType=INTEGER},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=BIT},
+        status = #{record.status,jdbcType=CHAR},
       </if>
       <if test="record.isHot != null" >
         is_hot = #{record.isHot,jdbcType=BIT},
@@ -253,7 +253,7 @@
       commodity_code = #{record.commodityCode,jdbcType=VARCHAR},
       commodity_type = #{record.commodityType,jdbcType=INTEGER},
       storage_id = #{record.storageId,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=BIT},
+      status = #{record.status,jdbcType=CHAR},
       is_hot = #{record.isHot,jdbcType=BIT},
       price = #{record.price,jdbcType=DOUBLE},
       discount = #{record.discount,jdbcType=DOUBLE},
@@ -280,7 +280,7 @@
         storage_id = #{storageId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=BIT},
+        status = #{status,jdbcType=CHAR},
       </if>
       <if test="isHot != null" >
         is_hot = #{isHot,jdbcType=BIT},
@@ -309,7 +309,7 @@
       commodity_code = #{commodityCode,jdbcType=VARCHAR},
       commodity_type = #{commodityType,jdbcType=INTEGER},
       storage_id = #{storageId,jdbcType=INTEGER},
-      status = #{status,jdbcType=BIT},
+      status = #{status,jdbcType=CHAR},
       is_hot = #{isHot,jdbcType=BIT},
       price = #{price,jdbcType=DOUBLE},
       discount = #{discount,jdbcType=DOUBLE},

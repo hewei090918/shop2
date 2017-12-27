@@ -45,6 +45,13 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public List<User> findEnableList() {
+		UserExample example = new UserExample();
+		example.createCriteria().andLockedEqualTo(false);
+		return userMapper.selectByExample(example);
+	}
+	
+	@Override
 	public int count(UserFilter filter) {
 		UserExample example = new UserExample();
 		Criteria criteria = example.createCriteria();
@@ -180,5 +187,6 @@ public class UserServiceImpl implements UserService {
 		}
 		
 	}
+
 	
 }

@@ -67,8 +67,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                         <label class="col-sm-2 control-label">状态:</label>
 	                         <div class="col-sm-10">
 	                            <label class="radio-inline"> <input type="radio" name="status" value="1"> 在售 </label>
-                                <label class="radio-inline"> <input type="radio" name="status" value="0"> 卖出</label>
-                                <label class="radio-inline"> <input type="radio" name="status" value="-1" checked> 全部</label>
+                                <label class="radio-inline"> <input type="radio" name="status" value="2"> 卖出</label>
+                                <label class="radio-inline"> <input type="radio" name="status" value="3"> 下架</label>
+                                <label class="radio-inline"> <input type="radio" name="status" value="" checked> 全部</label>
 	                         </div>
 	                     </div>
 	                 </div>
@@ -95,8 +96,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button id="btn_commodity_add" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
             </button>
-            <button id="btn_commodity_delete" type="button" class="btn btn-default">
-               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
+            <button id="btn_commodity_sell" type="button" class="btn btn-success">
+               <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 出售
+            </button>
+            <button id="btn_commodity_down" type="button" class="btn btn-warning">
+               <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 下架
             </button>
         </div>
         
@@ -125,8 +129,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">商品类别:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="commodityType" id="_commodityType">
-		                         	 <select class="form-control select2" id="_commodityTypeSelect">
+		                             <input type="hidden" class="form-control" name="commodityType" id="modal_commodityType">
+		                         	 <select class="form-control select2" id="modal_commodityTypeSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>
@@ -135,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                         <div class="col-sm-9">
 		                         	 <div class="input-group">
 			                             <span class="input-group-addon">¥</span>
-							             <input type="text" name="price" id="_price" data-inputmask="'alias':'money'" class="form-control" style="height:28px;">
+							             <input type="text" name="price" id="modal_price" data-inputmask="'alias':'money'" class="form-control" style="height:28px;">
 						             </div>
 		                         </div>
 		                     </div>
@@ -160,8 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">货管员:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="manager" id="_manager">
-		                         	 <select class="form-control select2" id="_managerSelect">
+		                             <input type="hidden" class="form-control" name="manager" id="modal_manager">
+		                         	 <select class="form-control select2" id="modal_managerSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>

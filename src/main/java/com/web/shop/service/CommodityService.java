@@ -23,4 +23,8 @@ public interface CommodityService {
 	
 	boolean delete(String ids);
 	
+	boolean sell(String ids);
+	
+	boolean down(String ids);
+	
 }

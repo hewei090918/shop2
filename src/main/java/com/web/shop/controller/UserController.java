@@ -44,6 +44,12 @@ public class UserController {
 	@RequestMapping(value = "/getList")
 	public 
 	@ResponseBody List<User> getList() {
+		return userService.findEnableList();
+	}
+	
+	@RequestMapping(value = "/getAll")
+	public 
+	@ResponseBody List<User> getAll() {
 		return userService.findAll();
 	}
 	

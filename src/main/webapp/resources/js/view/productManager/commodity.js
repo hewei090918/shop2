@@ -26,6 +26,18 @@ $(function(){
         pageSize:10,//单页记录数
         pageList:[5,10,20,30],
         showRefresh:false,//刷新按钮
+        rowStyle: function (row, index) {
+            //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+            var strclass = "";
+            if (row.status == 2) {
+                strclass = 'success';
+            }else if(row.status == 3) {
+                strclass = 'warning';
+            }else {
+            	return {};
+            }
+            return { classes: strclass }
+        },
         clickToSelect: true,
         height: $(window).height()-340,
         columns:[
@@ -35,7 +47,12 @@ $(function(){
                 checkbox:true,//复选框
                 width:30,
                 align:'center',
-                valign:'middle'
+                valign:'middle',
+                formatter:function(value, row, index){
+                	if(row.status != 1) {
+                		return {disabled : true};
+                	}
+            	}
             }, {
             	title:'序号',
             	field:'_rowNum',
@@ -81,12 +98,12 @@ $(function(){
             }, {
                 title:'单价',
                 field:'price',
-                width:80,
+                width:90,
                 formatter: priceFormatter
             }, {
                 title:'会员价',
                 field:'discountPrice',
-                width:80,
+                width:90,
                 formatter: discountPriceFormatter
             }, {
                 title:'manager',
@@ -147,8 +164,8 @@ $(function(){
     
     //新增按钮事件
     $('#btn_commodity_add').click(function(){
-    	bindTypeSelect('_commodityTypeSelect', '_commodityType');
-    	bindUserSelect('_managerSelect', '_manager');
+    	bindTypeSelect('modal_commodityTypeSelect', 'modal_commodityType');
+    	bindUserSelect('modal_managerSelect', 'modal_manager');
     	
         $('#commodity_modal').modal('show');
     });
@@ -163,10 +180,28 @@ $(function(){
         });  
     });  
     
-    //删除按钮事件
-    $('#btn_commodity_delete').click(function(){
+    $('#btn_commodity_save').click(function(){
+    	var params = $('#commodity_form').serialize();
+    	$.ajax({
+    		type: 'POST',
+    		url: base + '/commodity/addCommodity.html',
+    		data: params,
+    		success: function(data) {
+    			if(data.success) {
+    				toastr.success(data.message);
+    				$('#commodity_modal').modal('hide');
+    				refreshTable();
+    			}else {
+    				toastr.warning(data.message);
+    			}
+    		},
+    		dataType: 'json'
+		});
+    });
+    
+    //出售按钮事件
+    $('#btn_commodity_sell').click(function(){
         var rows = $('#commodityList_table').bootstrapTable('getSelections');
-//        console.log(rows);
         if(rows.length == 0) {
         	toastr.warning('您尚未选择任何记录!');
         	return;
@@ -178,7 +213,36 @@ $(function(){
         	var ids = array.join(",");
         	$.ajax({
         		type: 'POST',
-        		url: base + '/commodity/deleteCommodity.html',
+        		url: base + '/commodity/commoditySell.html',
+        		data: {ids: ids},
+        		success: function(data) {
+        			if(data.success) {
+        				toastr.success(data.message);
+        				refreshTable();
+        			}else {
+        				toastr.warning(data.message);
+        			}
+        		},
+        		dataType: 'json'
+    		});
+        }
+    });
+    
+    //下架按钮事件
+    $('#btn_commodity_down').click(function(){
+        var rows = $('#commodityList_table').bootstrapTable('getSelections');
+        if(rows.length == 0) {
+        	toastr.warning('您尚未选择任何记录!');
+        	return;
+        }else {
+        	var array = [];
+        	$.each(rows, function(index, row) {
+        		array.push(row.commodityId);
+        	});
+        	var ids = array.join(",");
+        	$.ajax({
+        		type: 'POST',
+        		url: base + '/commodity/commodityDown.html',
         		data: {ids: ids},
         		success: function(data) {
         			if(data.success) {
@@ -266,12 +330,15 @@ function dateFormatter(value) {
 }
 
 function statusFormatter(value,row,index) {
-	if(value==true){
-        return '<i class="fa fa-arrow-up" style="cursor:pointer;color:green" title="在售"></i>';
-    }else if(value==false){
+	console.log(value);
+	if(value == 1){
+        return '<i class="fa fa-support" style="cursor:pointer;color:green" title="在售"></i>';
+    }else if(value == 2){
         return '<i class="fa fa-arrow-down" style="cursor:pointer;color:red" title="卖出"></i>';
+    }else if(value == 3){
+        return '<i class="fa fa-tags" style="cursor:pointer;color:grey" title="下架"></i>'
     }else{
-        return ''
+    	return '';
     }
 }
 

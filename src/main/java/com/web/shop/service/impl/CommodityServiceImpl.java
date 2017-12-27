@@ -1,6 +1,8 @@
 package com.web.shop.service.impl;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -11,8 +13,11 @@ import com.web.shop.bean.query.CommodityFilter;
 import com.web.shop.domain.Commodity;
 import com.web.shop.domain.CommodityExample;
 import com.web.shop.domain.CommodityExample.Criteria;
+import com.web.shop.domain.Storage;
+import com.web.shop.domain.StorageExample;
 import com.web.shop.mapper.CommodityMapper;
 import com.web.shop.mapper.CommodityTypeMapper;
+import com.web.shop.mapper.StorageMapper;
 import com.web.shop.mapper.UserMapper;
 import com.web.shop.service.CommodityService;
 
@@ -26,6 +31,9 @@ public class CommodityServiceImpl implements CommodityService {
 	
 	@Autowired
 	private CommodityTypeMapper commodityTypeMapper;
+	
+	@Autowired
+	private StorageMapper storageMapper;
 	
 	@Autowired
 	private UserMapper userMapper;
@@ -68,11 +76,9 @@ public class CommodityServiceImpl implements CommodityService {
 		/*
 		 * 按在售状态查询
 		 */
-		int status = filter.getStatus();
-		if(status == 1) {
-			criteria.andStatusEqualTo(true);
-		}else if(status == 0) {
-			criteria.andStatusEqualTo(false);
+		String status = filter.getStatus();
+		if(StringUtils.isNotBlank(status)) {
+			criteria.andStatusEqualTo(status);
 		}
 		/*
 		 * 按是否热卖查询
@@ -122,11 +128,9 @@ public class CommodityServiceImpl implements CommodityService {
 		/*
 		 * 按在售状态查询
 		 */
-		int status = filter.getStatus();
-		if(status == 1) {
-			criteria.andStatusEqualTo(true);
-		}else if(status == 0) {
-			criteria.andStatusEqualTo(false);
+		String status = filter.getStatus();
+		if(StringUtils.isNotBlank(status)) {
+			criteria.andStatusEqualTo(status);
 		}
 		/*
 		 * 按是否热卖查询
@@ -147,6 +151,7 @@ public class CommodityServiceImpl implements CommodityService {
 		
 		example.setDistinct(true);
 		//按商品名称排序
+//		example.setOrderByClause("status asc");
 		example.setOrderByClause("commodity_name desc");
 		
 		List<Commodity> list = commodityMapper.selectByExample(example);
@@ -164,6 +169,42 @@ public class CommodityServiceImpl implements CommodityService {
 	@Override
 	public boolean save(Commodity commodity) {
 		try{
+			String receiveName = commodity.getCommodityName();
+			StorageExample se = new StorageExample();
+			se.createCriteria().andStorageNameEqualTo(receiveName);
+			List<Storage> sl = storageMapper.selectByExample(se);
+			if(null != sl && sl.size() > 0) {
+				Storage existStorage = sl.get(0);
+				long amount = existStorage.getAmount();
+				existStorage.setAmount(amount+1);
+				existStorage.setLatestInTime(new Date());
+				int flag = storageMapper.updateByPrimaryKey(existStorage);
+				if(flag == 1){
+					logger.info("更新仓库成功");
+					commodity.setStorageId(existStorage.getStorageId());
+				}
+			}else {
+				Storage newStorage = new Storage();
+				newStorage.setStorageName(commodity.getCommodityName());
+				newStorage.setCommodityType(commodity.getCommodityType());
+				newStorage.setAmount(1L);
+				newStorage.setSoldOut(false);
+				newStorage.setFirstInTime(new Date());
+				newStorage.setLatestInTime(new Date());
+				int flag = storageMapper.insert(newStorage);
+				if(flag == 1) {
+					logger.info("新增仓库成功");
+					StorageExample example = new StorageExample();
+					example.setOrderByClause("storage_id desc");
+					List<Storage> storageList = storageMapper.selectByExample(example);
+					commodity.setStorageId(storageList.get(0).getStorageId());
+				}
+			}
+			String commodityCode = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
+			commodity.setCommodityCode(commodityCode);
+			commodity.setDiscountPrice(commodity.getPrice()*commodity.getDiscount());
+			commodity.setUpTime(new Date());
+			commodity.setStatus("1");	//默认在售
 			commodityMapper.insert(commodity);
 			logger.info("新增商品成功");
 			return true;
@@ -207,13 +248,55 @@ public class CommodityServiceImpl implements CommodityService {
 			for(String id: idstr) {
 				commodityMapper.deleteByPrimaryKey(Integer.parseInt(id));
 			}
-			logger.info("删除商品成功");
+			logger.info("批量删除商品成功");
 			return true;
 		}catch(Exception e) {
-			logger.error("删除商品失败", e);
+			logger.error("批量删除商品失败", e);
 			return false;
 		}
 		
+	}
+
+	@Override
+	public boolean sell(String ids) {
+		String[] idstr = ids.split(",");
+		try{
+			for(String id: idstr) {
+				Commodity commodity = commodityMapper.selectByPrimaryKey(Integer.parseInt(id));
+				commodity.setStatus("2");
+				commodityMapper.updateByPrimaryKey(commodity);
+				int storageId = commodity.getStorageId();
+				Storage storage = storageMapper.selectByPrimaryKey(storageId);
+				long amount = storage.getAmount()-1;
+				storage.setAmount(amount);
+				if(amount == 0) {
+					storage.setSoldOut(true);
+				}
+				storageMapper.updateByPrimaryKey(storage);
+			}
+			logger.info("批量出售商品成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("批量出售商品失败", e);
+			return false;
+		}
+	}
+
+	@Override
+	public boolean down(String ids) {
+		String[] idstr = ids.split(",");
+		try{
+			for(String id: idstr) {
+				Commodity commodity = commodityMapper.selectByPrimaryKey(Integer.parseInt(id));
+				commodity.setStatus("3");
+				commodityMapper.updateByPrimaryKey(commodity);
+			}
+			logger.info("批量下架商品成功");
+			return true;
+		}catch(Exception e) {
+			logger.error("批量下架商品失败", e);
+			return false;
+		}
 	}
 
 }

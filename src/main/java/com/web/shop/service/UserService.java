@@ -11,6 +11,8 @@ public interface UserService {
 	
 	List<User> findAll();
 	
+	List<User> findEnableList();
+	
 	int count(UserFilter filter);
 	
 	List<User> find(UserFilter filter);

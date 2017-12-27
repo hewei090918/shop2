@@ -17,7 +17,7 @@ public class CommodityFilter {
 	/**
 	 * 在售状态
 	 */
-	private int status;
+	private String status;
 	/**
 	 * 是否热卖
 	 */
@@ -45,10 +45,10 @@ public class CommodityFilter {
 	public void setCommodityType(String commodityType) {
 		this.commodityType = commodityType;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public int getIsHot() {

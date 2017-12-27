@@ -33,6 +33,21 @@ public class CommodityController {
 		return pageView;
 	}
 	
+	@RequestMapping(value = "/addCommodity")
+	public 
+	@ResponseBody JsonResult addCommodity(@ModelAttribute Commodity commodity) {
+		JsonResult result = new JsonResult();
+		boolean success = commodityService.save(commodity);
+		if(success) {
+			result.setSuccess(true);
+			result.setMessage("新增商品成功!");
+		}else{
+			result.setSuccess(false);
+			result.setMessage("新增商品失败!");
+		}
+		return result;
+	}
+	
 	@RequestMapping(value = "/deleteCommodity")
 	public 
 	@ResponseBody JsonResult deleteCommodity(@RequestParam String ids) {
@@ -44,6 +59,36 @@ public class CommodityController {
 		}else{
 			result.setSuccess(false);
 			result.setMessage("删除商品失败!");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/commoditySell")
+	public 
+	@ResponseBody JsonResult commoditySell(@RequestParam String ids) {
+		JsonResult result = new JsonResult();
+		boolean success = commodityService.sell(ids);
+		if(success) {
+			result.setSuccess(true);
+			result.setMessage("商品出售成功!");
+		}else{
+			result.setSuccess(false);
+			result.setMessage("商品出售失败!");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/commodityDown")
+	public 
+	@ResponseBody JsonResult commodityDown(@RequestParam String ids) {
+		JsonResult result = new JsonResult();
+		boolean success = commodityService.down(ids);
+		if(success) {
+			result.setSuccess(true);
+			result.setMessage("商品下架成功!");
+		}else{
+			result.setSuccess(false);
+			result.setMessage("商品下架失败!");
 		}
 		return result;
 	}
