@@ -66,10 +66,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     <div class="form-group">
 	                         <label class="col-sm-2 control-label">状态:</label>
 	                         <div class="col-sm-10">
-	                            <label class="radio-inline"> <input type="radio" name="status" value="1"> 在售 </label>
+	                            <label class="radio-inline"> <input type="radio" name="status" value="1" checked> 在售 </label>
                                 <label class="radio-inline"> <input type="radio" name="status" value="2"> 卖出</label>
                                 <label class="radio-inline"> <input type="radio" name="status" value="3"> 下架</label>
-                                <label class="radio-inline"> <input type="radio" name="status" value="" checked> 全部</label>
+                                <label class="radio-inline"> <input type="radio" name="status" value=""> 全部</label>
 	                         </div>
 	                     </div>
 	                 </div>

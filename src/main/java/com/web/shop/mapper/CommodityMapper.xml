@@ -14,6 +14,8 @@
     <result column="discount_price" property="discountPrice" jdbcType="DOUBLE" />
     <result column="manager" property="manager" jdbcType="INTEGER" />
     <result column="up_time" property="upTime" jdbcType="TIMESTAMP" />
+    <result column="sell_time" property="sellTime" jdbcType="TIMESTAMP" />
+    <result column="down_time" property="downTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -75,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     commodity_id, commodity_name, commodity_code, commodity_type, storage_id, status, 
-    is_hot, price, discount, discount_price, manager, up_time
+    is_hot, price, discount, discount_price, manager, up_time, sell_time, down_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.CommodityExample" >
     select
@@ -111,11 +113,13 @@
     insert into commodity (commodity_id, commodity_name, commodity_code, 
       commodity_type, storage_id, status, 
       is_hot, price, discount, discount_price, 
-      manager, up_time)
+      manager, up_time, sell_time, 
+      down_time)
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
       #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, 
       #{isHot,jdbcType=BIT}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, 
-      #{manager,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP})
+      #{manager,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{sellTime,jdbcType=TIMESTAMP}, 
+      #{downTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity
@@ -156,6 +160,12 @@
       <if test="upTime != null" >
         up_time,
       </if>
+      <if test="sellTime != null" >
+        sell_time,
+      </if>
+      <if test="downTime != null" >
+        down_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commodityId != null" >
@@ -193,6 +203,12 @@
       </if>
       <if test="upTime != null" >
         #{upTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sellTime != null" >
+        #{sellTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        #{downTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -241,6 +257,12 @@
       <if test="record.upTime != null" >
         up_time = #{record.upTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.sellTime != null" >
+        sell_time = #{record.sellTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.downTime != null" >
+        down_time = #{record.downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -259,7 +281,9 @@
       discount = #{record.discount,jdbcType=DOUBLE},
       discount_price = #{record.discountPrice,jdbcType=DOUBLE},
       manager = #{record.manager,jdbcType=INTEGER},
-      up_time = #{record.upTime,jdbcType=TIMESTAMP}
+      up_time = #{record.upTime,jdbcType=TIMESTAMP},
+      sell_time = #{record.sellTime,jdbcType=TIMESTAMP},
+      down_time = #{record.downTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,6 +324,12 @@
       <if test="upTime != null" >
         up_time = #{upTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="sellTime != null" >
+        sell_time = #{sellTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downTime != null" >
+        down_time = #{downTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where commodity_id = #{commodityId,jdbcType=INTEGER}
   </update>
@@ -315,7 +345,9 @@
       discount = #{discount,jdbcType=DOUBLE},
       discount_price = #{discountPrice,jdbcType=DOUBLE},
       manager = #{manager,jdbcType=INTEGER},
-      up_time = #{upTime,jdbcType=TIMESTAMP}
+      up_time = #{upTime,jdbcType=TIMESTAMP},
+      sell_time = #{sellTime,jdbcType=TIMESTAMP},
+      down_time = #{downTime,jdbcType=TIMESTAMP}
     where commodity_id = #{commodityId,jdbcType=INTEGER}
   </update>
 </mapper>

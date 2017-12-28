@@ -15,6 +15,10 @@ public interface CommodityService {
 	
 	List<Commodity> find(CommodityFilter filter);
 	
+	int countByStorageId(int storageId);
+	
+	List<Commodity> getListByStorageId(int storageId);
+	
 	boolean save(Commodity commodity);
 	
 	boolean update(Commodity commodity);

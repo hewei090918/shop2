@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2017-12-26 16:42:03
+Date: 2017-12-28 11:31:59
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,24 +25,34 @@ CREATE TABLE `commodity` (
   `commodity_code` varchar(20) DEFAULT NULL COMMENT '商品编码',
   `commodity_type` int(11) NOT NULL COMMENT '商品类别',
   `storage_id` int(11) DEFAULT NULL COMMENT '仓库ID',
-  `status` tinyint(1) unsigned DEFAULT '0' COMMENT '在售状态（1：在售，0：卖出）',
+  `status` char(1) DEFAULT '1' COMMENT '在售状态（1：在售，2：卖出，3：下架）',
   `is_hot` tinyint(1) unsigned DEFAULT '0' COMMENT '是否热卖（1：是，0：否）',
   `price` double(8,2) DEFAULT '0.00' COMMENT '单价（原价）',
   `discount` double(5,2) DEFAULT '1.00' COMMENT '折扣百分比',
   `discount_price` double(8,2) DEFAULT '0.00' COMMENT '折扣会员价',
   `manager` int(11) DEFAULT NULL COMMENT '货物管理员',
   `up_time` datetime DEFAULT NULL COMMENT '上架时间',
+  `sell_time` datetime DEFAULT NULL COMMENT '卖出时间',
+  `down_time` datetime DEFAULT NULL COMMENT '下架时间',
   PRIMARY KEY (`commodity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of commodity
 -- ----------------------------
-INSERT INTO `commodity` VALUES ('2', '台式烤香肠', 'S0876H233344', '1', '1', '1', '1', '2.20', '1.00', '2.20', '6', '2017-12-20 13:48:56');
-INSERT INTO `commodity` VALUES ('3', '大宝SOD蜜', '4552F4845566', '3', '2', '0', '0', '32.50', '1.00', '32.50', '8', '2017-12-08 14:09:24');
-INSERT INTO `commodity` VALUES ('4', '台式烤香肠', '58KY9023UQ67', '1', '1', '1', '1', '2.20', '1.00', '2.20', '6', '2017-12-15 17:31:59');
-INSERT INTO `commodity` VALUES ('5', '海尔电冰箱', '7768ER8H90NB', '2', '3', '0', '0', '2800.00', '1.00', '2242.00', '6', '2017-12-26 10:11:19');
-INSERT INTO `commodity` VALUES ('6', '海尔电冰箱', '4455HF1234UN89', '2', '3', '0', '0', '3450.50', '1.00', '2932.50', '6', '2017-12-25 10:14:43');
+INSERT INTO `commodity` VALUES ('15', '旺仔小馒头', 'b1b17df24332', '1', '9', '2', '1', '2.00', '1.00', '2.00', '1', '2017-12-27 13:08:41', '2017-12-28 11:31:00', null);
+INSERT INTO `commodity` VALUES ('16', '旺仔小馒头', 'f2d213e0b42a', '1', '9', '2', '1', '2.00', '1.00', '2.00', '1', '2017-12-27 14:08:32', '2017-12-28 11:30:58', null);
+INSERT INTO `commodity` VALUES ('17', '旺仔小馒头', '8a040e900ca6', '1', '9', '2', '1', '2.00', '1.00', '2.00', '1', '2017-12-27 14:08:41', '2017-12-28 11:30:56', null);
+INSERT INTO `commodity` VALUES ('18', '小天才电话手表', 'b222cc96402f', '7', '10', '2', '1', '799.00', '0.80', '639.20', '6', '2017-12-27 14:25:06', '2017-12-28 11:30:21', null);
+INSERT INTO `commodity` VALUES ('19', 'iPhone X 64G', '548be5e00e74', '7', '11', '2', '1', '8288.00', '0.90', '7459.20', '6', '2017-12-27 14:26:02', '2017-12-28 11:28:39', null);
+INSERT INTO `commodity` VALUES ('20', 'Spalding篮球', 'ec3d4f74026d', '4', '12', '2', '1', '288.00', '0.85', '244.80', '8', '2017-12-27 14:26:41', '2017-12-28 11:30:17', null);
+INSERT INTO `commodity` VALUES ('21', '老干妈辣酱', '9c861af493f6', '1', '13', '2', '1', '20.00', '1.00', '20.00', '10', '2017-12-27 14:27:29', '2017-12-28 08:30:06', null);
+INSERT INTO `commodity` VALUES ('22', '老干妈辣酱', '5319e7c85739', '1', '13', '3', '1', '20.00', '1.00', '20.00', '10', '2017-12-27 14:28:09', null, '2017-12-28 11:24:14');
+INSERT INTO `commodity` VALUES ('23', '老干妈辣酱', '569595de797b', '1', '13', '3', '1', '20.00', '1.00', '20.00', '10', '2017-12-27 14:32:47', null, '2017-12-28 11:24:16');
+INSERT INTO `commodity` VALUES ('24', 'iPhone X 64G', '65584c0c8f75', '7', '11', '2', '1', '8288.00', '0.90', '7459.20', '8', '2017-12-27 14:33:28', '2017-12-28 11:29:17', null);
+INSERT INTO `commodity` VALUES ('25', '曼秀雷敦洗面奶', '562dbd9183b9', '3', '14', '3', '0', '42.00', '0.90', '37.80', '11', '2017-12-27 17:10:35', null, '2017-12-28 11:26:34');
+INSERT INTO `commodity` VALUES ('26', '回力帆布鞋', '6cf373b46b7c', '8', '15', '1', '0', '78.00', '0.90', '70.20', '10', '2017-12-27 17:11:37', null, null);
+INSERT INTO `commodity` VALUES ('27', '回力帆布鞋', 'eb06317cd5e9', '8', '15', '3', '0', '78.00', '0.90', '70.20', '10', '2017-12-27 17:11:58', null, '2017-12-28 11:27:41');
 
 -- ----------------------------
 -- Table structure for commodity_type
@@ -142,14 +152,18 @@ CREATE TABLE `storage` (
   `latest_in_time` datetime DEFAULT NULL COMMENT '最新入库时间',
   `sold_out` tinyint(1) unsigned DEFAULT '0' COMMENT '是否售罄（1：售罄，0：未售罄）',
   PRIMARY KEY (`storage_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of storage
 -- ----------------------------
-INSERT INTO `storage` VALUES ('1', '[仓]台式烤香肠', '1', '500', '2017-12-01 10:07:17', '2017-12-20 10:07:22', '0');
-INSERT INTO `storage` VALUES ('2', '[仓]大宝SOD蜜', '3', '20', '2017-12-06 17:30:58', '2017-12-23 17:31:01', '1');
-INSERT INTO `storage` VALUES ('3', '[仓]海尔电冰箱', '2', '10', '2017-12-25 10:13:08', '2017-12-26 10:13:13', '1');
+INSERT INTO `storage` VALUES ('9', '旺仔小馒头', '1', '0', '2017-12-27 13:08:41', '2017-12-27 14:08:41', '1');
+INSERT INTO `storage` VALUES ('10', '小天才电话手表', '7', '0', '2017-12-27 14:25:06', '2017-12-27 14:25:06', '1');
+INSERT INTO `storage` VALUES ('11', 'iPhone X 64G', '7', '0', '2017-12-27 14:26:02', '2017-12-27 14:33:27', '1');
+INSERT INTO `storage` VALUES ('12', 'Spalding篮球', '4', '0', '2017-12-27 14:26:41', '2017-12-27 14:26:41', '1');
+INSERT INTO `storage` VALUES ('13', '老干妈辣酱', '1', '2', '2017-12-27 14:27:29', '2017-12-27 14:32:47', '0');
+INSERT INTO `storage` VALUES ('14', '曼秀雷敦洗面奶', '3', '1', '2017-12-27 17:10:35', '2017-12-27 17:10:35', '0');
+INSERT INTO `storage` VALUES ('15', '回力帆布鞋', '8', '2', '2017-12-27 17:11:37', '2017-12-27 17:11:58', '0');
 
 -- ----------------------------
 -- Table structure for user
@@ -160,7 +174,7 @@ CREATE TABLE `user` (
   `username` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT '姓名',
   `password` varchar(50) NOT NULL COMMENT '密码',
   `realname` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '真实姓名',
-  `gender` tinyint(1) DEFAULT NULL COMMENT '性别（1：男，2：女）',
+  `gender` tinyint(1) unsigned DEFAULT NULL COMMENT '性别（1：男，2：女）',
   `idCard` varchar(50) DEFAULT NULL COMMENT '身份证号码',
   `birthday` date DEFAULT NULL COMMENT '出生日期',
   `phone` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '联系方式',
@@ -169,7 +183,7 @@ CREATE TABLE `user` (
   `role_id` int(11) DEFAULT NULL COMMENT '角色ID',
   `avatar` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '头像存放位置',
   `address` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '家庭住址',
-  `locked` tinyint(1) DEFAULT '0' COMMENT '是否锁定（1：锁定，0：启用）',
+  `locked` tinyint(1) unsigned DEFAULT '0' COMMENT '是否锁定（1：锁定，0：启用）',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 

@@ -146,10 +146,23 @@ $(function(){
     	$('#commodityTypeSelect0').val(null).trigger("change");
     });
     
+    //模态框居中
+    $('#storage_detail_modal').on('show.bs.modal', function (e) {
+    	$(this).css('display', 'block');  
+    	
+        var modalHeight = $(window).height()/2 - $('#storage_detail_modal .modal-dialog').height()/2;  
+        $(this).find('.modal-dialog').css({  
+            'margin-top': modalHeight  
+        });  
+    });
+    
 });
 
 function dateFormatter(value) {
-	return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
+	if(value)
+		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
+	else
+		return '时间待定';
 }
 
 function soldOutFormatter(value,row,index) {
@@ -163,11 +176,78 @@ function soldOutFormatter(value,row,index) {
 }
 
 function operateFormatter(value,row,index) {
-	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-list" style="cursor:pointer;color:purple;" title="查看详情"></i>';
+	
+	return '<i onclick="showDetail(' + row.storageId + ')" class="glyphicon glyphicon-list" style="cursor:pointer;color:purple;" title="查看详情"></i>';
 }
 
-function showDetail(index) {
-	console.log(index);
+function showDetail(id) {
+	$('#storageList_table').bootstrapTable('uncheckAll');
+	$('#storDetList_table').bootstrapTable('destroy');
+	$('#storDetList_table').bootstrapTable({
+		url: base + "/commodity/queryByStorageId.html",
+		striped: true, 
+        dataField: "data",
+        queryParams: function() {
+        	return {
+        		storageId: id
+        	}
+        },
+        sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1,//初始化加载第一页，默认第一页
+        pagination:true,//是否分页
+        pageSize:5,//单页记录数
+        pageList:[5,10,20],
+        showRefresh:false,//刷新按钮
+        clickToSelect: true,
+        height: 400,
+        columns:[
+             {
+            	title:'序号',
+            	field:'_rowNum',
+            	width:20,
+            	align:'center',
+            	formatter: function (value, row, index) {  
+                    return index+1;  
+                }  
+             }, {
+                 title:'商品名称',
+                 field:'commodityName',
+                 width:130
+             }, {
+                 title:'商品编码',
+                 field:'commodityCode',
+                 width:130
+             }, {
+                 title:'上架时间',
+                 field:'upTime',
+                 formatter: dateFormatter
+             }, {
+                 title:'下架时间',
+                 field:'downTime',
+                 formatter: dateFormatter
+             }, {
+                 title:'状态',
+                 field:'status',
+                 width:50,
+                 align:'center',
+                 formatter: statusFormatter
+             }
+         ],
+         locale:'zh-CN'//中文支持
+	})
+	$('#storage_detail_modal').modal('show');
+}
+
+function statusFormatter(value,row,index) {
+	if(value == 1){
+        return '<i class="fa fa-support" style="cursor:pointer;color:green" title="在售"></i>';
+    }else if(value == 2){
+        return '<i class="fa fa-arrow-down" style="cursor:pointer;color:red" title="卖出"></i>';
+    }else if(value == 3){
+        return '<i class="fa fa-tags" style="cursor:pointer;color:grey" title="下架"></i>'
+    }else{
+    	return '';
+    }
 }
 
 

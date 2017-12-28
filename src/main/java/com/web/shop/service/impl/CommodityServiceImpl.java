@@ -1,5 +1,6 @@
 package com.web.shop.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -165,6 +166,30 @@ public class CommodityServiceImpl implements CommodityService {
 		}
 		return list;
 	}
+	
+	@Override
+	public int countByStorageId(int storageId) {
+		CommodityExample example = new CommodityExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andStorageIdEqualTo(storageId);
+		List<String> listVal = new ArrayList<String>();
+		listVal.add("1");//在售
+		listVal.add("3");//下架
+		criteria.andStatusIn(listVal);//不包括卖出的
+		return commodityMapper.countByExample(example);
+	}
+	
+	@Override
+	public List<Commodity> getListByStorageId(int storageId) {
+		CommodityExample example = new CommodityExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andStorageIdEqualTo(storageId);
+		List<String> listVal = new ArrayList<String>();
+		listVal.add("1");//在售
+		listVal.add("3");//下架
+		criteria.andStatusIn(listVal);//不包括卖出的
+		return commodityMapper.selectByExample(example);
+	}
 
 	@Override
 	public boolean save(Commodity commodity) {
@@ -264,6 +289,7 @@ public class CommodityServiceImpl implements CommodityService {
 			for(String id: idstr) {
 				Commodity commodity = commodityMapper.selectByPrimaryKey(Integer.parseInt(id));
 				commodity.setStatus("2");
+				commodity.setSellTime(new Date());
 				commodityMapper.updateByPrimaryKey(commodity);
 				int storageId = commodity.getStorageId();
 				Storage storage = storageMapper.selectByPrimaryKey(storageId);
@@ -289,6 +315,7 @@ public class CommodityServiceImpl implements CommodityService {
 			for(String id: idstr) {
 				Commodity commodity = commodityMapper.selectByPrimaryKey(Integer.parseInt(id));
 				commodity.setStatus("3");
+				commodity.setDownTime(new Date());
 				commodityMapper.updateByPrimaryKey(commodity);
 			}
 			logger.info("批量下架商品成功");
@@ -298,5 +325,6 @@ public class CommodityServiceImpl implements CommodityService {
 			return false;
 		}
 	}
+	
 
 }

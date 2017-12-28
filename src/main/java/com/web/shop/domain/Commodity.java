@@ -26,6 +26,10 @@ public class Commodity {
     private Integer manager;
 
     private Date upTime;
+
+    private Date sellTime;
+
+    private Date downTime;
     
     //用于页面展示
     private String commodityTypeName;
@@ -126,6 +130,22 @@ public class Commodity {
 
     public void setUpTime(Date upTime) {
         this.upTime = upTime;
+    }
+
+    public Date getSellTime() {
+        return sellTime;
+    }
+
+    public void setSellTime(Date sellTime) {
+        this.sellTime = sellTime;
+    }
+
+    public Date getDownTime() {
+        return downTime;
+    }
+
+    public void setDownTime(Date downTime) {
+        this.downTime = downTime;
     }
 
 	public String getCommodityTypeName() {

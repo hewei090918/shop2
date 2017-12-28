@@ -854,6 +854,126 @@ public class CommodityExample {
             addCriterion("up_time not between", value1, value2, "upTime");
             return (Criteria) this;
         }
+
+        public Criteria andSellTimeIsNull() {
+            addCriterion("sell_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeIsNotNull() {
+            addCriterion("sell_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeEqualTo(Date value) {
+            addCriterion("sell_time =", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeNotEqualTo(Date value) {
+            addCriterion("sell_time <>", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeGreaterThan(Date value) {
+            addCriterion("sell_time >", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("sell_time >=", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeLessThan(Date value) {
+            addCriterion("sell_time <", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeLessThanOrEqualTo(Date value) {
+            addCriterion("sell_time <=", value, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeIn(List<Date> values) {
+            addCriterion("sell_time in", values, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeNotIn(List<Date> values) {
+            addCriterion("sell_time not in", values, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeBetween(Date value1, Date value2) {
+            addCriterion("sell_time between", value1, value2, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andSellTimeNotBetween(Date value1, Date value2) {
+            addCriterion("sell_time not between", value1, value2, "sellTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIsNull() {
+            addCriterion("down_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIsNotNull() {
+            addCriterion("down_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeEqualTo(Date value) {
+            addCriterion("down_time =", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotEqualTo(Date value) {
+            addCriterion("down_time <>", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeGreaterThan(Date value) {
+            addCriterion("down_time >", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("down_time >=", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeLessThan(Date value) {
+            addCriterion("down_time <", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeLessThanOrEqualTo(Date value) {
+            addCriterion("down_time <=", value, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeIn(List<Date> values) {
+            addCriterion("down_time in", values, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotIn(List<Date> values) {
+            addCriterion("down_time not in", values, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeBetween(Date value1, Date value2) {
+            addCriterion("down_time between", value1, value2, "downTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andDownTimeNotBetween(Date value1, Date value2) {
+            addCriterion("down_time not between", value1, value2, "downTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

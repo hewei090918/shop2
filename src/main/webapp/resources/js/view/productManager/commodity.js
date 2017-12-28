@@ -326,7 +326,10 @@ function bindUserSelect(selectId, hiddenId) {
 }
 
 function dateFormatter(value) {
-	return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
+	if(value)
+		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
+	else
+		return '';
 }
 
 function statusFormatter(value,row,index) {

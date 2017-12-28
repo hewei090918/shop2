@@ -74,6 +74,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
         </div>
         
+        <!-- modal -->
+        <div class="modal fade" id="storage_detail_modal" tabindex="-1" role="dialog"
+              aria-hidden="true">
+            <div class="modal-dialog" style="width:780px;height:auto;">
+                <div class="modal-content">
+                	<div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                <h4 class="modal-title">库存详情</h4>
+		            </div>
+		            <div class="modal-body">
+		            	<table id="storDetList_table" class="table table-hover table-striped table-bordered" data-toggle="table">
+						</table>
+		            </div>
+		            <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		            </div>
+                </div>
+           	</div>
+        </div>
     </div>
   </body>
 </html>
