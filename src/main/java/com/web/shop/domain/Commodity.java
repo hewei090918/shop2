@@ -13,9 +13,13 @@ public class Commodity {
 
     private Integer storageId;
 
+    private Integer supplierId;
+
     private String status;
 
     private Boolean isHot;
+
+    private Double costPrice;
 
     private Double price;
 
@@ -31,8 +35,9 @@ public class Commodity {
 
     private Date downTime;
     
-    //用于页面展示
     private String commodityTypeName;
+    
+    private String supplierName;
     
     private String managerName;
 
@@ -76,6 +81,14 @@ public class Commodity {
         this.storageId = storageId;
     }
 
+    public Integer getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -90,6 +103,14 @@ public class Commodity {
 
     public void setIsHot(Boolean isHot) {
         this.isHot = isHot;
+    }
+
+    public Double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
     }
 
     public Double getPrice() {
@@ -156,6 +177,14 @@ public class Commodity {
 		this.commodityTypeName = commodityTypeName;
 	}
 
+	public String getSupplierName() {
+		return supplierName;
+	}
+
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
+	}
+
 	public String getManagerName() {
 		return managerName;
 	}
@@ -163,5 +192,4 @@ public class Commodity {
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
 	}
-    
 }

@@ -335,11 +335,11 @@ function dateFormatter(value) {
 function statusFormatter(value,row,index) {
 	console.log(value);
 	if(value == 1){
-        return '<i class="fa fa-support" style="cursor:pointer;color:green" title="在售"></i>';
+        return '<i class="fa fa-tags" style="cursor:pointer;color:green" title="在售"></i>';
     }else if(value == 2){
-        return '<i class="fa fa-arrow-down" style="cursor:pointer;color:red" title="卖出"></i>';
+        return '<i class="fa fa-tags" style="cursor:pointer;color:grey" title="卖出"></i>';
     }else if(value == 3){
-        return '<i class="fa fa-tags" style="cursor:pointer;color:grey" title="下架"></i>'
+        return '<i class="fa fa-arrow-down" style="cursor:pointer;color:grey" title="下架"></i>'
     }else{
     	return '';
     }

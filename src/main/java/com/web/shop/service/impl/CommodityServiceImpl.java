@@ -19,6 +19,7 @@ import com.web.shop.domain.StorageExample;
 import com.web.shop.mapper.CommodityMapper;
 import com.web.shop.mapper.CommodityTypeMapper;
 import com.web.shop.mapper.StorageMapper;
+import com.web.shop.mapper.SupplierMapper;
 import com.web.shop.mapper.UserMapper;
 import com.web.shop.service.CommodityService;
 
@@ -32,6 +33,9 @@ public class CommodityServiceImpl implements CommodityService {
 	
 	@Autowired
 	private CommodityTypeMapper commodityTypeMapper;
+	
+	@Autowired
+	private SupplierMapper supplierMapper;
 	
 	@Autowired
 	private StorageMapper storageMapper;
@@ -160,6 +164,8 @@ public class CommodityServiceImpl implements CommodityService {
 			for(Commodity commodity: list) {
 				String commodityTypeName = commodityTypeMapper.selectByPrimaryKey(commodity.getCommodityType()).getTypeName();
 				commodity.setCommodityTypeName(commodityTypeName);
+				String supplierName = supplierMapper.selectByPrimaryKey(commodity.getSupplierId()).getSupplierName();
+				commodity.setSupplierName(supplierName);
 				String managerName = userMapper.selectByPrimaryKey(commodity.getManager()).getRealname();
 				commodity.setManagerName(managerName);
 			}

@@ -425,6 +425,66 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
+        public Criteria andSupplierIdIsNull() {
+            addCriterion("supplier_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdIsNotNull() {
+            addCriterion("supplier_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdEqualTo(Integer value) {
+            addCriterion("supplier_id =", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdNotEqualTo(Integer value) {
+            addCriterion("supplier_id <>", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdGreaterThan(Integer value) {
+            addCriterion("supplier_id >", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("supplier_id >=", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdLessThan(Integer value) {
+            addCriterion("supplier_id <", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdLessThanOrEqualTo(Integer value) {
+            addCriterion("supplier_id <=", value, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdIn(List<Integer> values) {
+            addCriterion("supplier_id in", values, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdNotIn(List<Integer> values) {
+            addCriterion("supplier_id not in", values, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdBetween(Integer value1, Integer value2) {
+            addCriterion("supplier_id between", value1, value2, "supplierId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSupplierIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("supplier_id not between", value1, value2, "supplierId");
+            return (Criteria) this;
+        }
+
         public Criteria andStatusIsNull() {
             addCriterion("status is null");
             return (Criteria) this;
@@ -552,6 +612,66 @@ public class CommodityExample {
 
         public Criteria andIsHotNotBetween(Boolean value1, Boolean value2) {
             addCriterion("is_hot not between", value1, value2, "isHot");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceIsNull() {
+            addCriterion("cost_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceIsNotNull() {
+            addCriterion("cost_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceEqualTo(Double value) {
+            addCriterion("cost_price =", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceNotEqualTo(Double value) {
+            addCriterion("cost_price <>", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceGreaterThan(Double value) {
+            addCriterion("cost_price >", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("cost_price >=", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceLessThan(Double value) {
+            addCriterion("cost_price <", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceLessThanOrEqualTo(Double value) {
+            addCriterion("cost_price <=", value, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceIn(List<Double> values) {
+            addCriterion("cost_price in", values, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceNotIn(List<Double> values) {
+            addCriterion("cost_price not in", values, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceBetween(Double value1, Double value2) {
+            addCriterion("cost_price between", value1, value2, "costPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andCostPriceNotBetween(Double value1, Double value2) {
+            addCriterion("cost_price not between", value1, value2, "costPrice");
             return (Criteria) this;
         }
 

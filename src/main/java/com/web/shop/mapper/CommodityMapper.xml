@@ -7,8 +7,10 @@
     <result column="commodity_code" property="commodityCode" jdbcType="VARCHAR" />
     <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
     <result column="storage_id" property="storageId" jdbcType="INTEGER" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="CHAR" />
     <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="cost_price" property="costPrice" jdbcType="DOUBLE" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="discount" property="discount" jdbcType="DOUBLE" />
     <result column="discount_price" property="discountPrice" jdbcType="DOUBLE" />
@@ -76,8 +78,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    commodity_id, commodity_name, commodity_code, commodity_type, storage_id, status, 
-    is_hot, price, discount, discount_price, manager, up_time, sell_time, down_time
+    commodity_id, commodity_name, commodity_code, commodity_type, storage_id, supplier_id, 
+    status, is_hot, cost_price, price, discount, discount_price, manager, up_time, sell_time, 
+    down_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.CommodityExample" >
     select
@@ -111,15 +114,17 @@
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity (commodity_id, commodity_name, commodity_code, 
-      commodity_type, storage_id, status, 
-      is_hot, price, discount, discount_price, 
-      manager, up_time, sell_time, 
-      down_time)
+      commodity_type, storage_id, supplier_id, 
+      status, is_hot, cost_price, price, 
+      discount, discount_price, manager, 
+      up_time, sell_time, down_time
+      )
     values (#{commodityId,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR}, #{commodityCode,jdbcType=VARCHAR}, 
-      #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, 
-      #{isHot,jdbcType=BIT}, #{price,jdbcType=DOUBLE}, #{discount,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, 
-      #{manager,jdbcType=INTEGER}, #{upTime,jdbcType=TIMESTAMP}, #{sellTime,jdbcType=TIMESTAMP}, 
-      #{downTime,jdbcType=TIMESTAMP})
+      #{commodityType,jdbcType=INTEGER}, #{storageId,jdbcType=INTEGER}, #{supplierId,jdbcType=INTEGER}, 
+      #{status,jdbcType=CHAR}, #{isHot,jdbcType=BIT}, #{costPrice,jdbcType=DOUBLE}, #{price,jdbcType=DOUBLE}, 
+      #{discount,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, #{manager,jdbcType=INTEGER}, 
+      #{upTime,jdbcType=TIMESTAMP}, #{sellTime,jdbcType=TIMESTAMP}, #{downTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Commodity" >
     insert into commodity
@@ -139,11 +144,17 @@
       <if test="storageId != null" >
         storage_id,
       </if>
+      <if test="supplierId != null" >
+        supplier_id,
+      </if>
       <if test="status != null" >
         status,
       </if>
       <if test="isHot != null" >
         is_hot,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
       </if>
       <if test="price != null" >
         price,
@@ -183,11 +194,17 @@
       <if test="storageId != null" >
         #{storageId,jdbcType=INTEGER},
       </if>
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         #{status,jdbcType=CHAR},
       </if>
       <if test="isHot != null" >
         #{isHot,jdbcType=BIT},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=DOUBLE},
       </if>
       <if test="price != null" >
         #{price,jdbcType=DOUBLE},
@@ -236,11 +253,17 @@
       <if test="record.storageId != null" >
         storage_id = #{record.storageId,jdbcType=INTEGER},
       </if>
+      <if test="record.supplierId != null" >
+        supplier_id = #{record.supplierId,jdbcType=INTEGER},
+      </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=CHAR},
       </if>
       <if test="record.isHot != null" >
         is_hot = #{record.isHot,jdbcType=BIT},
+      </if>
+      <if test="record.costPrice != null" >
+        cost_price = #{record.costPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.price != null" >
         price = #{record.price,jdbcType=DOUBLE},
@@ -275,8 +298,10 @@
       commodity_code = #{record.commodityCode,jdbcType=VARCHAR},
       commodity_type = #{record.commodityType,jdbcType=INTEGER},
       storage_id = #{record.storageId,jdbcType=INTEGER},
+      supplier_id = #{record.supplierId,jdbcType=INTEGER},
       status = #{record.status,jdbcType=CHAR},
       is_hot = #{record.isHot,jdbcType=BIT},
+      cost_price = #{record.costPrice,jdbcType=DOUBLE},
       price = #{record.price,jdbcType=DOUBLE},
       discount = #{record.discount,jdbcType=DOUBLE},
       discount_price = #{record.discountPrice,jdbcType=DOUBLE},
@@ -303,11 +328,17 @@
       <if test="storageId != null" >
         storage_id = #{storageId,jdbcType=INTEGER},
       </if>
+      <if test="supplierId != null" >
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
       <if test="status != null" >
         status = #{status,jdbcType=CHAR},
       </if>
       <if test="isHot != null" >
         is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice,jdbcType=DOUBLE},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=DOUBLE},
@@ -339,8 +370,10 @@
       commodity_code = #{commodityCode,jdbcType=VARCHAR},
       commodity_type = #{commodityType,jdbcType=INTEGER},
       storage_id = #{storageId,jdbcType=INTEGER},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
       status = #{status,jdbcType=CHAR},
       is_hot = #{isHot,jdbcType=BIT},
+      cost_price = #{costPrice,jdbcType=DOUBLE},
       price = #{price,jdbcType=DOUBLE},
       discount = #{discount,jdbcType=DOUBLE},
       discount_price = #{discountPrice,jdbcType=DOUBLE},
