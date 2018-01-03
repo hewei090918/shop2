@@ -36,14 +36,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                 </div>
 	                 <div class="col-sm-3 col-md-3">
 	                     <div class="form-group">
-	                         <label class="col-sm-4 control-label">编码:</label>
-	                         <div class="col-sm-8">
-	                         	<input type="text" class="form-control" name="commodityCode" id="commodityCode" style="height:28px;">
-	                         </div>
-	                     </div>
-	                 </div>
-	                 <div class="col-sm-3 col-md-3">
-	                     <div class="form-group">
 	                         <label class="col-sm-4 control-label">类别:</label>
 	                         <div class="col-sm-8">
 	                         	<input type="hidden" name="commodityType" id="commodityType">
@@ -93,16 +85,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button id="btn_commodity_reset" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 重置
             </button>
-            <button id="btn_commodity_up" type="button" class="btn btn-warning">
-               <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> 上架
-            </button>
             <button id="btn_commodity_sell" type="button" class="btn btn-success">
                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 出售
             </button>
             <button id="btn_commodity_down" type="button" class="btn btn-warning">
                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> 下架
             </button>
-            
         </div>
         
         <div class="panel-body" style="padding:0px;">
@@ -110,7 +98,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
         </div>
         
-        <!-- modal -->
+        <!-- about to sell modal -->
+        <div class="modal fade" id="ts_modal" tabindex="-1" role="dialog"
+              aria-hidden="true">
+            <div class="modal-dialog" style="width:400px;height:auto;">
+                <div class="modal-content">
+                	<form class="form-horizontal" id="ts_form">
+                		<div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">商品上架</h4>
+			            </div>
+			            <div class="modal-body">
+			            	<div class="form-group">
+		                         <label class="col-sm-3 control-label">商品名称:</label>
+		                         <div class="col-sm-9">
+		                             <input type="text" class="form-control" name="commodityName" style="height:28px;" placeholder="请输入商品名称">
+		                         </div>
+		                     </div>
+		                     <div class="form-group">
+		                         <label class="col-sm-3 control-label">商品数量:</label>
+		                         <div class="col-sm-9">
+		                             <input type="text" class="form-control" name="upNum" style="height:28px;" placeholder="请输入上架商品数量">
+		                         </div>
+		                     </div>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			                <button type="button" class="btn btn-primary" id="btn_ts_save">确定</button>
+			            </div>
+                	</form>
+               	</div>
+            </div>
+        </div>
+        
+        <!-- modify modal -->
         <div class="modal fade" id="commodity_modal" tabindex="-1" role="dialog"
               aria-hidden="true">
             <div class="modal-dialog" style="width:400px;height:auto;">
@@ -118,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<form class="form-horizontal" id="commodity_form">
 	                	<div class="modal-header">
 			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			                <h4 class="modal-title">商品新增</h4>
+			                <h4 class="modal-title">商品修改</h4>
 			            </div>
 			            <div class="modal-body">
    							<div class="form-group">

@@ -31,4 +31,10 @@ public class StorageController {
 		return pageView;
 	}
 	
+	@RequestMapping(value = "/getList")
+	public 
+	@ResponseBody List<Storage> getList() {
+		return storageService.findAll();
+	}
+	
 }

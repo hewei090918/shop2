@@ -64,9 +64,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button id="btn_storage_reset" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 重置
             </button>
-            <!-- <button id="btn_storage_delete" type="button" class="btn btn-default">
-               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
-            </button> -->
+            <button id="btn_storage_up" type="button" class="btn btn-warning">
+               <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> 上架
+            </button>
         </div>
         
         <div class="panel-body" style="padding:0px;">

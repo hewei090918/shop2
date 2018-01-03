@@ -199,6 +199,23 @@ $(function(){
 		});
     });
     
+    //上架按钮事件
+    $('#btn_commodity_up').click(function(){
+    	
+    	
+    	$('#ts_modal').modal('show');
+    });
+    
+  //模态框居中
+    $('#ts_modal').on('show.bs.modal', function (e) {
+    	$(this).css('display', 'block');  
+    	
+        var modalHeight = $(window).height()/2 - $('#ts_modal .modal-dialog').height()/2;  
+        $(this).find('.modal-dialog').css({  
+            'margin-top': modalHeight  
+        });  
+    }); 
+    
     //出售按钮事件
     $('#btn_commodity_sell').click(function(){
         var rows = $('#commodityList_table').bootstrapTable('getSelections');

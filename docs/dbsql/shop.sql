@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2017-12-29 13:57:25
+Date: 2018-01-03 15:22:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,7 +78,7 @@ CREATE TABLE `commodity` (
   `status` char(1) DEFAULT '1' COMMENT '在售状态（1：在售，2：卖出，3：下架）',
   `is_hot` tinyint(1) unsigned DEFAULT '0' COMMENT '是否热卖（1：是，0：否）',
   `cost_price` double(8,2) DEFAULT '0.00' COMMENT '成本价格',
-  `price` double(8,2) DEFAULT '0.00' COMMENT '单价（原价）',
+  `price` double(8,2) DEFAULT '0.00' COMMENT '单价（售价）',
   `discount` double(5,2) DEFAULT '1.00' COMMENT '折扣百分比',
   `discount_price` double(8,2) DEFAULT '0.00' COMMENT '折扣会员价',
   `manager` int(11) DEFAULT NULL COMMENT '货物管理员',
@@ -91,19 +91,6 @@ CREATE TABLE `commodity` (
 -- ----------------------------
 -- Records of commodity
 -- ----------------------------
-INSERT INTO `commodity` VALUES ('15', '旺仔小馒头', 'b1b17df24332', '1', '9', '1', '2', '1', '1.80', '2.00', '1.00', '2.00', '1', '2017-12-27 13:08:41', '2017-12-28 11:31:00', null);
-INSERT INTO `commodity` VALUES ('16', '旺仔小馒头', 'f2d213e0b42a', '1', '9', '1', '2', '1', '1.80', '2.00', '1.00', '2.00', '1', '2017-12-27 14:08:32', '2017-12-28 11:30:58', null);
-INSERT INTO `commodity` VALUES ('17', '旺仔小馒头', '8a040e900ca6', '1', '9', '1', '2', '1', '1.80', '2.00', '1.00', '2.00', '1', '2017-12-27 14:08:41', '2017-12-28 11:30:56', null);
-INSERT INTO `commodity` VALUES ('18', '小天才电话手表', 'b222cc96402f', '7', '10', '1', '2', '1', '745.00', '799.00', '0.80', '639.20', '6', '2017-12-27 14:25:06', '2017-12-28 11:30:21', null);
-INSERT INTO `commodity` VALUES ('19', 'iPhone X 64G', '548be5e00e74', '7', '11', '1', '2', '1', '7988.00', '8288.00', '0.90', '7459.20', '6', '2017-12-27 14:26:02', '2017-12-28 11:28:39', null);
-INSERT INTO `commodity` VALUES ('20', 'Spalding篮球', 'ec3d4f74026d', '4', '12', '1', '2', '1', '245.00', '288.00', '0.85', '244.80', '8', '2017-12-27 14:26:41', '2017-12-28 11:30:17', null);
-INSERT INTO `commodity` VALUES ('21', '老干妈辣酱', '9c861af493f6', '1', '13', '1', '2', '1', '17.90', '20.00', '1.00', '20.00', '10', '2017-12-27 14:27:29', '2017-12-28 08:30:06', null);
-INSERT INTO `commodity` VALUES ('22', '老干妈辣酱', '5319e7c85739', '1', '13', '1', '3', '1', '17.90', '20.00', '1.00', '20.00', '10', '2017-12-27 14:28:09', null, '2017-12-28 11:24:14');
-INSERT INTO `commodity` VALUES ('23', '老干妈辣酱', '569595de797b', '1', '13', '1', '3', '1', '17.90', '20.00', '1.00', '20.00', '10', '2017-12-27 14:32:47', null, '2017-12-28 11:24:16');
-INSERT INTO `commodity` VALUES ('24', 'iPhone X 64G', '65584c0c8f75', '7', '11', '1', '2', '1', '7988.00', '8288.00', '0.90', '7459.20', '8', '2017-12-27 14:33:28', '2017-12-28 11:29:17', null);
-INSERT INTO `commodity` VALUES ('25', '曼秀雷敦洗面奶', '562dbd9183b9', '3', '14', '1', '3', '0', '35.00', '42.00', '0.90', '37.80', '11', '2017-12-27 17:10:35', null, '2017-12-28 11:26:34');
-INSERT INTO `commodity` VALUES ('26', '回力帆布鞋', '6cf373b46b7c', '8', '15', '2', '1', '0', '74.00', '78.00', '0.90', '70.20', '10', '2017-12-27 17:11:37', null, null);
-INSERT INTO `commodity` VALUES ('27', '回力帆布鞋', 'eb06317cd5e9', '8', '15', '2', '3', '0', '74.00', '78.00', '0.90', '70.20', '10', '2017-12-27 17:11:58', null, '2017-12-28 11:27:41');
 
 -- ----------------------------
 -- Table structure for commodity_type
@@ -143,13 +130,13 @@ CREATE TABLE `dept` (
 -- ----------------------------
 -- Records of dept
 -- ----------------------------
-INSERT INTO `dept` VALUES ('1', 'XX超市', '001', '乡巴佬', '0');
-INSERT INTO `dept` VALUES ('2', '人事部', '001001', '乡巴佬', '1');
-INSERT INTO `dept` VALUES ('3', '综合部', '001002', '乡巴佬', '1');
-INSERT INTO `dept` VALUES ('4', '采购部', '001003', '乡巴佬', '1');
-INSERT INTO `dept` VALUES ('5', '销售部', '001004', '乡巴佬', '1');
-INSERT INTO `dept` VALUES ('6', '财务部', '001005', '乡巴佬', '1');
-INSERT INTO `dept` VALUES ('7', '技术部', '001006', '乡巴佬', '1');
+INSERT INTO `dept` VALUES ('1', '欧尚超市', '001', '欧尚超市', '0');
+INSERT INTO `dept` VALUES ('2', '人事部', '001001', '人事部', '1');
+INSERT INTO `dept` VALUES ('3', '综合部', '001002', '综合部', '1');
+INSERT INTO `dept` VALUES ('4', '采购部', '001003', '采购部', '1');
+INSERT INTO `dept` VALUES ('5', '销售部', '001004', '销售部', '1');
+INSERT INTO `dept` VALUES ('6', '财务部', '001005', '财务部', '1');
+INSERT INTO `dept` VALUES ('7', '技术部', '001006', '技术部', '1');
 
 -- ----------------------------
 -- Table structure for profession
@@ -170,6 +157,27 @@ INSERT INTO `profession` VALUES ('3', '采购员');
 INSERT INTO `profession` VALUES ('4', '导购员');
 INSERT INTO `profession` VALUES ('5', '保洁员');
 INSERT INTO `profession` VALUES ('6', '技术员');
+
+-- ----------------------------
+-- Table structure for purchase
+-- ----------------------------
+DROP TABLE IF EXISTS `purchase`;
+CREATE TABLE `purchase` (
+  `purchase_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `pur_commodity_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '采购商品名称',
+  `pur_commodity_type` int(11) DEFAULT NULL COMMENT '采购商品类别',
+  `pur_storage_id` int(11) DEFAULT NULL COMMENT '仓库ID',
+  `pur_supplier_id` int(11) DEFAULT NULL COMMENT '供应商ID',
+  `purchase_price` double(8,2) DEFAULT NULL COMMENT '采购价格（进货价格）',
+  `purchase_amount` bigint(20) DEFAULT NULL COMMENT '采购数量',
+  PRIMARY KEY (`purchase_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of purchase
+-- ----------------------------
+INSERT INTO `purchase` VALUES ('1', 'AD钙奶', '1', '1', '1', '1.50', '100');
+INSERT INTO `purchase` VALUES ('2', '蚕丝面膜', '3', '2', '3', '12.00', '50');
 
 -- ----------------------------
 -- Table structure for role
@@ -196,11 +204,10 @@ INSERT INTO `role` VALUES ('3', '顾客', '顾客', '0');
 DROP TABLE IF EXISTS `storage`;
 CREATE TABLE `storage` (
   `storage_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `storage_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '商品名称',
-  `commodity_type` int(11) DEFAULT NULL COMMENT '商品类别',
-  `amount` bigint(20) DEFAULT NULL COMMENT '库存数量',
+  `storage_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '仓库名称',
   `first_in_time` datetime DEFAULT NULL COMMENT '首次入库时间',
   `latest_in_time` datetime DEFAULT NULL COMMENT '最新入库时间',
+  `amount` bigint(20) DEFAULT NULL COMMENT '库存数量',
   `sold_out` tinyint(1) unsigned DEFAULT '0' COMMENT '是否售罄（1：售罄，0：未售罄）',
   PRIMARY KEY (`storage_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
@@ -208,13 +215,9 @@ CREATE TABLE `storage` (
 -- ----------------------------
 -- Records of storage
 -- ----------------------------
-INSERT INTO `storage` VALUES ('9', '旺仔小馒头', '1', '0', '2017-12-27 13:08:41', '2017-12-27 14:08:41', '1');
-INSERT INTO `storage` VALUES ('10', '小天才电话手表', '7', '0', '2017-12-27 14:25:06', '2017-12-27 14:25:06', '1');
-INSERT INTO `storage` VALUES ('11', 'iPhone X 64G', '7', '0', '2017-12-27 14:26:02', '2017-12-27 14:33:27', '1');
-INSERT INTO `storage` VALUES ('12', 'Spalding篮球', '4', '0', '2017-12-27 14:26:41', '2017-12-27 14:26:41', '1');
-INSERT INTO `storage` VALUES ('13', '老干妈辣酱', '1', '2', '2017-12-27 14:27:29', '2017-12-27 14:32:47', '0');
-INSERT INTO `storage` VALUES ('14', '曼秀雷敦洗面奶', '3', '1', '2017-12-27 17:10:35', '2017-12-27 17:10:35', '0');
-INSERT INTO `storage` VALUES ('15', '回力帆布鞋', '8', '2', '2017-12-27 17:11:37', '2017-12-27 17:11:58', '0');
+INSERT INTO `storage` VALUES ('1', '1号仓库', '2018-01-01 12:12:00', '2018-01-03 14:12:31', null, '0');
+INSERT INTO `storage` VALUES ('2', '2号仓库', '2018-01-01 12:12:12', '2018-01-03 14:13:54', null, '0');
+INSERT INTO `storage` VALUES ('3', '3号仓库', '2018-01-01 15:00:00', '2018-01-03 14:14:19', null, '0');
 
 -- ----------------------------
 -- Table structure for supplier
@@ -227,13 +230,16 @@ CREATE TABLE `supplier` (
   `address` varchar(500) CHARACTER SET utf8 DEFAULT NULL COMMENT '详细地址',
   `area_id` int(11) DEFAULT NULL COMMENT '所在地区',
   PRIMARY KEY (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of supplier
 -- ----------------------------
 INSERT INTO `supplier` VALUES ('1', '杭州娃哈哈食品有限公司', '0571-88574237', '杭州市庆春路128号', '3');
 INSERT INTO `supplier` VALUES ('2', '上好佳有限公司', '021-59898888', '上海市沪青平公路2277号', '1');
+INSERT INTO `supplier` VALUES ('3', '相宜本草化妆品有限公司', '0571-88697354', '杭州市延安路688号', '3');
+INSERT INTO `supplier` VALUES ('4', '海尔电器', null, '青岛市', '10');
+INSERT INTO `supplier` VALUES ('5', '迪卡侬运动器材有限公司', '0554-85214563', '宁波市海曙区药行街68号', '3');
 
 -- ----------------------------
 -- Table structure for user

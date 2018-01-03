@@ -7,18 +7,13 @@ public class Storage {
 
     private String storageName;
 
-    private Integer commodityType;
-
-    private Long amount;
-
     private Date firstInTime;
 
     private Date latestInTime;
 
+    private Long amount;
+
     private Boolean soldOut;
-    
-    //用于页面展示
-    private String commodityTypeName;
 
     public Integer getStorageId() {
         return storageId;
@@ -34,22 +29,6 @@ public class Storage {
 
     public void setStorageName(String storageName) {
         this.storageName = storageName == null ? null : storageName.trim();
-    }
-
-    public Integer getCommodityType() {
-        return commodityType;
-    }
-
-    public void setCommodityType(Integer commodityType) {
-        this.commodityType = commodityType;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
     }
 
     public Date getFirstInTime() {
@@ -68,6 +47,14 @@ public class Storage {
         this.latestInTime = latestInTime;
     }
 
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
+    }
+
     public Boolean getSoldOut() {
         return soldOut;
     }
@@ -75,13 +62,4 @@ public class Storage {
     public void setSoldOut(Boolean soldOut) {
         this.soldOut = soldOut;
     }
-
-	public String getCommodityTypeName() {
-		return commodityTypeName;
-	}
-
-	public void setCommodityTypeName(String commodityTypeName) {
-		this.commodityTypeName = commodityTypeName;
-	}
-    
 }

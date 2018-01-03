@@ -7,10 +7,6 @@ public class CommodityFilter {
 	 */
 	private String commodityName;
 	/**
-	 * 商品编码
-	 */
-	private String commodityCode;
-	/**
 	 * 商品类别
 	 */
 	private String commodityType;
@@ -32,12 +28,6 @@ public class CommodityFilter {
 	}
 	public void setCommodityName(String commodityName) {
 		this.commodityName = commodityName;
-	}
-	public String getCommodityCode() {
-		return commodityCode;
-	}
-	public void setCommodityCode(String commodityCode) {
-		this.commodityCode = commodityCode;
 	}
 	public String getCommodityType() {
 		return commodityType;

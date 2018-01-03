@@ -235,126 +235,6 @@ public class StorageExample {
             return (Criteria) this;
         }
 
-        public Criteria andCommodityTypeIsNull() {
-            addCriterion("commodity_type is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeIsNotNull() {
-            addCriterion("commodity_type is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeEqualTo(Integer value) {
-            addCriterion("commodity_type =", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeNotEqualTo(Integer value) {
-            addCriterion("commodity_type <>", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeGreaterThan(Integer value) {
-            addCriterion("commodity_type >", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("commodity_type >=", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeLessThan(Integer value) {
-            addCriterion("commodity_type <", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("commodity_type <=", value, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeIn(List<Integer> values) {
-            addCriterion("commodity_type in", values, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeNotIn(List<Integer> values) {
-            addCriterion("commodity_type not in", values, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeBetween(Integer value1, Integer value2) {
-            addCriterion("commodity_type between", value1, value2, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andCommodityTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("commodity_type not between", value1, value2, "commodityType");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountIsNull() {
-            addCriterion("amount is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountIsNotNull() {
-            addCriterion("amount is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountEqualTo(Long value) {
-            addCriterion("amount =", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotEqualTo(Long value) {
-            addCriterion("amount <>", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountGreaterThan(Long value) {
-            addCriterion("amount >", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountGreaterThanOrEqualTo(Long value) {
-            addCriterion("amount >=", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountLessThan(Long value) {
-            addCriterion("amount <", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountLessThanOrEqualTo(Long value) {
-            addCriterion("amount <=", value, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountIn(List<Long> values) {
-            addCriterion("amount in", values, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotIn(List<Long> values) {
-            addCriterion("amount not in", values, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountBetween(Long value1, Long value2) {
-            addCriterion("amount between", value1, value2, "amount");
-            return (Criteria) this;
-        }
-
-        public Criteria andAmountNotBetween(Long value1, Long value2) {
-            addCriterion("amount not between", value1, value2, "amount");
-            return (Criteria) this;
-        }
-
         public Criteria andFirstInTimeIsNull() {
             addCriterion("first_in_time is null");
             return (Criteria) this;
@@ -472,6 +352,66 @@ public class StorageExample {
 
         public Criteria andLatestInTimeNotBetween(Date value1, Date value2) {
             addCriterion("latest_in_time not between", value1, value2, "latestInTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountIsNull() {
+            addCriterion("amount is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountIsNotNull() {
+            addCriterion("amount is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountEqualTo(Long value) {
+            addCriterion("amount =", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountNotEqualTo(Long value) {
+            addCriterion("amount <>", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountGreaterThan(Long value) {
+            addCriterion("amount >", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountGreaterThanOrEqualTo(Long value) {
+            addCriterion("amount >=", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountLessThan(Long value) {
+            addCriterion("amount <", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountLessThanOrEqualTo(Long value) {
+            addCriterion("amount <=", value, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountIn(List<Long> values) {
+            addCriterion("amount in", values, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountNotIn(List<Long> values) {
+            addCriterion("amount not in", values, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountBetween(Long value1, Long value2) {
+            addCriterion("amount between", value1, value2, "amount");
+            return (Criteria) this;
+        }
+
+        public Criteria andAmountNotBetween(Long value1, Long value2) {
+            addCriterion("amount not between", value1, value2, "amount");
             return (Criteria) this;
         }
 

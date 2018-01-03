@@ -49,14 +49,6 @@ public class StorageServiceImpl implements StorageService {
 			criteria.andStorageNameLike("%" + commodityName + "%");
 		}
 		
-		/*
-		 * 按商品类别查询
-		 */
-		String commodityType = filter.getCommodityType();
-		if(StringUtils.isNotBlank(commodityType)) {
-			criteria.andCommodityTypeEqualTo(Integer.parseInt(commodityType));
-		}
-		
 		int soldOut = filter.getSoldOut();
 		if(soldOut == 1) {
 			criteria.andSoldOutEqualTo(true);
@@ -79,14 +71,6 @@ public class StorageServiceImpl implements StorageService {
 			criteria.andStorageNameLike("%" + commodityName + "%");
 		}
 		
-		/*
-		 * 按商品类别查询
-		 */
-		String commodityType = filter.getCommodityType();
-		if(StringUtils.isNotBlank(commodityType)) {
-			criteria.andCommodityTypeEqualTo(Integer.parseInt(commodityType));
-		}
-		
 		int soldOut = filter.getSoldOut();
 		if(soldOut == 1) {
 			criteria.andSoldOutEqualTo(true);
@@ -94,12 +78,6 @@ public class StorageServiceImpl implements StorageService {
 			criteria.andSoldOutEqualTo(false);
 		}
 		List<Storage> list = storageMapper.selectByExample(example);
-		if(null != list && list.size() > 0) {
-			for(Storage storage: list) {
-				String commodityTypeName = commodityTypeMapper.selectByPrimaryKey(storage.getCommodityType()).getTypeName();
-				storage.setCommodityTypeName(commodityTypeName);
-			}
-		}
 		return list;
 	}
 
@@ -117,19 +95,16 @@ public class StorageServiceImpl implements StorageService {
 
 	@Override
 	public boolean update(Storage storage) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean deleteById(int storageId) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(String ids) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

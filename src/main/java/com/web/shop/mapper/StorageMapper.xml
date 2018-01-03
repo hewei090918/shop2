@@ -4,10 +4,9 @@
   <resultMap id="BaseResultMap" type="com.web.shop.domain.Storage" >
     <id column="storage_id" property="storageId" jdbcType="INTEGER" />
     <result column="storage_name" property="storageName" jdbcType="VARCHAR" />
-    <result column="commodity_type" property="commodityType" jdbcType="INTEGER" />
-    <result column="amount" property="amount" jdbcType="BIGINT" />
     <result column="first_in_time" property="firstInTime" jdbcType="TIMESTAMP" />
     <result column="latest_in_time" property="latestInTime" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="BIGINT" />
     <result column="sold_out" property="soldOut" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -69,8 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    storage_id, storage_name, commodity_type, amount, first_in_time, latest_in_time, 
-    sold_out
+    storage_id, storage_name, first_in_time, latest_in_time, amount, sold_out
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.StorageExample" >
     select
@@ -103,12 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.web.shop.domain.Storage" >
-    insert into storage (storage_id, storage_name, commodity_type, 
-      amount, first_in_time, latest_in_time, 
-      sold_out)
-    values (#{storageId,jdbcType=INTEGER}, #{storageName,jdbcType=VARCHAR}, #{commodityType,jdbcType=INTEGER}, 
-      #{amount,jdbcType=BIGINT}, #{firstInTime,jdbcType=TIMESTAMP}, #{latestInTime,jdbcType=TIMESTAMP}, 
-      #{soldOut,jdbcType=BIT})
+    insert into storage (storage_id, storage_name, first_in_time, 
+      latest_in_time, amount, sold_out
+      )
+    values (#{storageId,jdbcType=INTEGER}, #{storageName,jdbcType=VARCHAR}, #{firstInTime,jdbcType=TIMESTAMP}, 
+      #{latestInTime,jdbcType=TIMESTAMP}, #{amount,jdbcType=BIGINT}, #{soldOut,jdbcType=BIT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.web.shop.domain.Storage" >
     insert into storage
@@ -119,17 +117,14 @@
       <if test="storageName != null" >
         storage_name,
       </if>
-      <if test="commodityType != null" >
-        commodity_type,
-      </if>
-      <if test="amount != null" >
-        amount,
-      </if>
       <if test="firstInTime != null" >
         first_in_time,
       </if>
       <if test="latestInTime != null" >
         latest_in_time,
+      </if>
+      <if test="amount != null" >
+        amount,
       </if>
       <if test="soldOut != null" >
         sold_out,
@@ -142,17 +137,14 @@
       <if test="storageName != null" >
         #{storageName,jdbcType=VARCHAR},
       </if>
-      <if test="commodityType != null" >
-        #{commodityType,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=BIGINT},
-      </if>
       <if test="firstInTime != null" >
         #{firstInTime,jdbcType=TIMESTAMP},
       </if>
       <if test="latestInTime != null" >
         #{latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=BIGINT},
       </if>
       <if test="soldOut != null" >
         #{soldOut,jdbcType=BIT},
@@ -174,17 +166,14 @@
       <if test="record.storageName != null" >
         storage_name = #{record.storageName,jdbcType=VARCHAR},
       </if>
-      <if test="record.commodityType != null" >
-        commodity_type = #{record.commodityType,jdbcType=INTEGER},
-      </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=BIGINT},
-      </if>
       <if test="record.firstInTime != null" >
         first_in_time = #{record.firstInTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.latestInTime != null" >
         latest_in_time = #{record.latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=BIGINT},
       </if>
       <if test="record.soldOut != null" >
         sold_out = #{record.soldOut,jdbcType=BIT},
@@ -198,10 +187,9 @@
     update storage
     set storage_id = #{record.storageId,jdbcType=INTEGER},
       storage_name = #{record.storageName,jdbcType=VARCHAR},
-      commodity_type = #{record.commodityType,jdbcType=INTEGER},
-      amount = #{record.amount,jdbcType=BIGINT},
       first_in_time = #{record.firstInTime,jdbcType=TIMESTAMP},
       latest_in_time = #{record.latestInTime,jdbcType=TIMESTAMP},
+      amount = #{record.amount,jdbcType=BIGINT},
       sold_out = #{record.soldOut,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,17 +201,14 @@
       <if test="storageName != null" >
         storage_name = #{storageName,jdbcType=VARCHAR},
       </if>
-      <if test="commodityType != null" >
-        commodity_type = #{commodityType,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=BIGINT},
-      </if>
       <if test="firstInTime != null" >
         first_in_time = #{firstInTime,jdbcType=TIMESTAMP},
       </if>
       <if test="latestInTime != null" >
         latest_in_time = #{latestInTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=BIGINT},
       </if>
       <if test="soldOut != null" >
         sold_out = #{soldOut,jdbcType=BIT},
@@ -234,10 +219,9 @@
   <update id="updateByPrimaryKey" parameterType="com.web.shop.domain.Storage" >
     update storage
     set storage_name = #{storageName,jdbcType=VARCHAR},
-      commodity_type = #{commodityType,jdbcType=INTEGER},
-      amount = #{amount,jdbcType=BIGINT},
       first_in_time = #{firstInTime,jdbcType=TIMESTAMP},
       latest_in_time = #{latestInTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=BIGINT},
       sold_out = #{soldOut,jdbcType=BIT}
     where storage_id = #{storageId,jdbcType=INTEGER}
   </update>

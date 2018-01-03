@@ -65,13 +65,6 @@ public class CommodityServiceImpl implements CommodityService {
 			criteria.andCommodityNameLike("%" + commodityName + "%");
 		}
 		/*
-		 * 按商品编码查询
-		 */
-		String commodityCode = filter.getCommodityCode();
-		if(StringUtils.isNotBlank(commodityCode)) {
-			criteria.andCommodityCodeLike("%" + commodityCode + "%");
-		}
-		/*
 		 * 按商品类别查询
 		 */
 		String commodityType = filter.getCommodityType();
@@ -115,13 +108,6 @@ public class CommodityServiceImpl implements CommodityService {
 		String commodityName = filter.getCommodityName();
 		if(StringUtils.isNotBlank(commodityName)) {
 			criteria.andCommodityNameLike("%" + commodityName + "%");
-		}
-		/*
-		 * 按商品编码查询
-		 */
-		String commodityCode = filter.getCommodityCode();
-		if(StringUtils.isNotBlank(commodityCode)) {
-			criteria.andCommodityCodeLike("%" + commodityCode + "%");
 		}
 		/*
 		 * 按商品类别查询
@@ -217,7 +203,6 @@ public class CommodityServiceImpl implements CommodityService {
 			}else {
 				Storage newStorage = new Storage();
 				newStorage.setStorageName(commodity.getCommodityName());
-				newStorage.setCommodityType(commodity.getCommodityType());
 				newStorage.setAmount(1L);
 				newStorage.setSoldOut(false);
 				newStorage.setFirstInTime(new Date());
@@ -278,11 +263,11 @@ public class CommodityServiceImpl implements CommodityService {
 		try{
 			for(String id: idstr) {
 				commodityMapper.deleteByPrimaryKey(Integer.parseInt(id));
+				logger.info("删除商品成功");
 			}
-			logger.info("批量删除商品成功");
 			return true;
 		}catch(Exception e) {
-			logger.error("批量删除商品失败", e);
+			logger.error("删除商品失败", e);
 			return false;
 		}
 		
@@ -305,11 +290,11 @@ public class CommodityServiceImpl implements CommodityService {
 					storage.setSoldOut(true);
 				}
 				storageMapper.updateByPrimaryKey(storage);
+				logger.info("出售商品成功");
 			}
-			logger.info("批量出售商品成功");
 			return true;
 		}catch(Exception e) {
-			logger.error("批量出售商品失败", e);
+			logger.error("出售商品失败", e);
 			return false;
 		}
 	}
@@ -323,11 +308,11 @@ public class CommodityServiceImpl implements CommodityService {
 				commodity.setStatus("3");
 				commodity.setDownTime(new Date());
 				commodityMapper.updateByPrimaryKey(commodity);
+				logger.info("下架商品成功");
 			}
-			logger.info("批量下架商品成功");
 			return true;
 		}catch(Exception e) {
-			logger.error("批量下架商品失败", e);
+			logger.error("下架商品失败", e);
 			return false;
 		}
 	}

@@ -18,6 +18,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.form-horizontal .control-label {
 		    padding-top: 4px;
 		}
+		.spinner {  
+		  width: 200px;  
+		}  
+		.spinner input {  
+		  text-align: right;  
+		}  
+		.input-group-btn-vertical {  
+		  position: relative;  
+		  white-space: nowrap;  
+		  width: 1%;  
+		  vertical-align: middle;  
+		  display: table-cell;  
+		}  
+		.input-group-btn-vertical > .btn {  
+		  display: block;  
+		  float: none;  
+		  width: 100%;  
+		  max-width: 100%;  
+		  padding: 8px;  
+		  margin-left: -1px;  
+		  position: relative;  
+		  border-radius: 0;  
+		}  
+		.input-group-btn-vertical > .btn:first-child {  
+		  border-top-right-radius: 4px;  
+		}  
+		.input-group-btn-vertical > .btn:last-child {  
+		  margin-top: -2px;  
+		  border-bottom-right-radius: 4px;  
+		}  
+		.input-group-btn-vertical i{  
+		  position: absolute;  
+		  top: 0;  
+		  left: 4px;  
+		}  
 	</style>
   </head>
   
@@ -28,17 +63,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<div class="row">
 	    			<div class="col-sm-3 col-md-3">
 	                     <div class="form-group">
-	                         <label class="col-sm-4 control-label">名称:</label>
+	                         <label class="col-sm-4 control-label">商品名:</label>
 	                         <div class="col-sm-8">
-	                             <input type="text" class="form-control" name="commodityName" id="commodityName" style="height:28px;">
+	                             <input type="text" class="form-control" name="purCommodityName" id="purCommodityName" style="height:28px;">
 	                         </div>
 	                     </div>
 	                 </div>
 	                 <div class="col-sm-3 col-md-3">
 	                     <div class="form-group">
-	                         <label class="col-sm-4 control-label">编码:</label>
+	                         <label class="col-sm-4 control-label">仓库:</label>
 	                         <div class="col-sm-8">
-	                         	<input type="text" class="form-control" name="commodityCode" id="commodityCode" style="height:28px;">
+	                            <input type="hidden" name="purStorageId" id="purStorageId">
+	                         	<select class="form-control select2" id="purStorageSelect">
+	                         	</select>
 	                         </div>
 	                     </div>
 	                 </div>
@@ -46,8 +83,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     <div class="form-group">
 	                         <label class="col-sm-4 control-label">供应商:</label>
 	                         <div class="col-sm-8">
-	                         	<input type="hidden" name="supplierId" id="supplierId">
-	                         	<select class="form-control select2" id="supplierSelect">
+	                         	<input type="hidden" name="purSupplierId" id="purSupplierId">
+	                         	<select class="form-control select2" id="purSupplierSelect">
 	                         	</select>
 	                         </div>
 	                     </div>
@@ -86,46 +123,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    							<div class="form-group">
 		                         <label class="col-sm-3 control-label">商品名称:</label>
 		                         <div class="col-sm-9">
-		                             <input type="text" class="form-control" name="commodityName" style="height:28px;" placeholder="请输入商品名称">
+		                             <input type="text" class="form-control" name="purCommodityName" placeholder="请输入商品名称">
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">商品类别:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="commodityType" id="modal_commodityType0">
-		                         	 <select class="form-control select2" id="modal_commodityTypeSelect0">
+		                             <input type="hidden" class="form-control" name="purCommodityType" id="m_purCommodityType">
+		                         	 <select class="form-control select2" id="m_purCommodityTypeSelect">
+		                         	 </select>
+		                         </div>
+		                     </div>
+		                     <div class="form-group">
+		                         <label class="col-sm-3 control-label">仓库:</label>
+		                         <div class="col-sm-9">
+		                             <input type="hidden" class="form-control" name="purStorageId" id="m_purStorageId">
+		                         	 <select class="form-control select2" id="m_purStorageSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">供应商:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="supplierId" id="modal_supplierId">
-		                         	 <select class="form-control select2" id="modal_supplierSelect">
+		                             <input type="hidden" class="form-control" name="purSupplierId" id="m_purSupplierId">
+		                         	 <select class="form-control select2" id="m_purSupplierSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
-		                         <label class="col-sm-3 control-label">成本价:</label>
+		                         <label class="col-sm-3 control-label">成本价/件:</label>
 		                         <div class="col-sm-9">
 		                         	 <div class="input-group">
 			                             <span class="input-group-addon">¥</span>
-							             <input type="text" name="price" id="modal_costPrice" data-inputmask="'alias':'money'" class="form-control" style="height:28px;">
+							             <input type="text" name="purchasePrice" data-inputmask="'alias':'money'" class="form-control">
 						             </div>
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">采购数量:</label>
 		                         <div class="col-sm-9">
-		                             <div class="input-group number-spinner">
-                                         <span class="input-group-btn data-dwn">
-                                            <button class="btn btn-default btn-info" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
-                                         </span>
-                                         <input type="text" class="form-control text-center" name="purchaseNum" value="0" min="0" style="height:28px;">
-                                         <span class="input-group-btn data-up">
-			                             	<button class="btn btn-default btn-info" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
-		                            	 </span>
-                                     </div>
+		                              <div class="input-group spinner">  
+								    	 <input type="text" class="form-control" name="purchaseAmount" value="0">  
+								    	 <div class="input-group-btn-vertical">  
+								      		<button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>  
+								      		<button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>  
+								    	 </div>  
+									  </div> 
 		                         </div>
 		                     </div>
 			            </div>

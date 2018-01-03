@@ -129,11 +129,11 @@ public class SupplierServiceImpl implements SupplierService {
 		try{
 			for(String id: idstr) {
 				supplierMapper.deleteByPrimaryKey(Integer.parseInt(id));
+				logger.info("删除供应商成功");
 			}
-			logger.info("批量删除供应商成功");
 			return true;
 		}catch(Exception e) {
-			logger.error("批量删除供应商失败", e);
+			logger.error("删除供应商失败", e);
 			return false;
 		}
 	}

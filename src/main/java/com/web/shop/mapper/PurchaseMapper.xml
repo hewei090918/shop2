@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.web.shop.mapper.PurchaseMapper" >
+  <resultMap id="BaseResultMap" type="com.web.shop.domain.Purchase" >
+    <id column="purchase_id" property="purchaseId" jdbcType="INTEGER" />
+    <result column="pur_commodity_name" property="purCommodityName" jdbcType="VARCHAR" />
+    <result column="pur_commodity_type" property="purCommodityType" jdbcType="INTEGER" />
+    <result column="pur_storage_id" property="purStorageId" jdbcType="INTEGER" />
+    <result column="pur_supplier_id" property="purSupplierId" jdbcType="INTEGER" />
+    <result column="purchase_price" property="purchasePrice" jdbcType="DOUBLE" />
+    <result column="purchase_amount" property="purchaseAmount" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    purchase_id, pur_commodity_name, pur_commodity_type, pur_storage_id, pur_supplier_id, 
+    purchase_price, purchase_amount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.web.shop.domain.PurchaseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from purchase
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from purchase
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.web.shop.domain.PurchaseExample" >
+    delete from purchase
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.web.shop.domain.Purchase" >
+    insert into purchase (purchase_id, pur_commodity_name, pur_commodity_type, 
+      pur_storage_id, pur_supplier_id, purchase_price, 
+      purchase_amount)
+    values (#{purchaseId,jdbcType=INTEGER}, #{purCommodityName,jdbcType=VARCHAR}, #{purCommodityType,jdbcType=INTEGER}, 
+      #{purStorageId,jdbcType=INTEGER}, #{purSupplierId,jdbcType=INTEGER}, #{purchasePrice,jdbcType=DOUBLE}, 
+      #{purchaseAmount,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.web.shop.domain.Purchase" >
+    insert into purchase
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="purchaseId != null" >
+        purchase_id,
+      </if>
+      <if test="purCommodityName != null" >
+        pur_commodity_name,
+      </if>
+      <if test="purCommodityType != null" >
+        pur_commodity_type,
+      </if>
+      <if test="purStorageId != null" >
+        pur_storage_id,
+      </if>
+      <if test="purSupplierId != null" >
+        pur_supplier_id,
+      </if>
+      <if test="purchasePrice != null" >
+        purchase_price,
+      </if>
+      <if test="purchaseAmount != null" >
+        purchase_amount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="purchaseId != null" >
+        #{purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="purCommodityName != null" >
+        #{purCommodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="purCommodityType != null" >
+        #{purCommodityType,jdbcType=INTEGER},
+      </if>
+      <if test="purStorageId != null" >
+        #{purStorageId,jdbcType=INTEGER},
+      </if>
+      <if test="purSupplierId != null" >
+        #{purSupplierId,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePrice != null" >
+        #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="purchaseAmount != null" >
+        #{purchaseAmount,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.web.shop.domain.PurchaseExample" resultType="java.lang.Integer" >
+    select count(*) from purchase
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update purchase
+    <set >
+      <if test="record.purchaseId != null" >
+        purchase_id = #{record.purchaseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.purCommodityName != null" >
+        pur_commodity_name = #{record.purCommodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.purCommodityType != null" >
+        pur_commodity_type = #{record.purCommodityType,jdbcType=INTEGER},
+      </if>
+      <if test="record.purStorageId != null" >
+        pur_storage_id = #{record.purStorageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.purSupplierId != null" >
+        pur_supplier_id = #{record.purSupplierId,jdbcType=INTEGER},
+      </if>
+      <if test="record.purchasePrice != null" >
+        purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="record.purchaseAmount != null" >
+        purchase_amount = #{record.purchaseAmount,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update purchase
+    set purchase_id = #{record.purchaseId,jdbcType=INTEGER},
+      pur_commodity_name = #{record.purCommodityName,jdbcType=VARCHAR},
+      pur_commodity_type = #{record.purCommodityType,jdbcType=INTEGER},
+      pur_storage_id = #{record.purStorageId,jdbcType=INTEGER},
+      pur_supplier_id = #{record.purSupplierId,jdbcType=INTEGER},
+      purchase_price = #{record.purchasePrice,jdbcType=DOUBLE},
+      purchase_amount = #{record.purchaseAmount,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.web.shop.domain.Purchase" >
+    update purchase
+    <set >
+      <if test="purCommodityName != null" >
+        pur_commodity_name = #{purCommodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="purCommodityType != null" >
+        pur_commodity_type = #{purCommodityType,jdbcType=INTEGER},
+      </if>
+      <if test="purStorageId != null" >
+        pur_storage_id = #{purStorageId,jdbcType=INTEGER},
+      </if>
+      <if test="purSupplierId != null" >
+        pur_supplier_id = #{purSupplierId,jdbcType=INTEGER},
+      </if>
+      <if test="purchasePrice != null" >
+        purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="purchaseAmount != null" >
+        purchase_amount = #{purchaseAmount,jdbcType=BIGINT},
+      </if>
+    </set>
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.web.shop.domain.Purchase" >
+    update purchase
+    set pur_commodity_name = #{purCommodityName,jdbcType=VARCHAR},
+      pur_commodity_type = #{purCommodityType,jdbcType=INTEGER},
+      pur_storage_id = #{purStorageId,jdbcType=INTEGER},
+      pur_supplier_id = #{purSupplierId,jdbcType=INTEGER},
+      purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+      purchase_amount = #{purchaseAmount,jdbcType=BIGINT}
+    where purchase_id = #{purchaseId,jdbcType=INTEGER}
+  </update>
+</mapper>

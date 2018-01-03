@@ -4,14 +4,16 @@
 
 $(function(){
 	
+	//初始化下拉框（用于仓库选择）
+	bindStorageSelect('purStorageSelect', 'purStorageId');
 	//初始化下拉框（用于供应商选择）
-	bindSupplierSelect('supplierSelect', 'supplierId');
+	bindSupplierSelect('purSupplierSelect', 'purSupplierId');
 	
 	//加载表格数据
 	$('#purchaseList_table').bootstrapTable({
 //        method: 'post',
         contentType: "application/x-www-form-urlencoded",
-        url: base + "/commodity/queryPage.html",
+        url: base + "/purchase/queryPage.html",
         toolbar: '#purchase_toolbar',//工具按钮用哪个容器
         striped: true, 
         dataField: "data",//修改后端分页集合键值rows为data
@@ -23,20 +25,8 @@ $(function(){
         pageSize:10,//单页记录数
         pageList:[5,10,20,30],
         showRefresh:false,//刷新按钮
-        rowStyle: function (row, index) {
-            //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
-            var strclass = "";
-            if (row.status == 2) {
-                strclass = 'success';
-            }else if(row.status == 3) {
-                strclass = 'warning';
-            }else {
-            	return {};
-            }
-            return { classes: strclass }
-        },
         clickToSelect: true,
-        height: $(window).height()-340,
+        height: $(window).height()-300,
         columns:[
             {
                 title:'全选',
@@ -59,46 +49,42 @@ $(function(){
                     return index+1;  
                 }  
             }, {
-                title:'commodityId',
-                field:'commodityId',
-                visible:false
-            }, {
-                title:'商品编码',
-                field:'commodityCode',
-                width:130
-            }, {
                 title:'商品名称',
-                field:'commodityName',
+                field:'purCommodityName',
                 width:130,
                 sortable:true
             }, {
-            	title:'commodityType',
-                field:'commodityType',
+            	title:'purCommodityType',
+                field:'purCommodityType',
                 visible:false
             }, {
                 title:'商品类别',
-                field:'commodityTypeName',
-                width:100,
-                visible:false
+                field:'purCommodityTypeName',
+                width:150
             }, {
-                title:'状态',
-                field:'status',
-                width:50,
-                align:'center',
-                formatter: statusFormatter
-            }, {
-                title:'成本价',
-                field:'costPrice',
+                title:'成本价/件',
+                field:'purchasePrice',
                 width:90,
                 formatter: priceFormatter
             }, {
-                title:'supplierId',
-                field:'supplierId',
+                title:'采购数量',
+                field:'purchaseAmount',
+                width:90,
+                align:'center'
+            }, {
+                title:'purStorageId',
+                field:'purStorageId',
+                visible:false
+            }, {
+                title:'仓库',
+                field:'purStorageName'
+            }, {
+                title:'purSupplierId',
+                field:'purSupplierId',
                 visible:false
             }, {
                 title:'供应商',
-                field:'supplierName',
-                width:180
+                field:'purSupplierName'
             }, {
                 title:'操作',
                 field:'_oper',
@@ -115,9 +101,9 @@ $(function(){
         return{
         	limit: params.limit,//页面大小（每页最多显示多少条数据）
             offset: params.offset,//请求当前页起始数
-            commodityName: $('#commodityName').val(),
-            commodityCode: $('#commodityCode').val(),
-            supplierId: $('#supplierId').val()
+            purCommodityName: $('#purCommodityName').val(),
+            purStorageId: $('#purStorageId').val(),
+            purSupplierId: $('#purSupplierId').val()
         }
     }
 	
@@ -132,17 +118,29 @@ $(function(){
     
     $('#btn_purchase_reset').click(function(){
     	//Hidden值重置
-    	$("#supplierId").val('');
+    	$("#purStorageId").val('');
+    	$("#purSupplierId").val('');
     	//表单值重置
     	$('#purchase_search_form')[0].reset();
     	//下拉框重置
-    	$('#supplierSelect').val(null).trigger("change");
+    	$('#purStorageSelect').val(null).trigger("change");
+    	$('#purSupplierSelect').val(null).trigger("change");
     });
     
     //购买按钮事件
     $('#btn_purchase_buy').click(function(){
-    	bindTypeSelect('modal_commodityTypeSelect0', 'modal_commodityType0');
-    	bindSupplierSelect('modal_supplierSelect', 'modal_supplierId');
+    	bindTypeSelect('m_purCommodityTypeSelect', 'm_purCommodityType');
+    	bindStorageSelect('m_purStorageSelect', 'm_purStorageId');
+    	bindSupplierSelect('m_purSupplierSelect', 'm_purSupplierId');
+    	
+    	$('.spinner .btn:first-of-type').on('click', function() {  
+    		$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);  
+    	});  
+    	$('.spinner .btn:last-of-type').on('click', function() {
+    		if((parseInt($('.spinner input').val(), 10) - 1) >= 0){
+    			$('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);  
+    		}
+    	});  
     	
         $('#purchase_modal').modal('show');
     });
@@ -161,7 +159,7 @@ $(function(){
     	var params = $('#purchase_form').serialize();
     	$.ajax({
     		type: 'POST',
-    		url: base + '/commodity/addCommodity.html',
+    		url: base + '/purchase/addPurchase.html',
     		data: params,
     		success: function(data) {
     			if(data.success) {
@@ -194,6 +192,39 @@ function bindTypeSelect(selectId, hiddenId) {
             	language: "zh-CN", //设置提示语言
                 width: "100%", //设置下拉框的宽度
                 placeholder: '请选择类别',
+                allowClear: true
+            });
+            
+            $('#' + selectId).val(null).trigger("change");
+            
+            $("#" + selectId).on("select2:select",function(){  
+                $("#" + hiddenId).val($(this).val());  
+            });  
+            
+            $("#" + selectId).on("select2:unselect",function(){
+                $("#" + hiddenId).val('');  
+            }); 
+
+		}
+	});
+}
+
+function bindStorageSelect(selectId, hiddenId) {
+	$.ajax({
+		url: base + "/storage/getList.html",
+		success: function(data){
+			var data = eval('(' + data + ')');
+			$.each(data, function (i, d) {
+				d.id = d.storageId;
+				d.text = d.storageName;
+			});
+			
+			$('#' + selectId).empty();
+            $('#' + selectId).select2({
+            	data: data,
+            	language: "zh-CN", //设置提示语言
+                width: "100%", //设置下拉框的宽度
+                placeholder: '请选择仓库',
                 allowClear: true
             });
             
@@ -265,7 +296,7 @@ function statusFormatter(value,row,index) {
 }
 
 function priceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy"></i> ' + value;
+	return '<i class="fa fa-jpy"></i>' + value;
 }
 
 function operateFormatter(value,row,index) {
