@@ -15,6 +15,10 @@ public interface PurchaseService {
 	
 	List<Purchase> find(PurchaseFilter filter);
 	
+	int countByStorageId(int storageId);
+	
+	List<Purchase> getListByStorageId(int storageId);
+	
 	boolean save(Purchase purchase);
 	
 }

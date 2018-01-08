@@ -120,6 +120,33 @@ public class PurchaseServiceImpl implements PurchaseService {
 		}
 		return list;
 	}
+	
+	@Override
+	public int countByStorageId(int storageId) {
+		PurchaseExample example = new PurchaseExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andPurStorageIdEqualTo(storageId);
+		return purchaseMapper.countByExample(example);
+	}
+
+	@Override
+	public List<Purchase> getListByStorageId(int storageId) {
+		PurchaseExample example = new PurchaseExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andPurStorageIdEqualTo(storageId);
+		List<Purchase> list = purchaseMapper.selectByExample(example);
+		if(null != list && list.size() > 0) {
+			for(Purchase purchase: list) {
+				String purCommodityTypeName = commodityTypeMapper.selectByPrimaryKey(purchase.getPurCommodityType()).getTypeName();
+				purchase.setPurCommodityTypeName(purCommodityTypeName);
+				String purStorageName = storageMapper.selectByPrimaryKey(purchase.getPurStorageId()).getStorageName();
+				purchase.setPurStorageName(purStorageName);
+				String purSupplierName = supplierMapper.selectByPrimaryKey(purchase.getPurSupplierId()).getSupplierName();
+				purchase.setPurSupplierName(purSupplierName);
+			}
+		}
+		return list;
+	}
 
 	@Override
 	public boolean save(Purchase purchase) {
@@ -145,5 +172,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 			return false;
 		}
 	}
+
 
 }

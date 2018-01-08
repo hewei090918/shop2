@@ -1,6 +1,5 @@
 package com.web.shop.service.impl;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -155,30 +154,6 @@ public class CommodityServiceImpl implements CommodityService {
 			}
 		}
 		return list;
-	}
-	
-	@Override
-	public int countByStorageId(int storageId) {
-		CommodityExample example = new CommodityExample();
-		Criteria criteria = example.createCriteria();
-		criteria.andStorageIdEqualTo(storageId);
-		List<String> listVal = new ArrayList<String>();
-		listVal.add("1");//在售
-		listVal.add("3");//下架
-		criteria.andStatusIn(listVal);//不包括卖出的
-		return commodityMapper.countByExample(example);
-	}
-	
-	@Override
-	public List<Commodity> getListByStorageId(int storageId) {
-		CommodityExample example = new CommodityExample();
-		Criteria criteria = example.createCriteria();
-		criteria.andStorageIdEqualTo(storageId);
-		List<String> listVal = new ArrayList<String>();
-		listVal.add("1");//在售
-		listVal.add("3");//下架
-		criteria.andStatusIn(listVal);//不包括卖出的
-		return commodityMapper.selectByExample(example);
 	}
 
 	@Override

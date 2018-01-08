@@ -33,17 +33,6 @@ public class CommodityController {
 		return pageView;
 	}
 	
-	@RequestMapping(value = "/queryByStorageId")
-	public 
-	@ResponseBody PageViewBean<Commodity> queryByStorageId(@RequestParam int storageId) {
-		PageViewBean<Commodity> pageView = new PageViewBean<Commodity>();
-		int total = commodityService.countByStorageId(storageId);
-		List<Commodity> data = commodityService.getListByStorageId(storageId);
-		pageView.setTotal(total);
-		pageView.setData(data);
-		return pageView;
-	}
-	
 	@RequestMapping(value = "/addCommodity")
 	public 
 	@ResponseBody JsonResult addCommodity(@ModelAttribute Commodity commodity) {

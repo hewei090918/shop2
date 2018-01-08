@@ -253,10 +253,10 @@ function lockedFormatter(value,row,index) {
 }
 
 function operateFormatter(value,row,index) {
-	return '<i onclick="showDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
+	return '<i onclick="showUserDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 
-function showDetail(index) {
+function showUserDetail(index) {
 	console.log(index);
 }
 

@@ -71,7 +71,7 @@ $(function(){
                 field:'_detail',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:detailFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -155,11 +155,6 @@ $(function(){
 	    }
     });
 
-    //上架按钮事件
-    $('#btn_storage_up').click(function(){
-    	
-    });
-    
     //模态框居中
     $('#storage_modify_modal').on('show.bs.modal', function (e) {
     	$(this).css('display', 'block');  
@@ -198,15 +193,100 @@ function soldOutFormatter(value,row,index) {
     }
 }
 
-function operateFormatter(value,row,index) {
+function detailFormatter(value,row,index) {
 	
-	return '<i onclick="showDetail(' + row.storageId + ')" class="glyphicon glyphicon-list" style="cursor:pointer;color:purple;" title="查看详情"></i>';
+	return '<i onclick="showStorageDetail(' + row.storageId + ')" class="glyphicon glyphicon-list" style="cursor:pointer;color:purple;" title="查看详情"></i>';
 }
 
-function showDetail(id) {
+function showStorageDetail(id) {
 	$('#storageList_table').bootstrapTable('uncheckAll');
 	$('#storDetList_table').bootstrapTable('destroy');
 	
+	$('#storDetList_table').bootstrapTable({
+		url: base + "/purchase/queryByStorageId.html",
+		striped: true, 
+        dataField: "data",
+        queryParams: function() {
+        	return {storageId: id}
+        },
+		sidePagination: "client",
+		pageNumber: 1,
+        pagination:true,
+        pageSize:5,
+        pageList:[5,10,20],
+        showRefresh:false,//刷新按钮
+        clickToSelect: true,
+        height: 400,
+        columns:[
+	        {
+	            title:'全选',
+	            field:'select',
+	            checkbox:true,//复选框
+	            width:30,
+	            align:'center',
+	            valign:'middle'
+	        }, {
+	         	title:'序号',
+	         	field:'_rowNum',
+	         	width:20,
+	         	align:'center',
+	         	formatter: function (value, row, index) {  
+	                 return index+1;  
+	            }  
+	        }, {
+                title:'purchaseId',
+                field:'purchaseId',
+                visible:false
+            }, {
+            	title:'purStorageId',
+            	field:'purStorageId',
+            	visible:false
+            }, {
+            	title:'存放仓库',
+                field:'purStorageName',
+                width:100,
+            }, {
+                title:'商品名称',
+                field:'purCommodityName',
+                width:130,
+                sortable:true
+            }, {
+            	title:'purCommodityType',
+            	field:'purCommodityType',
+            	visible:false
+            }, {
+            	title:'商品类别',
+            	field:'purCommodityTypeName',
+            	width:100
+            }, {
+                title:'purSupplierId',
+                field:'purSupplierId',
+                visible:false
+            }, {
+                title:'供应商',
+                field:'purSupplierName'
+            }, {
+            	title:'剩余数量',
+            	field:'purchaseAmount'
+            }, {
+                title:'操作',
+                field:'_oper',
+                width:50,
+                align:'center',
+                formatter:operateFormatter
+            }
+        ],
+		locale:'zh-CN'//中文支持
+	});
 	$('#storage_detail_modal').modal('show');
+}
+
+function operateFormatter(value,row,index) {
+	
+	return '<i onclick="doUp(' + row.purchaseId + ')" class="glyphicon glyphicon-arrow-up" style="cursor:pointer;color:purple;" title="上架"></i>';
+}
+
+function doUp(id) {
+	
 }
 
