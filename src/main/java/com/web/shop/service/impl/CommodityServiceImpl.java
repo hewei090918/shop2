@@ -3,7 +3,6 @@ package com.web.shop.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -15,7 +14,6 @@ import com.web.shop.domain.Commodity;
 import com.web.shop.domain.CommodityExample;
 import com.web.shop.domain.CommodityExample.Criteria;
 import com.web.shop.domain.Storage;
-import com.web.shop.domain.StorageExample;
 import com.web.shop.mapper.CommodityMapper;
 import com.web.shop.mapper.CommodityTypeMapper;
 import com.web.shop.mapper.StorageMapper;
@@ -186,41 +184,6 @@ public class CommodityServiceImpl implements CommodityService {
 	@Override
 	public boolean save(Commodity commodity) {
 		try{
-			String receiveName = commodity.getCommodityName();
-			StorageExample se = new StorageExample();
-			se.createCriteria().andStorageNameEqualTo(receiveName);
-			List<Storage> sl = storageMapper.selectByExample(se);
-			if(null != sl && sl.size() > 0) {
-				Storage existStorage = sl.get(0);
-				long amount = existStorage.getAmount();
-				existStorage.setAmount(amount+1);
-				existStorage.setLatestInTime(new Date());
-				int flag = storageMapper.updateByPrimaryKey(existStorage);
-				if(flag == 1){
-					logger.info("更新仓库成功");
-					commodity.setStorageId(existStorage.getStorageId());
-				}
-			}else {
-				Storage newStorage = new Storage();
-				newStorage.setStorageName(commodity.getCommodityName());
-				newStorage.setAmount(1L);
-				newStorage.setSoldOut(false);
-				newStorage.setFirstInTime(new Date());
-				newStorage.setLatestInTime(new Date());
-				int flag = storageMapper.insert(newStorage);
-				if(flag == 1) {
-					logger.info("新增仓库成功");
-					StorageExample example = new StorageExample();
-					example.setOrderByClause("storage_id desc");
-					List<Storage> storageList = storageMapper.selectByExample(example);
-					commodity.setStorageId(storageList.get(0).getStorageId());
-				}
-			}
-			String commodityCode = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
-			commodity.setCommodityCode(commodityCode);
-			commodity.setDiscountPrice(commodity.getPrice()*commodity.getDiscount());
-			commodity.setUpTime(new Date());
-			commodity.setStatus("1");	//默认在售
 			commodityMapper.insert(commodity);
 			logger.info("新增商品成功");
 			return true;

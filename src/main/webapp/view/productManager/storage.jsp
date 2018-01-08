@@ -30,17 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                     <div class="form-group">
 	                         <label class="col-sm-4 control-label">名称:</label>
 	                         <div class="col-sm-8">
-	                             <input type="text" class="form-control" name="commodityName" id="commodityName0" style="height:28px;">
-	                         </div>
-	                     </div>
-	                 </div>
-	                 <div class="col-sm-3 col-md-3">
-	                     <div class="form-group">
-	                         <label class="col-sm-4 control-label">类别:</label>
-	                         <div class="col-sm-8">
-	                         	<input type="hidden" name="commodityType" id="commodityType0">
-	                         	<select class="form-control select2" id="commodityTypeSelect0">
-	                         	</select>
+	                             <input type="text" class="form-control" name="storageName" id="storageName" style="height:28px;">
 	                         </div>
 	                     </div>
 	                 </div>
@@ -64,8 +54,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <button id="btn_storage_reset" type="button" class="btn btn-default">
                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> 重置
             </button>
-            <button id="btn_storage_up" type="button" class="btn btn-warning">
-               <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> 上架
+            <button id="btn_storage_add" type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 新增
+            </button>
+            <button id="btn_storage_delete" type="button" class="btn btn-default">
+               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
             </button>
         </div>
         
@@ -74,7 +67,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
         </div>
         
-        <!-- modal -->
+        <!-- storage modify modal -->
+        <div class="modal fade" id="storage_modify_modal" tabindex="-1" role="dialog"
+              aria-hidden="true">
+            <div class="modal-dialog" style="width:400px;height:auto;">
+                <div class="modal-content">
+                	<form class="form-horizontal" id="storage_form">
+	                	<div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">新增仓库</h4>
+			            </div>
+			            <div class="modal-body">
+			            	 <div class="form-group">
+		                         <label class="col-sm-3 control-label">仓库名称:</label>
+		                         <div class="col-sm-9">
+		                             <input type="text" class="form-control" name="storageName" placeholder="请输入仓库名称">
+		                         </div>
+		                     </div>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			                <button type="button" class="btn btn-primary" id="btn_storage_save">保存</button>
+			            </div>
+		            </form>
+                </div>
+           	</div>
+        </div>
+        
+        <!-- storage detail modal -->
         <div class="modal fade" id="storage_detail_modal" tabindex="-1" role="dialog"
               aria-hidden="true">
             <div class="modal-dialog" style="width:780px;height:auto;">
@@ -89,6 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            </div>
 		            <div class="modal-footer">
 		                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		                <button type="button" class="btn btn-primary" id="btn_storage_up">上架</button>
 		            </div>
                 </div>
            	</div>

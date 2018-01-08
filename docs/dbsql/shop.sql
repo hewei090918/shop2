@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2018-01-03 15:22:14
+Date: 2018-01-08 13:52:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,7 +86,7 @@ CREATE TABLE `commodity` (
   `sell_time` datetime DEFAULT NULL COMMENT '卖出时间',
   `down_time` datetime DEFAULT NULL COMMENT '下架时间',
   PRIMARY KEY (`commodity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of commodity
@@ -171,13 +171,17 @@ CREATE TABLE `purchase` (
   `purchase_price` double(8,2) DEFAULT NULL COMMENT '采购价格（进货价格）',
   `purchase_amount` bigint(20) DEFAULT NULL COMMENT '采购数量',
   PRIMARY KEY (`purchase_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of purchase
 -- ----------------------------
 INSERT INTO `purchase` VALUES ('1', 'AD钙奶', '1', '1', '1', '1.50', '100');
 INSERT INTO `purchase` VALUES ('2', '蚕丝面膜', '3', '2', '3', '12.00', '50');
+INSERT INTO `purchase` VALUES ('3', '妮维雅护肤霜', '3', '2', '3', '32.50', '200');
+INSERT INTO `purchase` VALUES ('4', 'Apple Watch', '7', '4', '4', '1800.00', '5');
+INSERT INTO `purchase` VALUES ('5', 'MacBook 12寸', '7', '4', '4', '8500.00', '5');
+INSERT INTO `purchase` VALUES ('6', '中华2B铅笔', '5', '5', '7', '0.50', '1500');
 
 -- ----------------------------
 -- Table structure for role
@@ -207,17 +211,20 @@ CREATE TABLE `storage` (
   `storage_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '仓库名称',
   `first_in_time` datetime DEFAULT NULL COMMENT '首次入库时间',
   `latest_in_time` datetime DEFAULT NULL COMMENT '最新入库时间',
-  `amount` bigint(20) DEFAULT NULL COMMENT '库存数量',
-  `sold_out` tinyint(1) unsigned DEFAULT '0' COMMENT '是否售罄（1：售罄，0：未售罄）',
+  `amount` bigint(20) DEFAULT '0' COMMENT '库存数量',
+  `sold_out` tinyint(1) unsigned DEFAULT '1' COMMENT '是否售罄（1：售罄，0：未售罄）',
   PRIMARY KEY (`storage_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of storage
 -- ----------------------------
-INSERT INTO `storage` VALUES ('1', '1号仓库', '2018-01-01 12:12:00', '2018-01-03 14:12:31', null, '0');
-INSERT INTO `storage` VALUES ('2', '2号仓库', '2018-01-01 12:12:12', '2018-01-03 14:13:54', null, '0');
-INSERT INTO `storage` VALUES ('3', '3号仓库', '2018-01-01 15:00:00', '2018-01-03 14:14:19', null, '0');
+INSERT INTO `storage` VALUES ('1', '1号仓库', '2018-01-01 12:12:00', '2018-01-03 14:12:31', '100', '0');
+INSERT INTO `storage` VALUES ('2', '2号仓库', '2018-01-01 12:12:12', '2018-01-03 14:13:54', '250', '0');
+INSERT INTO `storage` VALUES ('3', '3号仓库', '2018-01-01 15:00:00', '2018-01-03 14:14:19', '0', '1');
+INSERT INTO `storage` VALUES ('4', '5号仓库', '2018-01-08 13:21:51', '2018-01-08 13:24:38', '10', '0');
+INSERT INTO `storage` VALUES ('5', '8号仓库', '2018-01-08 13:28:44', '2018-01-08 13:28:44', '1500', '0');
+INSERT INTO `storage` VALUES ('6', '10号仓库', null, null, '0', '1');
 
 -- ----------------------------
 -- Table structure for supplier
@@ -230,7 +237,7 @@ CREATE TABLE `supplier` (
   `address` varchar(500) CHARACTER SET utf8 DEFAULT NULL COMMENT '详细地址',
   `area_id` int(11) DEFAULT NULL COMMENT '所在地区',
   PRIMARY KEY (`supplier_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of supplier
@@ -240,6 +247,9 @@ INSERT INTO `supplier` VALUES ('2', '上好佳有限公司', '021-59898888', '�
 INSERT INTO `supplier` VALUES ('3', '相宜本草化妆品有限公司', '0571-88697354', '杭州市延安路688号', '3');
 INSERT INTO `supplier` VALUES ('4', '海尔电器', null, '青岛市', '10');
 INSERT INTO `supplier` VALUES ('5', '迪卡侬运动器材有限公司', '0554-85214563', '宁波市海曙区药行街68号', '3');
+INSERT INTO `supplier` VALUES ('6', '森马服饰', '010-77668888', '北京市长安街110号', '5');
+INSERT INTO `supplier` VALUES ('7', '得力文具', '021-88696634', '上海市静安区', '1');
+INSERT INTO `supplier` VALUES ('8', '苹果中国官方旗舰店', '010-88888800', '北京市海淀区中关村', '5');
 
 -- ----------------------------
 -- Table structure for user

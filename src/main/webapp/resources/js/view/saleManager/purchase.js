@@ -34,12 +34,7 @@ $(function(){
                 checkbox:true,//复选框
                 width:30,
                 align:'center',
-                valign:'middle',
-                formatter:function(value, row, index){
-                	if(row.status != 1) {
-                		return {disabled : true};
-                	}
-            	}
+                valign:'middle'
             }, {
             	title:'序号',
             	field:'_rowNum',

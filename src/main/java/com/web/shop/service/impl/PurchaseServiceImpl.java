@@ -1,5 +1,6 @@
 package com.web.shop.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +12,7 @@ import com.web.shop.bean.query.PurchaseFilter;
 import com.web.shop.domain.Purchase;
 import com.web.shop.domain.PurchaseExample;
 import com.web.shop.domain.PurchaseExample.Criteria;
+import com.web.shop.domain.Storage;
 import com.web.shop.mapper.CommodityTypeMapper;
 import com.web.shop.mapper.PurchaseMapper;
 import com.web.shop.mapper.StorageMapper;
@@ -122,6 +124,19 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public boolean save(Purchase purchase) {
 		try{
+			int storageId = purchase.getPurStorageId();
+			Storage storage = storageMapper.selectByPrimaryKey(storageId);
+			if(storage.getAmount() == 0L) {
+				storage.setFirstInTime(new Date());
+			}
+			if(purchase.getPurchaseAmount() > 0L) {
+				storage.setSoldOut(false);
+				storage.setLatestInTime(new Date());
+			}
+			long amount = storage.getAmount() + purchase.getPurchaseAmount();
+			storage.setAmount(amount);
+			storageMapper.updateByPrimaryKey(storage);
+			logger.info("更新仓库商品数量成功");
 			purchaseMapper.insert(purchase);
 			logger.info("采购商品成功");
 			return true;
