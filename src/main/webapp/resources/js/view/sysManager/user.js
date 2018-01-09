@@ -113,7 +113,7 @@ $(function(){
             }, {
                 title:'出生日期',
                 field:'birthday',
-                formatter:dateFormatter
+                formatter:birthdayFormatter
             }, {
                 title:'联系方式',
                 field:'phone',
@@ -154,7 +154,7 @@ $(function(){
                 field:'_oper',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:userOperateFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -228,7 +228,7 @@ $(function(){
     
 });
 
-function dateFormatter(value) {
+function birthdayFormatter(value) {
 	return new Date(value).Format('yyyy-MM-dd');
 }
 
@@ -252,7 +252,7 @@ function lockedFormatter(value,row,index) {
     }
 }
 
-function operateFormatter(value,row,index) {
+function userOperateFormatter(value,row,index) {
 	return '<i onclick="showUserDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 

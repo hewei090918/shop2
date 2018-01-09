@@ -63,7 +63,7 @@ $(function(){
                 field:'_oper',
                 width: 60,
                 align:'center',
-                formatter:operateFormatter
+                formatter:roleOperateFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -140,7 +140,7 @@ function adminFormatter(value,row,index) {
     }
 }
 
-function operateFormatter(value,row,index) {
+function roleOperateFormatter(value,row,index) {
 	return '<i onclick="showRoleDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 

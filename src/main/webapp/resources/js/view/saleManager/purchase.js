@@ -85,7 +85,7 @@ $(function(){
                 field:'_oper',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:purchaseOperateFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -270,13 +270,6 @@ function bindSupplierSelect(selectId, hiddenId) {
 	});
 }
 
-function dateFormatter(value) {
-	if(value)
-		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
-	else
-		return '';
-}
-
 function statusFormatter(value,row,index) {
 	console.log(value);
 	if(value == 1){
@@ -290,11 +283,8 @@ function statusFormatter(value,row,index) {
     }
 }
 
-function priceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy"></i>' + value;
-}
-
-function operateFormatter(value,row,index) {
+function purchaseOperateFormatter(value,row,index) {
+	
 	return '<i onclick="showPurchaseDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 

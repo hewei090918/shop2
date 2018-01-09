@@ -176,13 +176,6 @@ $(function(){
     
 });
 
-function dateFormatter(value) {
-	if(value)
-		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
-	else
-		return '时间待定';
-}
-
 function soldOutFormatter(value,row,index) {
 	if(value==true){
         return '<i class="fa fa-check" style="cursor:pointer;color:red" title="售罄"></i>';
@@ -273,7 +266,7 @@ function showStorageDetail(id) {
                 field:'_oper',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:storDetOperateFormatter
             }
         ],
 		locale:'zh-CN'//中文支持
@@ -281,7 +274,7 @@ function showStorageDetail(id) {
 	$('#storage_detail_modal').modal('show');
 }
 
-function operateFormatter(value,row,index) {
+function storDetOperateFormatter(value,row,index) {
 	
 	return '<i onclick="doUp(' + row.purchaseId + ')" class="glyphicon glyphicon-arrow-up" style="cursor:pointer;color:purple;" title="上架"></i>';
 }

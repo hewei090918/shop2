@@ -122,7 +122,7 @@ $(function(){
                 field:'_oper',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:commodityOperateFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -342,13 +342,6 @@ function bindUserSelect(selectId, hiddenId) {
 	});
 }
 
-function dateFormatter(value) {
-	if(value)
-		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
-	else
-		return '';
-}
-
 function statusFormatter(value,row,index) {
 	console.log(value);
 	if(value == 1){
@@ -372,15 +365,7 @@ function isHotFormatter(value,row,index) {
     }
 }
 
-function priceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy"></i> ' + value;
-}
-
-function discountPriceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy" style="color:purple"></i> ' + '<span style="color:purple">' + value + '</span>';
-}
-
-function operateFormatter(value,row,index) {
+function commodityOperateFormatter(value,row,index) {
 	return '<i onclick="showCommodityDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 

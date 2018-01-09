@@ -70,3 +70,20 @@ Date.prototype.Format = function (fmt) {
     if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
+
+function dateFormatter(value) {
+	if(value)
+		return new Date(value).Format('yyyy-MM-dd HH:mm:ss');
+	else
+		return '时间待定';
+}
+
+function priceFormatter(value,row,index) {
+	return '<i class="fa fa-jpy"></i> ' + value;
+}
+
+function discountPriceFormatter(value,row,index) {
+	return '<i class="fa fa-jpy" style="color:purple"></i> ' + '<span style="color:purple">' + value + '</span>';
+}
+
+

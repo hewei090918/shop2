@@ -69,7 +69,7 @@ $(function(){
                 field:'_oper',
                 width:50,
                 align:'center',
-                formatter:operateFormatter
+                formatter:supplierOperateFormatter
             }
         ],
         locale:'zh-CN'//中文支持
@@ -174,7 +174,8 @@ function bindAreaSelect(selectId, hiddenId) {
 	});
 }
 
-function operateFormatter(value,row,index) {
+function supplierOperateFormatter(value,row,index) {
+	
 	return '<i onclick="showSupplierDetail(' + index + ')" class="glyphicon glyphicon-pencil" style="cursor:pointer;color:purple;" title="修改"></i>';
 }
 
