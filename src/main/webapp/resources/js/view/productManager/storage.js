@@ -87,8 +87,12 @@ $(function(){
         }
     }
 	
-	function refreshTable(){
+	function refreshStorageListTable(){
 		$('#storageList_table').bootstrapTable('refresh');
+	}
+	
+	function refreshStorDetListTable(){
+		$('#storDetList_table').bootstrapTable('refresh');
 	}
 	
 	//查询按钮事件
@@ -117,7 +121,28 @@ $(function(){
     			if(data.success) {
     				toastr.success(data.message);
     				$('#storage_modify_modal').modal('hide');
-    				refreshTable();
+    				refreshStorageListTable();
+    			}else {
+    				toastr.warning(data.message);
+    			}
+    		},
+    		dataType: 'json'
+		});
+    });
+    
+    $('#btn_up_save').click(function() {
+    	var params = $('#commodity_up_form').serialize();
+    	console.log(params);
+    	$.ajax({
+    		type: 'POST',
+    		url: base + '/commodity/commodityUp.html',
+    		data: params,
+    		success: function(data) {
+    			if(data.success) {
+    				toastr.success(data.message);
+    				$('#amount_change_modal').modal('hide');
+    				refreshStorDetListTable();
+    				refreshStorageListTable();
     			}else {
     				toastr.warning(data.message);
     			}
@@ -145,7 +170,7 @@ $(function(){
 	      		success: function(data) {
 	      			if(data.success) {
 	      				toastr.success(data.message);
-	      				refreshTable();
+	      				refreshStorageListTable();
 	      			}else {
 	      				toastr.warning(data.message);
 	      			}
@@ -169,6 +194,15 @@ $(function(){
     	$(this).css('display', 'block');  
     	
         var modalHeight = $(window).height()/2 - $('#storage_detail_modal .modal-dialog').height()/2;  
+        $(this).find('.modal-dialog').css({  
+            'margin-top': modalHeight  
+        });  
+    });
+    
+    $('#amount_change_modal').on('show.bs.modal', function (e) {
+    	$(this).css('display', 'block');  
+    	
+        var modalHeight = $(window).height()/2 - $('#amount_change_modal .modal-dialog').height()/2;  
         $(this).find('.modal-dialog').css({  
             'margin-top': modalHeight  
         });  
@@ -276,10 +310,25 @@ function showStorageDetail(id) {
 
 function storDetOperateFormatter(value,row,index) {
 	
-	return '<i onclick="doUp(' + row.purchaseId + ')" class="glyphicon glyphicon-arrow-up" style="cursor:pointer;color:purple;" title="上架"></i>';
+	return '<i onclick="doUp(' + row.purchaseId + ',' + row.purchaseAmount + ')" class="glyphicon glyphicon-arrow-up" style="cursor:pointer;color:purple;" title="上架"></i>';
 }
 
-function doUp(id) {
+function doUp(id, amount) {
+	$('#storDetList_table').bootstrapTable('uncheckAll');
 	
+	$('#upId').val(id);
+	
+	$('.spinner .btn:first-of-type').on('click', function() {
+		if((parseInt($('.spinner input').val(), 10) + 1) <= amount) {
+			$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1); 
+		}
+	});  
+	$('.spinner .btn:last-of-type').on('click', function() {
+		if((parseInt($('.spinner input').val(), 10) - 1) >= 0){
+			$('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);  
+		}
+	});  
+	
+	$('#amount_change_modal').modal('show');
 }
 

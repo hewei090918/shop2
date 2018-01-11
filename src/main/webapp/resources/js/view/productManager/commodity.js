@@ -5,10 +5,10 @@
 $(function(){
 	
 	//初始化下拉框（用于商品类别选择）
-	bindTypeSelect('commodityTypeSelect', 'commodityType');
+	bindTypeSelect('commodityTypeSelect', 'commodityType', null);
 	
 	//初始化下拉框（用于货物管理员选择）
-	bindUserSelect('managerSelect', 'manager');
+	bindUserSelect('managerSelect', 'manager', null);
 	
 	//加载表格数据
 	$('#commodityList_table').bootstrapTable({
@@ -96,12 +96,12 @@ $(function(){
                 align:'center',
                 formatter: isHotFormatter
             }, {
-                title:'单价',
+                title:'单价/件',
                 field:'price',
                 width:90,
                 formatter: priceFormatter
             }, {
-                title:'会员价',
+                title:'会员价/件',
                 field:'discountPrice',
                 width:90,
                 formatter: discountPriceFormatter
@@ -184,7 +184,7 @@ $(function(){
     	var params = $('#commodity_form').serialize();
     	$.ajax({
     		type: 'POST',
-    		url: base + '/commodity/addCommodity.html',
+    		url: base + '/commodity/updateCommodity.html',
     		data: params,
     		success: function(data) {
     			if(data.success) {
@@ -276,7 +276,7 @@ $(function(){
     
 });
 
-function bindTypeSelect(selectId, hiddenId) {
+function bindTypeSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/commodityType/getList.html",
 		success: function(data){
@@ -295,7 +295,7 @@ function bindTypeSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  
@@ -309,7 +309,7 @@ function bindTypeSelect(selectId, hiddenId) {
 	});
 }
 
-function bindUserSelect(selectId, hiddenId) {
+function bindUserSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/user/getList.html",
 		success: function(data){
@@ -328,7 +328,7 @@ function bindUserSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  
@@ -370,7 +370,24 @@ function commodityOperateFormatter(value,row,index) {
 }
 
 function showCommodityDetail(index) {
-	console.log(index);
+//	console.log("index = " + index);
+	$('#commodityList_table').bootstrapTable('uncheckAll');
+	var row = $('#commodityList_table').bootstrapTable('getData')[index];
+	console.log(row);
+	$('#commodity_form input[name="commodityId"]').val(row.commodityId);
+	bindTypeSelect('m_commodityTypeSelect', 'm_commodityType', row.commodityType);
+	bindUserSelect('m_managerSelect', 'm_manager', row.manager);
+	$('#commodity_form input[name="commodityCode"]').val(row.commodityCode);
+	$('#commodity_form input[name="commodityName"]').val(row.commodityName);
+	$('#commodity_form input[name="commodityType"]').val(row.commodityType);
+	$('#commodity_form input[name="price"]').val(row.price);
+	$('#commodity_form input[name="costPrice"]').val(row.costPrice);
+	if(row.isHot) 
+		$('#commodity_form input[name="isHot"][value="1"]').prop('checked', 'checked');
+	else
+		$('#commodity_form input[name="isHot"][value="0"]').prop('checked', 'checked');
+	
+	$('#commodity_modal').modal('show');
 }
 
 

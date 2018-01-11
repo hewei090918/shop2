@@ -4,7 +4,7 @@
 
 $(function(){
 	//初始化下拉框（用于地区选择）
-	bindAreaSelect('areaSelect', 'areaId');
+	bindAreaSelect('areaSelect', 'areaId', null);
 	
 	//加载表格数据
 	$('#supplierList_table').bootstrapTable({
@@ -141,7 +141,7 @@ $(function(){
     
 });
 
-function bindAreaSelect(selectId, hiddenId) {
+function bindAreaSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/area/getList.html",
 		success: function(data){
@@ -160,7 +160,7 @@ function bindAreaSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  

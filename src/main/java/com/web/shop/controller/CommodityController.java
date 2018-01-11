@@ -2,6 +2,7 @@ package com.web.shop.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,17 +34,17 @@ public class CommodityController {
 		return pageView;
 	}
 	
-	@RequestMapping(value = "/addCommodity")
+	@RequestMapping(value = "/updateCommodity")
 	public 
-	@ResponseBody JsonResult addCommodity(@ModelAttribute Commodity commodity) {
+	@ResponseBody JsonResult updateCommodity(@ModelAttribute Commodity commodity) {
 		JsonResult result = new JsonResult();
-		boolean success = commodityService.save(commodity);
+		boolean success = commodityService.update(commodity);
 		if(success) {
 			result.setSuccess(true);
-			result.setMessage("新增商品成功!");
+			result.setMessage("修改商品成功!");
 		}else{
 			result.setSuccess(false);
-			result.setMessage("新增商品失败!");
+			result.setMessage("修改商品失败!");
 		}
 		return result;
 	}
@@ -90,6 +91,24 @@ public class CommodityController {
 			result.setSuccess(false);
 			result.setMessage("商品下架失败!");
 		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/commodityUp")
+	public
+	@ResponseBody JsonResult commodityUp(@RequestParam String upId, @RequestParam String upAmount) {
+		JsonResult result = new JsonResult();
+		if(StringUtils.isNotBlank(upId) && StringUtils.isNotBlank(upAmount)) {
+			boolean success = commodityService.up(Integer.parseInt(upId), Long.parseLong(upAmount));
+			if(success) {
+				result.setSuccess(true);
+				result.setMessage("商品上架成功!");
+			}else{
+				result.setSuccess(false);
+				result.setMessage("商品上架失败!");
+			}
+		}
+		
 		return result;
 	}
 	

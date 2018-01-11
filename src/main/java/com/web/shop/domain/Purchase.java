@@ -100,5 +100,5 @@ public class Purchase {
 	public void setPurSupplierName(String purSupplierName) {
 		this.purSupplierName = purSupplierName;
 	}
-    
+	
 }

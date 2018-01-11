@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50533
 File Encoding         : 65001
 
-Date: 2018-01-08 13:52:33
+Date: 2018-01-11 17:39:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -86,11 +86,61 @@ CREATE TABLE `commodity` (
   `sell_time` datetime DEFAULT NULL COMMENT '卖出时间',
   `down_time` datetime DEFAULT NULL COMMENT '下架时间',
   PRIMARY KEY (`commodity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of commodity
 -- ----------------------------
+INSERT INTO `commodity` VALUES ('1', '蚕丝面膜', '820EA609', '3', '2', '3', '1', '1', '12.00', '15.00', '1.00', '15.00', '6', '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('2', '蚕丝面膜', '660B0D33', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('3', '蚕丝面膜', '14C1F4C8', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('4', '蚕丝面膜', '45CE75BC', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('5', '蚕丝面膜', '08AB9EFB', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('6', '蚕丝面膜', 'F05CDD86', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('7', '蚕丝面膜', 'C2D6FE4A', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('8', '蚕丝面膜', '52EFFF75', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('9', '蚕丝面膜', '7966F053', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('10', '蚕丝面膜', '3B8E5E67', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:14:01', null, null);
+INSERT INTO `commodity` VALUES ('11', '蚕丝面膜', '9BD336C3', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:26:40', null, null);
+INSERT INTO `commodity` VALUES ('12', '蚕丝面膜', '42AF29C1', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:26:40', null, null);
+INSERT INTO `commodity` VALUES ('13', '蚕丝面膜', '33A3A3C0', '3', '2', '3', '1', '0', '12.00', null, null, null, null, '2018-01-11 10:27:55', null, null);
+INSERT INTO `commodity` VALUES ('14', '蚕丝面膜', '333D56B8', '3', '2', '3', '1', '1', '12.00', '15.00', '1.00', '15.00', '6', '2018-01-11 10:27:55', null, null);
+INSERT INTO `commodity` VALUES ('15', '蚕丝面膜', '21079165', '3', '2', '3', '1', '1', '12.00', '15.00', '1.00', '15.00', '6', '2018-01-11 10:28:52', null, null);
+INSERT INTO `commodity` VALUES ('16', '中华2B铅笔', '5EF370CD', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('17', '中华2B铅笔', '11E3B963', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('18', '中华2B铅笔', '836871BF', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('19', '中华2B铅笔', '06E46FD5', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('20', '中华2B铅笔', '8CF849C5', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('21', '中华2B铅笔', 'CD4D5D98', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('22', '中华2B铅笔', '5D0AB183', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('23', '中华2B铅笔', '8F29339B', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('24', '中华2B铅笔', '278BBA81', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:09', null, null);
+INSERT INTO `commodity` VALUES ('25', '中华2B铅笔', '67DF8EB2', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('26', '中华2B铅笔', '8D998604', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('27', '中华2B铅笔', 'AD839D3C', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('28', '中华2B铅笔', 'DBE7E627', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('29', '中华2B铅笔', '1BA6D995', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('30', '中华2B铅笔', '81BE24D7', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('31', '中华2B铅笔', 'A0EA7502', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('32', '中华2B铅笔', '786B058C', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('33', '中华2B铅笔', '17C6C532', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('34', '中华2B铅笔', '7F6BC3CD', '5', '5', '7', '1', '0', '0.50', null, null, null, null, '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('35', '中华2B铅笔', 'F9334616', '5', '5', '7', '1', '0', '0.50', '0.80', '1.00', '0.80', '8', '2018-01-11 10:29:10', null, null);
+INSERT INTO `commodity` VALUES ('36', 'AD钙奶', '6AE8C178', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('37', 'AD钙奶', '7DD3E8F9', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('38', 'AD钙奶', '867794C2', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('39', 'AD钙奶', 'D816E07A', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('40', 'AD钙奶', '8F1840D3', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('41', 'AD钙奶', '28A5E96E', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:01', null, null);
+INSERT INTO `commodity` VALUES ('42', 'AD钙奶', '3A9005BF', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:02', null, null);
+INSERT INTO `commodity` VALUES ('43', 'AD钙奶', 'CCC758B4', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:02', null, null);
+INSERT INTO `commodity` VALUES ('44', 'AD钙奶', 'F83C5111', '1', '1', '1', '1', '0', '1.50', null, null, null, null, '2018-01-11 10:30:02', null, null);
+INSERT INTO `commodity` VALUES ('45', 'AD钙奶', '386D5940', '1', '1', '1', '1', '1', '1.50', '2.00', '1.00', '2.00', '11', '2018-01-11 10:30:02', null, null);
+INSERT INTO `commodity` VALUES ('46', 'MacBook 12寸', '4BE558D7', '7', '4', '4', '1', '0', '8500.00', null, null, null, null, '2018-01-11 10:32:04', null, null);
+INSERT INTO `commodity` VALUES ('47', 'MacBook 12寸', '979E28F2', '7', '4', '4', '1', '0', '8500.00', null, null, null, null, '2018-01-11 10:32:04', null, null);
+INSERT INTO `commodity` VALUES ('48', 'Apple Watch', '94426D22', '7', '4', '4', '1', '0', '1800.00', null, null, null, null, '2018-01-11 14:33:08', null, null);
+INSERT INTO `commodity` VALUES ('49', 'Apple Watch', '64E5EE01', '7', '4', '4', '1', '0', '1800.00', null, null, null, null, '2018-01-11 14:33:08', null, null);
+INSERT INTO `commodity` VALUES ('50', 'Apple Watch', '58DFC4A6', '7', '4', '4', '1', '0', '1800.00', null, null, null, null, '2018-01-11 14:33:08', null, null);
 
 -- ----------------------------
 -- Table structure for commodity_type
@@ -176,12 +226,12 @@ CREATE TABLE `purchase` (
 -- ----------------------------
 -- Records of purchase
 -- ----------------------------
-INSERT INTO `purchase` VALUES ('1', 'AD钙奶', '1', '1', '1', '1.50', '100');
-INSERT INTO `purchase` VALUES ('2', '蚕丝面膜', '3', '2', '3', '12.00', '50');
+INSERT INTO `purchase` VALUES ('1', 'AD钙奶', '1', '1', '1', '1.50', '90');
+INSERT INTO `purchase` VALUES ('2', '蚕丝面膜', '3', '2', '3', '12.00', '35');
 INSERT INTO `purchase` VALUES ('3', '妮维雅护肤霜', '3', '2', '3', '32.50', '200');
-INSERT INTO `purchase` VALUES ('4', 'Apple Watch', '7', '4', '4', '1800.00', '5');
-INSERT INTO `purchase` VALUES ('5', 'MacBook 12寸', '7', '4', '4', '8500.00', '5');
-INSERT INTO `purchase` VALUES ('6', '中华2B铅笔', '5', '5', '7', '0.50', '1500');
+INSERT INTO `purchase` VALUES ('4', 'Apple Watch', '7', '4', '4', '1800.00', '2');
+INSERT INTO `purchase` VALUES ('5', 'MacBook 12寸', '7', '4', '4', '8500.00', '3');
+INSERT INTO `purchase` VALUES ('6', '中华2B铅笔', '5', '5', '7', '0.50', '1480');
 
 -- ----------------------------
 -- Table structure for role
@@ -219,11 +269,11 @@ CREATE TABLE `storage` (
 -- ----------------------------
 -- Records of storage
 -- ----------------------------
-INSERT INTO `storage` VALUES ('1', '1号仓库', '2018-01-01 12:12:00', '2018-01-03 14:12:31', '100', '0');
-INSERT INTO `storage` VALUES ('2', '2号仓库', '2018-01-01 12:12:12', '2018-01-03 14:13:54', '250', '0');
+INSERT INTO `storage` VALUES ('1', '1号仓库', '2018-01-01 12:12:00', '2018-01-03 14:12:31', '90', '0');
+INSERT INTO `storage` VALUES ('2', '2号仓库', '2018-01-01 12:12:12', '2018-01-03 14:13:54', '235', '0');
 INSERT INTO `storage` VALUES ('3', '3号仓库', '2018-01-01 15:00:00', '2018-01-03 14:14:19', '0', '1');
-INSERT INTO `storage` VALUES ('4', '5号仓库', '2018-01-08 13:21:51', '2018-01-08 13:24:38', '10', '0');
-INSERT INTO `storage` VALUES ('5', '8号仓库', '2018-01-08 13:28:44', '2018-01-08 13:28:44', '1500', '0');
+INSERT INTO `storage` VALUES ('4', '5号仓库', '2018-01-08 13:21:51', '2018-01-08 13:24:38', '5', '0');
+INSERT INTO `storage` VALUES ('5', '8号仓库', '2018-01-08 13:28:44', '2018-01-08 13:28:44', '1480', '0');
 INSERT INTO `storage` VALUES ('6', '10号仓库', null, null, '0', '1');
 
 -- ----------------------------

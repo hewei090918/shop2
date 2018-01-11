@@ -5,9 +5,9 @@
 $(function(){
 	
 	//初始化下拉框（用于仓库选择）
-	bindStorageSelect('purStorageSelect', 'purStorageId');
+	bindStorageSelect('purStorageSelect', 'purStorageId', null);
 	//初始化下拉框（用于供应商选择）
-	bindSupplierSelect('purSupplierSelect', 'purSupplierId');
+	bindSupplierSelect('purSupplierSelect', 'purSupplierId', null);
 	
 	//加载表格数据
 	$('#purchaseList_table').bootstrapTable({
@@ -124,9 +124,9 @@ $(function(){
     
     //购买按钮事件
     $('#btn_purchase_buy').click(function(){
-    	bindTypeSelect('m_purCommodityTypeSelect', 'm_purCommodityType');
-    	bindStorageSelect('m_purStorageSelect', 'm_purStorageId');
-    	bindSupplierSelect('m_purSupplierSelect', 'm_purSupplierId');
+    	bindTypeSelect('m_purCommodityTypeSelect', 'm_purCommodityType', null);
+    	bindStorageSelect('m_purStorageSelect', 'm_purStorageId', null);
+    	bindSupplierSelect('m_purSupplierSelect', 'm_purSupplierId', null);
     	
     	$('.spinner .btn:first-of-type').on('click', function() {  
     		$('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);  
@@ -171,7 +171,7 @@ $(function(){
     
 });
 
-function bindTypeSelect(selectId, hiddenId) {
+function bindTypeSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/commodityType/getList.html",
 		success: function(data){
@@ -190,7 +190,7 @@ function bindTypeSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  
@@ -204,7 +204,7 @@ function bindTypeSelect(selectId, hiddenId) {
 	});
 }
 
-function bindStorageSelect(selectId, hiddenId) {
+function bindStorageSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/storage/getList.html",
 		success: function(data){
@@ -223,7 +223,7 @@ function bindStorageSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  
@@ -237,7 +237,7 @@ function bindStorageSelect(selectId, hiddenId) {
 	});
 }
 
-function bindSupplierSelect(selectId, hiddenId) {
+function bindSupplierSelect(selectId, hiddenId, value) {
 	$.ajax({
 		url: base + "/supplier/getList.html",
 		success: function(data){
@@ -256,7 +256,7 @@ function bindSupplierSelect(selectId, hiddenId) {
                 allowClear: true
             });
             
-            $('#' + selectId).val(null).trigger("change");
+            $('#' + selectId).val(value).trigger("change");
             
             $("#" + selectId).on("select2:select",function(){  
                 $("#" + hiddenId).val($(this).val());  

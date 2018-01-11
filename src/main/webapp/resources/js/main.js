@@ -79,11 +79,21 @@ function dateFormatter(value) {
 }
 
 function priceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy"></i> ' + value;
+	if(value && value != null && value != "null") {
+		return '<i class="fa fa-jpy"></i> ' + value;
+	}else {
+		return "未定价";
+	}
+	
 }
 
 function discountPriceFormatter(value,row,index) {
-	return '<i class="fa fa-jpy" style="color:purple"></i> ' + '<span style="color:purple">' + value + '</span>';
+	if(value && value != null && value != "null") {
+		return '<i class="fa fa-jpy" style="color:purple"></i> ' + '<span style="color:purple">' + value + '</span>';
+	}else {
+		return "未定价";
+	}
+	
 }
 
 

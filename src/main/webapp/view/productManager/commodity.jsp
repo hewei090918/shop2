@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- modify modal -->
         <div class="modal fade" id="commodity_modal" tabindex="-1" role="dialog"
               aria-hidden="true">
-            <div class="modal-dialog" style="width:400px;height:auto;">
+            <div class="modal-dialog" style="width:420px;height:auto;">
                 <div class="modal-content">
                 	<form class="form-horizontal" id="commodity_form">
 	                	<div class="modal-header">
@@ -142,26 +142,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			                <h4 class="modal-title">商品修改</h4>
 			            </div>
 			            <div class="modal-body">
+			            	<input type="hidden" class="form-control" name="commodityId">
+			            	<div class="form-group">
+		                         <label class="col-sm-3 control-label">商品编码:</label>
+		                         <div class="col-sm-9">
+		                             <input type="text" class="form-control" name="commodityCode" placeholder="请输入商品编码" readonly>
+		                         </div>
+		                     </div>
    							<div class="form-group">
 		                         <label class="col-sm-3 control-label">商品名称:</label>
 		                         <div class="col-sm-9">
-		                             <input type="text" class="form-control" name="commodityName" style="height:28px;" placeholder="请输入商品名称">
+		                             <input type="text" class="form-control" name="commodityName" placeholder="请输入商品名称" readonly>
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">商品类别:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="commodityType" id="modal_commodityType">
-		                         	 <select class="form-control select2" id="modal_commodityTypeSelect">
+		                             <input type="hidden" class="form-control" name="commodityType" id="m_commodityType">
+		                         	 <select class="form-control select2" id="m_commodityTypeSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>
 		                     <div class="form-group">
-		                         <label class="col-sm-3 control-label">单价:</label>
+		                         <label class="col-sm-3 control-label">成本价/件:</label>
 		                         <div class="col-sm-9">
 		                         	 <div class="input-group">
 			                             <span class="input-group-addon">¥</span>
-							             <input type="text" name="price" id="modal_price" data-inputmask="'alias':'money'" class="form-control" style="height:28px;">
+							             <input type="text" name="costPrice" data-inputmask="'alias':'money'" class="form-control" readonly>
+						             </div>
+		                         </div>
+		                     </div>
+		                     <div class="form-group">
+		                         <label class="col-sm-3 control-label">单价/件:</label>
+		                         <div class="col-sm-9">
+		                         	 <div class="input-group">
+			                             <span class="input-group-addon">¥</span>
+							             <input type="text" name="price" data-inputmask="'alias':'money'" class="form-control">
 						             </div>
 		                         </div>
 		                     </div>
@@ -186,8 +202,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">货管员:</label>
 		                         <div class="col-sm-9">
-		                             <input type="hidden" class="form-control" name="manager" id="modal_manager">
-		                         	 <select class="form-control select2" id="modal_managerSelect">
+		                             <input type="hidden" class="form-control" name="manager" id="m_manager">
+		                         	 <select class="form-control select2" id="m_managerSelect">
 		                         	 </select>
 		                         </div>
 		                     </div>

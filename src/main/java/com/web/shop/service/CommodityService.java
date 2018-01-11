@@ -27,4 +27,6 @@ public interface CommodityService {
 	
 	boolean down(String ids);
 	
+	boolean up(int upId, long upAmount);
+	
 }

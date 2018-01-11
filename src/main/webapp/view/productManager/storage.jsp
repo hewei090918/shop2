@@ -18,6 +18,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.form-horizontal .control-label {
 		    padding-top: 4px;
 		}
+		.spinner {  
+		  width: 200px;  
+		}  
+		.spinner input {  
+		  text-align: right;  
+		}  
+		.input-group-btn-vertical {  
+		  position: relative;  
+		  white-space: nowrap;  
+		  width: 1%;  
+		  vertical-align: middle;  
+		  display: table-cell;  
+		}  
+		.input-group-btn-vertical > .btn {  
+		  display: block;  
+		  float: none;  
+		  width: 100%;  
+		  max-width: 100%;  
+		  padding: 8px;  
+		  margin-left: -1px;  
+		  position: relative;  
+		  border-radius: 0;  
+		}  
+		.input-group-btn-vertical > .btn:first-child {  
+		  border-top-right-radius: 4px;  
+		}  
+		.input-group-btn-vertical > .btn:last-child {  
+		  margin-top: -2px;  
+		  border-bottom-right-radius: 4px;  
+		}  
+		.input-group-btn-vertical i{  
+		  position: absolute;  
+		  top: 0;  
+		  left: 4px;  
+		} 
 	</style>
   </head>
   
@@ -113,6 +148,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
            	</div>
         </div>
+        
+        <!-- amount change modal -->
+        <div class="modal fade" id="amount_change_modal" tabindex="-1" role="dialog"
+              aria-hidden="true">
+            <div class="modal-dialog" style="width:380px;height:auto;">
+                <div class="modal-content">
+                	<form class="form-horizontal" id="commodity_up_form">
+	                	<div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">商品上架</h4>
+			            </div>
+			            <div class="modal-body">
+			            	 <input type="hidden" class="form-control" name="upId" id="upId">
+		                     <div class="form-group">
+		                         <label class="col-sm-3 control-label">上架数量:</label>
+		                         <div class="col-sm-9">
+		                             <div class="input-group spinner">  
+								    	 <input type="text" class="form-control" name="upAmount" id="upAmount" value="0">  
+								    	 <div class="input-group-btn-vertical">  
+								      		<button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>  
+								      		<button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>  
+								    	 </div>  
+									  </div> 
+		                         </div>
+		                     </div>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			                <button type="button" class="btn btn-primary" id="btn_up_save">确定</button>
+			            </div>
+		            </form>
+                </div>
+           	</div>
+        </div>
+        
     </div>
   </body>
 </html>
