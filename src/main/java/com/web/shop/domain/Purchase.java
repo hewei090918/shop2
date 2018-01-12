@@ -20,6 +20,8 @@ public class Purchase {
     private String purStorageName;
     
     private String purSupplierName;
+    
+    private Long storageAmount;
 
     public Integer getPurchaseId() {
         return purchaseId;
@@ -100,5 +102,14 @@ public class Purchase {
 	public void setPurSupplierName(String purSupplierName) {
 		this.purSupplierName = purSupplierName;
 	}
+
+	public Long getStorageAmount() {
+		return storageAmount;
+	}
+
+	public void setStorageAmount(Long storageAmount) {
+		this.storageAmount = storageAmount;
+	}
+	
 	
 }

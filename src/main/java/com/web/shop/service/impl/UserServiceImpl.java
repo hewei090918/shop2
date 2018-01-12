@@ -178,8 +178,8 @@ public class UserServiceImpl implements UserService {
 		try{
 			for(String id: idstr) {
 				userMapper.deleteByPrimaryKey(Integer.parseInt(id));
-				logger.info("删除用户成功");
 			}
+			logger.info("删除用户成功");
 			return true;
 		}catch(Exception e) {
 			logger.error("删除用户失败", e);

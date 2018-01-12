@@ -184,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                     <div class="form-group">
 		                         <label class="col-sm-3 control-label">会员折扣:</label>
 		                         <div class="col-sm-9">
-		                         	 <select class="form-control" name="discount" style="height:28px;padding:0 10px;">
+		                         	 <select class="form-control" name="discount" id="discountSelect" autocomplete="off" style="height:28px;padding:0 10px;">
 		                         	 	<option value="1.00">100%</option>
 		                         	 	<option value="0.95">95%</option>
 		                         	 	<option value="0.90">90%</option>

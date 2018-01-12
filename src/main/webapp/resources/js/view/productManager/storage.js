@@ -97,7 +97,7 @@ $(function(){
 	
 	//查询按钮事件
     $('#btn_storage_query').click(function(){
-    	refreshTable();
+    	refreshStorageListTable();
     });
     
     $('#btn_storage_reset').click(function(){

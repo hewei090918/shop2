@@ -125,8 +125,8 @@ public class StorageServiceImpl implements StorageService {
 		try{
 			for(String id: idstr) {
 				storageMapper.deleteByPrimaryKey(Integer.parseInt(id));
-				logger.info("删除仓库成功");
 			}
+			logger.info("删除仓库成功");
 			return true;
 		}catch(Exception e) {
 			logger.error("删除仓库失败", e);

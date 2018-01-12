@@ -373,7 +373,7 @@ function showCommodityDetail(index) {
 //	console.log("index = " + index);
 	$('#commodityList_table').bootstrapTable('uncheckAll');
 	var row = $('#commodityList_table').bootstrapTable('getData')[index];
-	console.log(row);
+//	console.log(row);
 	$('#commodity_form input[name="commodityId"]').val(row.commodityId);
 	bindTypeSelect('m_commodityTypeSelect', 'm_commodityType', row.commodityType);
 	bindUserSelect('m_managerSelect', 'm_manager', row.manager);
@@ -382,6 +382,15 @@ function showCommodityDetail(index) {
 	$('#commodity_form input[name="commodityType"]').val(row.commodityType);
 	$('#commodity_form input[name="price"]').val(row.price);
 	$('#commodity_form input[name="costPrice"]').val(row.costPrice);
+//	$('#discountSelect option[value="' + row.discount + '"]').prop('selected', 'selected');
+	var options = $('#discountSelect option');
+	$.each(options, function(index, opt) {
+		if(opt.value == row.discount) {
+			$(opt).attr('selected', 'selected');
+		}else{
+			$(opt).removeAttr('selected');
+		}
+	});
 	if(row.isHot) 
 		$('#commodity_form input[name="isHot"][value="1"]').prop('checked', 'checked');
 	else

@@ -217,8 +217,8 @@ public class CommodityServiceImpl implements CommodityService {
 		try{
 			for(String id: idstr) {
 				commodityMapper.deleteByPrimaryKey(Integer.parseInt(id));
-				logger.info("删除商品成功");
 			}
+			logger.info("删除商品成功");
 			return true;
 		}catch(Exception e) {
 			logger.error("删除商品失败", e);
@@ -236,16 +236,8 @@ public class CommodityServiceImpl implements CommodityService {
 				commodity.setStatus("2");
 				commodity.setSellTime(new Date());
 				commodityMapper.updateByPrimaryKey(commodity);
-				int storageId = commodity.getStorageId();
-				Storage storage = storageMapper.selectByPrimaryKey(storageId);
-				long amount = storage.getAmount()-1;
-				storage.setAmount(amount);
-				if(amount == 0) {
-					storage.setSoldOut(true);
-				}
-				storageMapper.updateByPrimaryKey(storage);
-				logger.info("出售商品成功");
 			}
+			logger.info("出售商品成功");
 			return true;
 		}catch(Exception e) {
 			logger.error("出售商品失败", e);
@@ -262,8 +254,14 @@ public class CommodityServiceImpl implements CommodityService {
 				commodity.setStatus("3");
 				commodity.setDownTime(new Date());
 				commodityMapper.updateByPrimaryKey(commodity);
-				logger.info("下架商品成功");
+				
+				Storage storage = storageMapper.selectByPrimaryKey(commodity.getStorageId());
+				storage.setAmount(storage.getAmount() + 1);
+				storageMapper.updateByPrimaryKey(storage);
 			}
+			logger.info("下架商品成功");
+			logger.info("更新采购数量成功");
+			logger.info("同步库存数量成功");
 			return true;
 		}catch(Exception e) {
 			logger.error("下架商品失败", e);
@@ -279,7 +277,10 @@ public class CommodityServiceImpl implements CommodityService {
 			purchaseMapper.updateByPrimaryKey(purchase);
 			logger.info("更新采购数量成功");
 			Storage storage = storageMapper.selectByPrimaryKey(purchase.getPurStorageId());
-			storage.setAmount(storage.getAmount()- upAmount);
+			long currAmount = storage.getAmount()- upAmount;
+			if(currAmount == 0L)
+				storage.setSoldOut(true);
+			storage.setAmount(currAmount);
 			storageMapper.updateByPrimaryKey(storage);
 			logger.info("同步库存数量成功");
 			try{
@@ -295,8 +296,8 @@ public class CommodityServiceImpl implements CommodityService {
 					commodity.setCostPrice(purchase.getPurchasePrice());
 					commodity.setUpTime(new Date());
 					commodityMapper.insert(commodity);
-					logger.info("新增商品成功");
 				}
+				logger.info("新增商品成功");
 				return true;
 			}catch(Exception e) {
 				logger.error("新增商品失败", e);
